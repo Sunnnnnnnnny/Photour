@@ -1,0 +1,9 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.nav-wrapper {
+  height: 52px;
+  width: 100%;
+  background-color: $white-color;
+}
