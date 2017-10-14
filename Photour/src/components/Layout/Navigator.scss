@@ -6,4 +6,21 @@
   height: 52px;
   width: 100%;
   background-color: $white-color;
+
+  .left-wrapper {
+    display: inline-block;
+    padding-top: 12px;
+  }
+
+  .right-wrapper {
+    display: inline-block;
+    padding-top: 12px;
+    float: right;
+
+    .search-input /deep/ .el-input__icon {
+      z-index: 1;
+    }
+  }
 }
+
+

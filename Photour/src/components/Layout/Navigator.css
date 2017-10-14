@@ -23,5 +23,14 @@ button {
   height: 52px;
   width: 100%;
   background-color: #ffffff; }
+  .nav-wrapper .left-wrapper {
+    display: inline-block;
+    padding-top: 12px; }
+  .nav-wrapper .right-wrapper {
+    display: inline-block;
+    padding-top: 12px;
+    float: right; }
+    .nav-wrapper .right-wrapper .search-input /deep/ .el-input__icon {
+      z-index: 1; }
 
 /*# sourceMappingURL=Navigator.css.map */

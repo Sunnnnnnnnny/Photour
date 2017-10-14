@@ -23,9 +23,7 @@ html .body-wrapper {
   width: 100%;
   min-height: 1000px;
   height: 100%;
-  background: #f6f6f6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  background: #f6f6f6; }
 html .container {
   width: 1005px;
   margin: 0 auto; }

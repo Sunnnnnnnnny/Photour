@@ -1,7 +1,7 @@
 <template>
 
   <navigator>
-    {{ msg }}
+    <!--{{ msg }}-->
   </navigator>
 
 </template>
