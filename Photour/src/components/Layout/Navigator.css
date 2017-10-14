@@ -2,7 +2,7 @@ html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "Pingfang SC", "Open Sans", "Lantinghei SC", "Microsoft Yahei Light", "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 300;
   list-style: none; }
 
@@ -28,9 +28,33 @@ button {
     padding-top: 12px; }
   .nav-wrapper .right-wrapper {
     display: inline-block;
-    padding-top: 12px;
+    padding-top: 11px;
     float: right; }
-    .nav-wrapper .right-wrapper .search-input /deep/ .el-input__icon {
-      z-index: 1; }
+    .nav-wrapper .right-wrapper .input-wrapper {
+      display: inline-block;
+      padding-right: 20px; }
+      .nav-wrapper .right-wrapper .input-wrapper /deep/ .el-input__inner {
+        width: 300px; }
+      .nav-wrapper .right-wrapper .input-wrapper .search-input /deep/ .el-input__icon {
+        z-index: 1; }
+    .nav-wrapper .right-wrapper .button-wrapper {
+      display: inline-block; }
+      .nav-wrapper .right-wrapper .button-wrapper .el-button {
+        padding-left: 20px;
+        font-size: 15px;
+        font-weight: 300;
+        color: #7b7b7b;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s; }
+        .nav-wrapper .right-wrapper .button-wrapper .el-button:hover {
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          -ms-transition: all 0.5s;
+          -o-transition: all 0.5s;
+          transition: all 0.5s;
+          color: #E47877; }
 
 /*# sourceMappingURL=Navigator.css.map */

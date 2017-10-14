@@ -1,27 +1,37 @@
 <template>
 
-  <navigator>
-    <!--{{ msg }}-->
-  </navigator>
+  <div>
+    <navigator>
+      <!--{{ msg }}-->
+    </navigator>
+
+    <div class="body-wrapper">
+
+    </div>
+
+    <my-footer>
+
+    </my-footer>
+  </div>
 
 </template>
 
 <script>
   import Navigator from './Navigator'
+  import Footer from './Footer'
 
   export default {
     name: '',
     components: {
-      Navigator
+      Navigator,
+      myFooter: Footer
     },
-    data () {
+    data() {
       return {
         msg: 'test test test',
       }
     },
-    computed: {
-
-    }
+    computed: {}
   }
 
 </script>

@@ -2,7 +2,7 @@ html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "Pingfang SC", "Open Sans", "Lantinghei SC", "Microsoft Yahei Light", "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 300;
   list-style: none; }
 
@@ -31,6 +31,41 @@ html .container {
     content: '';
     display: block;
     clear: both; }
+html .el-input__inner {
+  height: 30px;
+  border-radius: 100px;
+  border: #bababa solid 1px;
+  color: #7b7b7b;
+  font-size: 12px; }
+  html .el-input__inner::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #bababa;
+    font-size: 12px;
+    font-weight: 400; }
+  html .el-input__inner:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #bababa;
+    font-size: 12px;
+    font-weight: 400; }
+  html .el-input__inner::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #bababa;
+    font-size: 12px;
+    font-weight: 400; }
+  html .el-input__inner:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #bababa;
+    font-size: 12px;
+    font-weight: 400; }
+  html .el-input__inner:hover, html .el-input__inner:focus {
+    border: #E47877 solid 1px;
+    color: #7b7b7b; }
+html .el-input__icon {
+  color: #E47877; }
+html .el-input__icon.is-clickable:hover {
+  color: #E47877; }
+html .el-input__icon.is-clickable:hover + .el-input__inner {
+  border-color: #E47877; }
 @media (max-width: 1005px) {
   html .container {
     width: 100%; } }

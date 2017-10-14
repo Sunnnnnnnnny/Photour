@@ -6,12 +6,22 @@
       </div>
 
       <div class="right-wrapper">
-        <el-input class="search-input"
-          placeholder="请选择日期"
-          icon="search"
-          v-model="input2"
-          :on-icon-click="handleIconClick">
-        </el-input>
+        <div class="input-wrapper">
+          <el-input class="search-input"
+                    placeholder="搜索图片、作者"
+                    icon="search"
+                    v-model="input2"
+                    :on-icon-click="handleIconClick">
+          </el-input>
+        </div>
+
+        <div class="button-wrapper">
+          <el-button type="text">首页</el-button>
+          <el-button type="text">注册</el-button>
+          <el-button type="text">登录</el-button>
+          <el-button type="text">帮助</el-button>
+
+        </div>
       </div>
 
       <slot>
@@ -24,14 +34,15 @@
 
 <script>
   import Vue from 'vue'
-  import { Input } from 'element-ui'
+  import {Input, Button} from 'element-ui'
 
-//  Vue.use(Input)
+  //  Vue.use(Input)
 
   export default {
     name: 'navigator',
     components: {
       elInput: Input,
+      elButton: Button,
     },
     data() {
       return {
@@ -46,6 +57,4 @@
   }
 </script>
 
-<style scoped>
-  @import "./Navigator.css";
-</style>
+<style scoped src="./Navigator.css"></style>

@@ -1,0 +1,33 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.footer-wrapper {
+  height: auto;
+  padding: 40px;
+  border-top: $light-grey solid 1px;
+  text-align: center;
+
+  .icon-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .name-wrapper {
+    display: inline-block;
+    padding-left: 10px;
+
+    span {
+      color: $grey;
+    }
+  }
+
+  .info-wrapper {
+    padding-top: 5px;
+
+    span {
+      color: $grey;
+      font-size: 12px;
+    }
+  }
+}

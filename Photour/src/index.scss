@@ -18,6 +18,35 @@ html {
     @include clear-fix();
   }
 
+  //search input style
+  .el-input__inner {
+    height: 30px;
+    border-radius: 100px;
+    border: $light-grey solid 1px;
+    color: $grey;
+    font-size: 12px;
+
+    @include placeholder($light-grey, 12px, 400);
+
+    &:hover, &:focus {
+      border: $main-color solid 1px;
+      color: $grey;
+    }
+  }
+
+  .el-input__icon {
+    color: $main-color;
+  }
+
+  .el-input__icon.is-clickable:hover {
+    color: $main-color;
+  }
+
+  .el-input__icon.is-clickable:hover + .el-input__inner {
+    border-color: $main-color;
+  }
+
+
   @media (max-width: 1005px) {
     .container {
       width: 100%;
