@@ -1,18 +1,22 @@
 <template>
   <div class="body-wrapper">
     <layout>
-
+      <div class="container">
+        <welcome></welcome>
+      </div>
     </layout>
   </div>
 </template>
 
 <script>
-  import Layout from './Layout/Layout.vue';
+  import Layout from '../components/Layout/Layout';
+  import Welcome from '../components/Welcome/Welcome'
 
   export default {
     name: 'HelloWorld',
     components: {
-      Layout
+      Layout,
+      Welcome
     },
     data() {
       return {

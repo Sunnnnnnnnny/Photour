@@ -31,7 +31,8 @@ button {
     display: inline-block;
     padding-left: 10px; }
     .footer-wrapper .name-wrapper span {
-      color: #7b7b7b; }
+      color: #7b7b7b;
+      font-size: 14px; }
   .footer-wrapper .info-wrapper {
     padding-top: 5px; }
     .footer-wrapper .info-wrapper span {

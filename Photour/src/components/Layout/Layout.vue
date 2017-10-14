@@ -6,12 +6,12 @@
     </navigator>
 
     <div class="body-wrapper">
+      <slot>
 
+      </slot>
     </div>
 
-    <my-footer>
-
-    </my-footer>
+    <my-footer></my-footer>
   </div>
 
 </template>

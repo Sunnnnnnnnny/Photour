@@ -1,0 +1,20 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.welcome-wrapper {
+  padding-top: 100px;
+  text-align: left;
+
+  h1 {
+    color: $main-color;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  p {
+    color: $grey;
+    font-size: 16px;
+  }
+}

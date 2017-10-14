@@ -1,0 +1,34 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.welcome-wrapper {
+  padding-top: 100px;
+  text-align: left; }
+  .welcome-wrapper h1 {
+    color: #E47877;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 1px; }
+  .welcome-wrapper p {
+    color: #7b7b7b;
+    font-size: 16px; }
+
+/*# sourceMappingURL=Welcome.css.map */
