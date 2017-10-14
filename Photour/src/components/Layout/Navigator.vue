@@ -1,9 +1,9 @@
 <template>
-  <div class="body-wrapper">
-    <div class="nav-wrapper">
-      <slot>
+  <div class="nav-wrapper">
+    <div class="container">
+    <slot>
 
-      </slot>
+    </slot>
     </div>
   </div>
 </template>
