@@ -3,20 +3,23 @@
     <layout>
       <div class="container">
         <welcome></welcome>
+        <photo-wall></photo-wall>
       </div>
     </layout>
   </div>
 </template>
 
 <script>
-  import Layout from '../components/Layout/Layout';
+  import Layout from '../components/Layout/Layout'
   import Welcome from '../components/Welcome/Welcome'
+  import PhotoWall from '../components/PhotoWall/PhotoWall'
 
   export default {
     name: 'HelloWorld',
     components: {
       Layout,
-      Welcome
+      Welcome,
+      PhotoWall
     },
     data() {
       return {
