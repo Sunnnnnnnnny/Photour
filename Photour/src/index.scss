@@ -46,6 +46,16 @@ html {
     border-color: $main-color;
   }
 
+  .v--modal {
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+  }
+
+  .v--modal-box v--modal {
+    height: auto;
+  }
 
   @media (max-width: 1005px) {
     .container {

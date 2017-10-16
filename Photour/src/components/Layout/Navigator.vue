@@ -18,16 +18,17 @@
         <div class="button-wrapper">
           <el-button type="text">首页</el-button>
           <el-button type="text">注册</el-button>
-          <el-button type="text">登录</el-button>
+          <el-button type="text" @click="signIn">登录</el-button>
           <el-button type="text">帮助</el-button>
 
         </div>
       </div>
 
-      <slot>
-
-      </slot>
+      <slot></slot>
     </div>
+
+    <sign-in></sign-in>
+
   </div>
 </template>
 
@@ -35,6 +36,7 @@
 <script>
   import Vue from 'vue'
   import {Input, Button} from 'element-ui'
+  import SignIn from '../SignIn/SignIn'
 
   //  Vue.use(Input)
 
@@ -43,6 +45,7 @@
     components: {
       elInput: Input,
       elButton: Button,
+      SignIn
     },
     data() {
       return {
@@ -52,7 +55,10 @@
     methods: {
       handleIconClick(ev) {
         console.log(ev);
-      }
+      },
+      signIn() {
+        this.$modal.show('sign-in');
+      },
     }
   }
 </script>

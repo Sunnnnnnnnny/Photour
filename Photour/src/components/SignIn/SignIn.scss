@@ -1,0 +1,115 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.sign-in-box-wrapper {
+  height: 100%;
+  //padding: 20px;
+
+  .left-wrapper {
+    display: inline-block;
+    height: 80%;
+    width: 61%;
+    margin-top: 7%;
+    background-color: $white-color;
+    padding: 20px;
+
+    .el-button {
+      width: 10px;
+      height: 10px;
+      background: none;
+
+      /deep/ .el-icon-close {
+        color: $light-grey;
+        font-size: 10px;
+      }
+    }
+
+    .info-wrapper {
+      padding-top: 50px;
+      padding-left: 40px;
+
+      p {
+        color: $main-color;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 10px;
+      }
+
+      /deep/ .el-form {
+        width: 80%;
+        padding-top: 40px;
+
+        label {
+          padding-bottom: 2px;
+          font-size: 10px;
+          color: $grey;
+        }
+
+        .go-sign-up {
+          float: right;
+          font-size: 12px;
+        }
+      }
+
+
+
+      // .form-wrapper {
+      //   padding-top: 30px;
+      //   span {
+      //     color: $grey;
+      //     font-size: 12px;
+      //   }
+      //
+      //   /deep/ .el-input__inner {
+      //     width: 88%;
+      //     background-color: $background-color;
+      //   }
+      // }
+      //
+      ///deep/ .el-tabs__header {
+      //   border: none;
+      //
+      //   /deep/ .el-tabs__active-bar {
+      //     height: 2px;
+      //   }
+      //
+      //   /deep/ .el-tabs__item {
+      //     padding: 0 30px;
+      //     line-height: 50px;
+      //     letter-spacing: 5px;
+      //
+      //     &:hover {
+      //       color: $main-color;
+      //     }
+      //   }
+      // }
+    }
+  }
+
+  .img-wrapper {
+    display: inline-block;
+    height: 550px;
+    width: 39%;
+    //width: 340px;
+    float: right;
+
+    img {
+      display: inline-block;
+      height: 100%;
+    }
+
+    /deep/ .el-carousel {
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    /deep/ .el-carousel__item {
+      position: absolute;
+    }
+
+    /deep/ .el-carousel__indicators {
+      width: 80%;
+    }
+  }
+}
