@@ -17,7 +17,7 @@
 
         <div class="button-wrapper">
           <el-button type="text">首页</el-button>
-          <el-button type="text">注册</el-button>
+          <el-button type="text" @click="signUp">注册</el-button>
           <el-button type="text" @click="signIn">登录</el-button>
           <el-button type="text">帮助</el-button>
 
@@ -36,7 +36,10 @@
 <script>
   import Vue from 'vue'
   import {Input, Button} from 'element-ui'
-  import SignIn from '../SignIn/SignIn'
+  import AuthModal from '../AuthModal/AuthModal'
+
+  import {mapMutations} from 'vuex'
+  import { store } from '../../main'
 
   //  Vue.use(Input)
 
@@ -45,7 +48,7 @@
     components: {
       elInput: Input,
       elButton: Button,
-      SignIn
+      SignIn: AuthModal
     },
     data() {
       return {
@@ -53,12 +56,21 @@
       }
     },
     methods: {
+      ...mapMutations([
+        'goSignIn',
+        'goSignUp',
+      ]),
       handleIconClick(ev) {
         console.log(ev);
       },
       signIn() {
         this.$modal.show('sign-in');
+        store.commit('goSignIn');
       },
+      signUp() {
+        this.$modal.show('sign-in');
+        store.commit('goSignUp');
+      }
     }
   }
 </script>

@@ -1,0 +1,61 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.info-wrapper {
+  padding-top: 40px;
+  padding-left: 40px;
+
+  p {
+    color: $main-color;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 10px;
+  }
+
+  /deep/ .el-form {
+    width: 80%;
+    padding-top: 35px;
+
+    /deep/ .el-form-item {
+      margin-bottom: 20px;
+    }
+
+    label {
+      padding-bottom: 2px;
+      font-size: 10px;
+      color: $grey;
+    }
+
+    .go-sign-in {
+      display: inline;
+      //float: right;
+      font-size: 12px;
+      color: $grey;
+
+      /deep/ .el-button {
+        font-size: 12px;
+      }
+    }
+
+    .sign-in-button-wrapper {
+      display: block;
+      float: right;
+      text-align: center;
+      /deep/ .el-button {
+        padding: 8px 20px;
+        background-color: $main-color;
+        border-radius: 100px;
+        letter-spacing: 6px;
+        text-indent: 3px;
+        color: $white-color;
+        @include transition(all, 0.5s);
+
+        &:hover {
+          @include transition(all, 0.5s);
+          background-color: $sub-color;
+        }
+      }
+    }
+  }
+}

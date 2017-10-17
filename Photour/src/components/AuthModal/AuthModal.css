@@ -23,36 +23,16 @@ button {
   height: 100%; }
   .sign-in-box-wrapper .left-wrapper {
     display: inline-block;
-    height: 80%;
+    height: 90%;
     width: 61%;
-    margin-top: 7%;
+    margin-top: 4%;
     background-color: #ffffff;
     padding: 20px; }
     .sign-in-box-wrapper .left-wrapper .el-button {
-      width: 10px;
-      height: 10px;
       background: none; }
       .sign-in-box-wrapper .left-wrapper .el-button /deep/ .el-icon-close {
         color: #bababa;
         font-size: 10px; }
-    .sign-in-box-wrapper .left-wrapper .info-wrapper {
-      padding-top: 50px;
-      padding-left: 40px; }
-      .sign-in-box-wrapper .left-wrapper .info-wrapper p {
-        color: #E47877;
-        font-size: 20px;
-        font-weight: 400;
-        letter-spacing: 10px; }
-      .sign-in-box-wrapper .left-wrapper .info-wrapper /deep/ .el-form {
-        width: 80%;
-        padding-top: 40px; }
-        .sign-in-box-wrapper .left-wrapper .info-wrapper /deep/ .el-form label {
-          padding-bottom: 2px;
-          font-size: 10px;
-          color: #7b7b7b; }
-        .sign-in-box-wrapper .left-wrapper .info-wrapper /deep/ .el-form .go-sign-up {
-          float: right;
-          font-size: 12px; }
   .sign-in-box-wrapper .img-wrapper {
     display: inline-block;
     height: 550px;
@@ -69,4 +49,4 @@ button {
     .sign-in-box-wrapper .img-wrapper /deep/ .el-carousel__indicators {
       width: 80%; }
 
-/*# sourceMappingURL=SignIn.css.map */
+/*# sourceMappingURL=AuthModal.css.map */

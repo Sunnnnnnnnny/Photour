@@ -1,0 +1,54 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.sign-in-box-wrapper {
+  height: 100%;
+  //padding: 20px;
+
+  .left-wrapper {
+    display: inline-block;
+    height: 90%;
+    width: 61%;
+    margin-top: 4%;
+    background-color: $white-color;
+    padding: 20px;
+
+    .el-button {
+      //width: 10px;
+      //height: 10px;
+      background: none;
+
+      /deep/ .el-icon-close {
+        color: $light-grey;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .img-wrapper {
+    display: inline-block;
+    height: 550px;
+    width: 39%;
+    //width: 340px;
+    float: right;
+
+    img {
+      display: inline-block;
+      height: 100%;
+    }
+
+    /deep/ .el-carousel {
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    /deep/ .el-carousel__item {
+      position: absolute;
+    }
+
+    /deep/ .el-carousel__indicators {
+      width: 80%;
+    }
+  }
+}
