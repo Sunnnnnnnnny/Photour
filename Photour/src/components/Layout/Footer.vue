@@ -1,7 +1,7 @@
 <template>
   <div class="footer-wrapper">
     <div class="icon-wrapper">
-      <img src="../../assets/logo-grey.png" width="40"/>
+      <img src="../../assets/img/logo-grey.png" width="40"/>
     </div>
     <div class="name-wrapper">
       <span>Photour</span>

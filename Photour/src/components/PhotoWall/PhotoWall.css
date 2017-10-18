@@ -30,7 +30,8 @@ button {
     margin-bottom: 0; }
 
 .el-col {
-  border-radius: 0; }
+  border-radius: 0;
+  margin-bottom: 20px; }
 
 .bg-purple-light {
   background: #e5e9f2; }

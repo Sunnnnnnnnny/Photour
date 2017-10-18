@@ -4,12 +4,12 @@ const state = {
   isSignIn: false,
 }
 
-// actions
+// actions 可异步
 const actions = {
 
 }
 
-// mutations
+// mutations 必须同步
 const mutations = {
   'goSignIn' (state) {
     state.isSignIn = true;

@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <div class="container">
       <div class="left-wrapper">
-        <img src="../../assets/logo.png" width="30">
+        <img src="../../assets/img/logo.png" width="30">
       </div>
 
       <div class="right-wrapper">
@@ -19,8 +19,6 @@
           <el-button type="text">首页</el-button>
           <el-button type="text" @click="signUp">注册</el-button>
           <el-button type="text" @click="signIn">登录</el-button>
-          <el-button type="text">帮助</el-button>
-
         </div>
       </div>
 

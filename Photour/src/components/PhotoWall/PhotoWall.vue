@@ -1,66 +1,46 @@
 <template>
   <div class="photo-wall-wrapper">
     <el-row :gutter="15">
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-    </el-row>
-
-
-    <el-row :gutter="15">
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-    </el-row>
-
-
-    <el-row :gutter="15">
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
-      <el-col :span="6"><div class="grid-content">
+      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
         <photo></photo>
       </div></el-col>
     </el-row>
 
-    <el-row :gutter="15">
-      <el-col :span="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col :span="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col :span="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col :span="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-    </el-row>
+
+
   </div>
 
 </template>

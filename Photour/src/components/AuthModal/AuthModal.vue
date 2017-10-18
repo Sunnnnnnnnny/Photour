@@ -56,11 +56,11 @@
         activeName: 'first',
 //        isSignIn: true,
         photos: [
-          require('../../assets/p1.png'),
-          require('../../assets/p2.png'),
-          require('../../assets/p4.png'),
-          require('../../assets/p3.png'),
-          require('../../assets/p5.png')
+          require('../../assets/img/p1.png'),
+          require('../../assets/img/p2.png'),
+          require('../../assets/img/p4.png'),
+          require('../../assets/img/p3.png'),
+          require('../../assets/img/p5.png')
         ],
       }
     },
