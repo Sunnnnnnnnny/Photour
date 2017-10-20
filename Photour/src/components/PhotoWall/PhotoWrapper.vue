@@ -2,7 +2,7 @@
   <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
   <div class="div-wrapper">
 
-    <div class="photo-wrapper">
+    <div class="photo-wrapper" @click="goToPhotoDetails">
       <div class="photo" :style="{ backgroundImage: 'url(' + currentUrl + ')' }">
 
       </div>
@@ -32,6 +32,7 @@
 <script>
 
   import {Row, Col} from 'element-ui'
+  import {router} from '../../main'
 
   export default {
     name: 'photo',
@@ -45,7 +46,12 @@
       }
     },
     props: ['currentUrl'],
-    methods: {}
+    methods: {
+      goToPhotoDetails() {
+//        console.log("click!" + this.currentUrl);
+        router.push({name: 'PhotoDetailsPage', params: { photoId: this.currentUrl }});
+      }
+    }
   }
 </script>
 

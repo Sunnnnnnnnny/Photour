@@ -16,7 +16,7 @@
         </div>
 
         <div class="button-wrapper">
-          <el-button type="text">首页</el-button>
+          <el-button type="text" @click="goToSquare">首页</el-button>
           <el-button type="text" @click="signUp">注册</el-button>
           <el-button type="text" @click="signIn">登录</el-button>
         </div>
@@ -35,6 +35,7 @@
   import Vue from 'vue'
   import {Input, Button} from 'element-ui'
   import AuthModal from '../AuthModal/AuthModal'
+  import {router} from '../../main'
 
   import {mapMutations} from 'vuex'
   import { store } from '../../main'
@@ -68,6 +69,9 @@
       signUp() {
         this.$modal.show('sign-in');
         store.commit('goSignUp');
+      },
+      goToSquare() {
+        router.push({name: 'PhotoSquarePage'})
       }
     }
   }

@@ -13,11 +13,11 @@
   import Layout from '../components/Layout/Layout'
   import Welcome from '../components/Welcome/Welcome'
   import PhotoWall from '../components/PhotoWall/PhotoWall'
-  import { mapState, mapActions } from 'vuex'
-  import { store } from '../main'
+  import {mapState, mapActions} from 'vuex'
+  import {store} from '../main'
 
   export default {
-    name: 'HelloWorld',
+    name: 'photo-square-page',
     components: {
       Layout,
       Welcome,
@@ -29,16 +29,16 @@
       }
     },
     computed: {
-      ...mapState ({
+      ...mapState({
         photos: state => state.photos.photos
       })
     },
     methods: {
-      ...mapActions ([
+      ...mapActions([
         'fetchPhotos'
       ]),
     },
-    beforeRouteEnter (to, from, next) {
+    beforeRouteEnter(to, from, next) {
       console.log('before');
       store.dispatch('fetchPhotos')
       next(true)

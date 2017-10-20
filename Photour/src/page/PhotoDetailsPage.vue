@@ -1,0 +1,50 @@
+<template>
+  <div class="body-wrapper">
+    <layout>
+      <div class="container">
+        <photo-details>
+
+        </photo-details>
+      </div>
+    </layout>
+  </div>
+</template>
+
+<script>
+  import Layout from '../components/Layout/Layout'
+  import PhotoDetails from '../components/PhotoDetails/PhotoDetails'
+  import {router, store} from '../main'
+  import {mapMutations} from 'vuex'
+
+  export default {
+    name: 'photo-details-page',
+    components: {
+      Layout,
+      PhotoDetails
+    },
+    data() {
+      return {}
+    },
+    created() {
+      console.log(this.$route.params.photoId);
+      store.commit('savePhotoUrl', {
+        photoUrl: this.$route.params.photoId
+      })
+    },
+    computed: {},
+    methods: {
+      ...mapMutations([
+        'savePhotoUrl'
+      ])
+    },
+//    beforeRouteEnter(to, from, next) {
+//      console.log("!!!!!!!!!!!" + to.params.photoId)
+//    },
+  }
+</script>
+
+<style scoped src="./PhotoDetailsPage.css"></style>
+
+
+
+
