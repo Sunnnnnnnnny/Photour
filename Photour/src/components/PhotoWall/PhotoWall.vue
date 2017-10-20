@@ -1,42 +1,9 @@
 <template>
   <div class="photo-wall-wrapper">
     <el-row :gutter="15">
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
-      <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
-        <photo></photo>
-      </div></el-col>
+      <photo
+        v-for="item in photos"
+        :currentUrl="item.url"></photo>
     </el-row>
 
 
@@ -48,6 +15,8 @@
 <script>
   import Photo from './PhotoWrapper'
   import {Row, Col} from 'element-ui'
+  import { mapState, mapActions } from 'vuex'
+  import { store } from '../../main'
 
   export default {
     name: 'photoWall',
@@ -56,11 +25,20 @@
       elRow: Row,
       elCol: Col,
     },
+    props: ['photos'],
     data() {
       return {
       }
     },
-    methods: {}
+    methods: {
+//      ...mapActions ({
+//        fetchPhotos: 'fetchPhotos'
+//      }),
+//      ...mapState ({
+//        photos: state => state.photos.photos
+//      })
+    },
+
   }
 </script>
 

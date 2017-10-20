@@ -98,7 +98,10 @@
     methods: {
       ...mapMutations([
         'goSignIn',
-      ])
+      ]),
+      submitForm() {
+        console.log("sign up!!!")
+      }
 
     }
   }

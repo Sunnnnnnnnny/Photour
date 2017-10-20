@@ -1,8 +1,9 @@
 <template>
+  <el-col  :xs="12" :sm="8" :md="6" :lg="6"><div class="grid-content">
   <div class="div-wrapper">
 
     <div class="photo-wrapper">
-      <div class="photo" :style="{ 'background-image': 'url(' + photoUrl + ')' }">
+      <div class="photo" :style="{ backgroundImage: 'url(' + currentUrl + ')' }">
 
       </div>
     </div>
@@ -25,18 +26,25 @@
     </div>
 
   </div>
+  </div></el-col>
 </template>
 
 <script>
+
+  import {Row, Col} from 'element-ui'
+
   export default {
     name: 'photo',
-    components: {},
+    components: {
+      elCol: Col,
+    },
     data() {
       return {
 //        photoUrl: 'https://cdn.dribbble.com/users/226242/screenshots/3871814/1976_chevrolet_blazer.png',
         photoUrl: [require('../../assets/img/photo.png')]
       }
     },
+    props: ['currentUrl'],
     methods: {}
   }
 </script>

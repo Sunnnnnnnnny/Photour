@@ -24,9 +24,8 @@ button {
   text-align: left; }
   .welcome-wrapper h1 {
     color: #E47877;
-    font-size: 48px;
-    font-weight: 400;
-    letter-spacing: 1px; }
+    font-size: 64px;
+    font-weight: 400; }
   .welcome-wrapper p {
     color: #7b7b7b;
     font-size: 16px; }

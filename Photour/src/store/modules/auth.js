@@ -7,7 +7,12 @@ const state = {
 // actions 可异步
 const actions = {
 
-}
+  signIn(username, password) {
+    authApi.signIn((data => {
+      // commit('')
+    }))
+  }
+};
 
 // mutations 必须同步
 const mutations = {

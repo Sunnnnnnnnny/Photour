@@ -3,7 +3,7 @@
     <layout>
       <div class="container">
         <welcome></welcome>
-        <photo-wall></photo-wall>
+        <photo-wall :photos="photos"></photo-wall>
       </div>
     </layout>
   </div>
@@ -13,6 +13,8 @@
   import Layout from '../components/Layout/Layout'
   import Welcome from '../components/Welcome/Welcome'
   import PhotoWall from '../components/PhotoWall/PhotoWall'
+  import { mapState, mapActions } from 'vuex'
+  import { store } from '../main'
 
   export default {
     name: 'HelloWorld',
@@ -25,6 +27,21 @@
       return {
         msg: '你的图片旅行'
       }
+    },
+    computed: {
+      ...mapState ({
+        photos: state => state.photos.photos
+      })
+    },
+    methods: {
+      ...mapActions ([
+        'fetchPhotos'
+      ]),
+    },
+    beforeRouteEnter (to, from, next) {
+      console.log('before');
+      store.dispatch('fetchPhotos')
+      next(true)
     }
   }
 </script>

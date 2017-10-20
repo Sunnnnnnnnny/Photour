@@ -38,7 +38,8 @@
 
 <script>
   import {Button, Input, Form, FormItem} from 'element-ui'
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapActions } from 'vuex'
+  import { store } from '../../main'
 
   export default {
     name: 'sign-in-form',
@@ -69,7 +70,6 @@
         signInForm: {
           password: '',
           username: '',
-          confirmPassword: '',
         },
         rules2: {
           password: [
@@ -84,7 +84,26 @@
     methods: {
       ...mapMutations([
         'goSignUp',
-      ])
+      ]),
+      ...mapActions({
+        submitForm: 'signIn',
+      }),
+      submitForm(data) {
+        this.$refs[data].validate((valid) => {
+          if (valid) {
+            console.log(this.signInForm);
+            store.dispatch('signIn', {
+              username: this.signInForm.username,
+              password: this.signInForm.password
+            })
+//            console.log(this.$refs[data])
+//            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
     }
   }
 </script>
