@@ -19,7 +19,7 @@ const actions = {
 const mutations = {
   'savePhotos' (state, {photos}) {
     state.photos = [
-      ...state.photos,
+      // ...state.photos,
       ...photos
     ]
   },

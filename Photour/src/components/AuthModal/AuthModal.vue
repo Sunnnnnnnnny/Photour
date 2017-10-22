@@ -22,7 +22,7 @@
         <el-carousel
           height="550px"
           arrow="never"
-          :interval="8000">
+          :interval="3000">
           <el-carousel-item v-for="item in photos" :key="item">
             <img :src="item" width="100%">
           </el-carousel-item>

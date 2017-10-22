@@ -1,0 +1,42 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.photo-tags-wrapper {
+  padding-top: 40px;
+  width: 100%; }
+  .photo-tags-wrapper h4 {
+    border-left: 3px solid #E47877;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    color: #7b7b7b;
+    font-size: 18px; }
+  .photo-tags-wrapper .tag-wrapper {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 12px;
+    padding: 3px 15px;
+    background: none;
+    border: solid 1px #bababa;
+    border-radius: 100px;
+    font-size: 13px;
+    color: #bababa; }
+
+/*# sourceMappingURL=PhotoTags.css.map */

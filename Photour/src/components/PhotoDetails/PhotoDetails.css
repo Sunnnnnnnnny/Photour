@@ -21,17 +21,92 @@ button {
  */
 .photo-details-wrapper {
   display: inline-block;
-  padding: 30px;
+  padding: 40px;
   margin-top: 100px;
   width: 100%;
   height: auto;
   background-color: #ffffff; }
+  .photo-details-wrapper .operation-wrapper {
+    width: 100%; }
+    .photo-details-wrapper .operation-wrapper .left-wrapper {
+      display: inline-block;
+      float: left;
+      cursor: pointer; }
+      .photo-details-wrapper .operation-wrapper .left-wrapper img {
+        vertical-align: middle; }
+      .photo-details-wrapper .operation-wrapper .left-wrapper span {
+        padding-left: 8px;
+        vertical-align: middle;
+        color: #7b7b7b;
+        font-size: 18px; }
+    .photo-details-wrapper .operation-wrapper .right-wrapper {
+      display: inline-block;
+      float: right; }
+      .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper {
+        display: inline-block;
+        padding-left: 15px; }
+        .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper img {
+          vertical-align: middle; }
+        .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper span, .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper a {
+          padding-left: 5px;
+          vertical-align: middle;
+          color: #E47877;
+          text-decoration: none; }
+        .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper button {
+          padding: 5px 15px;
+          background: none;
+          border: solid 1px #E47877;
+          border-radius: 100px;
+          cursor: pointer;
+          -webkit-transition: all, 0.5s;
+          -moz-transition: all, 0.5s;
+          -ms-transition: all, 0.5s;
+          -o-transition: all, 0.5s;
+          transition: all, 0.5s; }
+          .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper button:hover {
+            -webkit-transition: all, 0.5s;
+            -moz-transition: all, 0.5s;
+            -ms-transition: all, 0.5s;
+            -o-transition: all, 0.5s;
+            transition: all, 0.5s;
+            background-color: #f6f6f6; }
+        .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button {
+          background-color: #E47877;
+          -webkit-transition: all, 0.5s;
+          -moz-transition: all, 0.5s;
+          -ms-transition: all, 0.5s;
+          -o-transition: all, 0.5s;
+          transition: all, 0.5s; }
+          .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button:hover {
+            -webkit-transition: all, 0.5s;
+            -moz-transition: all, 0.5s;
+            -ms-transition: all, 0.5s;
+            -o-transition: all, 0.5s;
+            transition: all, 0.5s;
+            background-color: #f47f7e; }
+          .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button span, .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button a {
+            color: #ffffff; }
   .photo-details-wrapper .photo-wrapper {
     display: inline-block;
+    padding-top: 20px;
     width: 100%;
     height: 500px;
     text-align: center; }
     .photo-details-wrapper .photo-wrapper img {
-      height: 100%; }
+      height: 100%;
+      width: auto;
+      cursor: pointer; }
+    .photo-details-wrapper .photo-wrapper .large {
+      width: 100%;
+      height: auto;
+      cursor: pointer; }
 
-/*# sourceMappingURL=PhotoDetailsPage.css.css.map */
+.v--modal-overlay {
+  position: fixed; }
+  .v--modal-overlay /deep/ .v--modal {
+    background: none; }
+  .v--modal-overlay img {
+    max-height: 100%;
+    max-width: 100%; }
+
+/*# sourceMappingURL=PhotoDetails.css.map */

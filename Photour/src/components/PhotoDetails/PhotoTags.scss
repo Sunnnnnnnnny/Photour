@@ -1,0 +1,28 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.photo-tags-wrapper {
+  padding-top: 40px;
+  width: 100%;
+
+  h4 {
+    border-left: 3px solid $main-color;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    color: $grey;
+    font-size: 18px;
+  }
+
+  .tag-wrapper {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 12px;
+    padding: 3px 15px;
+    background: none;
+    border: solid 1px $light-grey;
+    border-radius: 100px;
+    font-size: 13px;
+    color: $light-grey;
+  }
+}

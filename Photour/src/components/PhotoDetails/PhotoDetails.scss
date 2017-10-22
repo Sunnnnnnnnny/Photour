@@ -4,14 +4,79 @@
 
 .photo-details-wrapper {
   display: inline-block;
-  padding: 30px;
+  padding: 40px;
   margin-top: 100px;
   width: 100%;
   height: auto;
   background-color: $white-color;
 
+  .operation-wrapper {
+    width: 100%;
+
+    .left-wrapper {
+      display: inline-block;
+      float: left;
+      cursor: pointer;
+
+      img {
+        vertical-align: middle;
+      }
+
+      span {
+        padding-left: 8px;
+        vertical-align: middle;
+        color: $grey;
+        font-size: 18px;
+      }
+    }
+
+    .right-wrapper {
+      display: inline-block;
+      float: right;
+
+      .button-wrapper {
+        display: inline-block;
+        padding-left: 15px;
+        img {
+          vertical-align: middle;
+        }
+        span, a {
+          padding-left: 5px;
+          vertical-align: middle;
+          color: $main-color;
+          text-decoration: none;
+        }
+        button {
+          padding: 5px 15px;
+          background: none;
+          border: solid 1px $main-color;
+          border-radius: 100px;
+          cursor: pointer;
+          @include transition(all, 0.5s);
+          &:hover {
+            @include transition(all, 0.5s);
+            background-color: $background-color;
+          }
+        }
+        .download-button {
+          background-color: $main-color;
+          @include transition(all, 0.5s);
+          &:hover {
+            @include transition(all, 0.5s);
+            background-color: $sub-color;
+          }
+          span, a {
+            color: $white-color;
+          }
+        }
+      }
+
+    }
+  }
+
   .photo-wrapper {
     display: inline-block;
+    padding-top: 20px;
     width: 100%;
     height: 500px;
     text-align: center;
@@ -19,6 +84,28 @@
 
     img {
       height: 100%;
+      width: auto;
+      cursor: pointer;
     }
+
+    .large {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.v--modal-overlay {
+  position: fixed;
+
+  /deep/ .v--modal {
+    background: none;
+  }
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
   }
 }

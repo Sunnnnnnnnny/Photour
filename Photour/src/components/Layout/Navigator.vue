@@ -38,7 +38,7 @@
   import {router} from '../../main'
 
   import {mapMutations} from 'vuex'
-  import { store } from '../../main'
+  import {store} from '../../main'
 
   //  Vue.use(Input)
 
