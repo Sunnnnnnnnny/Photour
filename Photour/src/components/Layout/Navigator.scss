@@ -34,7 +34,7 @@
 
     .button-wrapper {
       display: inline-block;
-      .el-button {
+      .el-button, .el-dropdown {
         padding-left: 20px;
         font-size: 15px;
         font-weight: 300;
@@ -45,8 +45,45 @@
           @include transition(all .5s);
           color: $main-color;
         }
+
+        img {
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+
+        /deep/ .el-icon-caret-bottom:before {
+          font-size: 10px;
+        }
       }
     }
   }
+}
 
+li {
+  padding: 2px 10px;
+  width: 150px;
+  font-size: 14px;
+  color: $grey;
+
+  &:hover {
+    background-color: $background-color;
+  }
+}
+
+.el-dropdown {
+  margin-left: 10px;
+}
+
+.el-dropdown-menu {
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.el-dropdown-menu__item:not(.is-disabled) {
+  @include transition(all .5s);
+  &:hover {
+    @include transition(all .5s);
+    background-color: $background-color;
+    color: $main-color;
+  }
 }

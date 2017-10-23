@@ -19,6 +19,16 @@
           <el-button type="text" @click="goToSquare">首页</el-button>
           <el-button type="text" @click="signUp">注册</el-button>
           <el-button type="text" @click="signIn">登录</el-button>
+          <el-dropdown menu-align="start" @command="handleCommand">
+            <span class="el-dropdown-link">
+              我的<i class="el-icon-caret-bottom el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人主页</el-dropdown-item>
+              <el-dropdown-item command="AccountPage">修改资料</el-dropdown-item>
+              <el-dropdown-item>退出账号</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </div>
       </div>
 
@@ -33,7 +43,7 @@
 
 <script>
   import Vue from 'vue'
-  import {Input, Button} from 'element-ui'
+  import {Input, Button, Dropdown, DropdownMenu, DropdownItem} from 'element-ui'
   import AuthModal from '../AuthModal/AuthModal'
   import {router} from '../../main'
 
@@ -47,7 +57,10 @@
     components: {
       elInput: Input,
       elButton: Button,
-      SignIn: AuthModal
+      elDropdown: Dropdown,
+      elDropdownMenu: DropdownMenu,
+      elDropdownItem: DropdownItem,
+      SignIn: AuthModal,
     },
     data() {
       return {
@@ -72,6 +85,13 @@
       },
       goToSquare() {
         router.push({name: 'PhotoSquarePage'})
+      },
+      handleCommand(command) {
+        router.push({name: command})
+      },
+      goToModifyUserInfo() {
+        console.log("click!");
+        router.push({name: 'AccountPage'})
       }
     }
   }

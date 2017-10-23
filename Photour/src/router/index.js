@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import PhotoSquarePage from '@/page/PhotoSquarePage'
 import PhotoDetailsPage from '@/page/PhotoDetailsPage'
+import AccountPage from '@/page/AccountPage'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/photo/:photoId',
       name: 'PhotoDetailsPage',
       component: PhotoDetailsPage
+    },
+    {
+      path: '/user/account',
+      name: 'AccountPage',
+      component: AccountPage
     }
   ]
 })
