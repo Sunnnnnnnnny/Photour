@@ -73,6 +73,14 @@ html .v--modal {
   background: none; }
 html .v--modal-box v--modal {
   height: auto; }
+html .el-tooltip__popper.is-light {
+  border: 1px solid #E47877;
+  border-radius: 100px;
+  color: #7b7b7b; }
+html .el-tooltip__popper.is-light[x-placement^="top"] .popper__arrow {
+  border-top-color: #E47877; }
+html .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow {
+  border-bottom-color: #E47877; }
 @media (max-width: 1005px) {
   html .container {
     width: 100%; } }

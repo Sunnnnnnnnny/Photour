@@ -57,6 +57,21 @@ html {
     height: auto;
   }
 
+  .el-tooltip__popper.is-light {
+    border: 1px solid $main-color;
+    border-radius: 100px;
+    color: $grey;
+  }
+
+  .el-tooltip__popper.is-light[x-placement^="top"] .popper__arrow {
+    border-top-color: $main-color;
+  }
+
+  .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow {
+    border-bottom-color: $main-color;
+  }
+
+
   @media (max-width: 1005px) {
     .container {
       width: 100%;

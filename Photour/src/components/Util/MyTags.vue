@@ -1,8 +1,6 @@
 <template>
   <div class="photo-tags-wrapper">
 
-    <h4>图片标签</h4>
-
     <div class="tag-wrapper">清新</div>
     <div class="tag-wrapper">风asdasdqweq景</div>
     <div class="tag-wrapper">摄影</div>
@@ -28,9 +26,13 @@
 </template>
 
 <script>
+  import DivHeader from './DivHeader'
+
   export default {
-    name: 'photo-label',
-    components: {},
+    name: 'tags',
+    components: {
+      DivHeader,
+    },
     data() {
       return {}
     },
@@ -40,4 +42,4 @@
   }
 </script>
 
-<style scoped src="./PhotoTags.css"></style>
+<style scoped src="./MyTags.css"></style>

@@ -39,13 +39,15 @@
       <img :src=photoUrl @dblclick="enlargePhoto" :class="{ large: isEnlarged }"/>
     </div>
 
+    <div-header header="图片标签"></div-header>
     <photo-tags></photo-tags>
   </div>
 
 </template>
 
 <script>
-  import PhotoTags from './PhotoTags.vue'
+  import PhotoTags from '../Util/MyTags.vue'
+  import DivHeader from '../../components/Util/DivHeader'
   import {mapState} from 'vuex'
   import {store} from '../../main'
 
@@ -53,6 +55,7 @@
     name: 'photo-details',
     components: {
       PhotoTags,
+      DivHeader
     },
     data() {
       return {

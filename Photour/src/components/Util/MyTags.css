@@ -20,7 +20,6 @@ button {
  * grid
  */
 .photo-tags-wrapper {
-  padding-top: 40px;
   width: 100%; }
   .photo-tags-wrapper h4 {
     border-left: 3px solid #E47877;
@@ -39,4 +38,4 @@ button {
     font-size: 13px;
     color: #bababa; }
 
-/*# sourceMappingURL=PhotoTags.css.map */
+/*# sourceMappingURL=MyTags.css.map */
