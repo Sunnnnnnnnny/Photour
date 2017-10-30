@@ -19,23 +19,44 @@ button {
 /*
  * grid
  */
-.photo-tags-wrapper {
+.tags-wrapper {
   width: 100%; }
-  .photo-tags-wrapper h4 {
-    border-left: 3px solid #E47877;
-    margin-bottom: 15px;
-    padding-left: 10px;
-    color: #7b7b7b;
-    font-size: 18px; }
-  .photo-tags-wrapper .tag-wrapper {
+  .tags-wrapper /deep/ .el-tag {
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 10px;
     margin-bottom: 12px;
     padding: 3px 15px;
+    height: auto;
     background: none;
     border: solid 1px #bababa;
     border-radius: 100px;
     font-size: 13px;
     color: #bababa; }
+  .tags-wrapper /deep/ .el-button {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    padding: 3px 15px;
+    height: 30px;
+    background-color: #E47877;
+    border: none;
+    border-radius: 100px;
+    font-size: 13px;
+    color: #ffffff;
+    -webkit-transition: all, 0.5s;
+    -moz-transition: all, 0.5s;
+    -ms-transition: all, 0.5s;
+    -o-transition: all, 0.5s;
+    transition: all, 0.5s; }
+    .tags-wrapper /deep/ .el-button:hover {
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s;
+      background-color: #f47f7e; }
+  .tags-wrapper /deep/ .el-input {
+    width: auto;
+    height: 30px; }
 
 /*# sourceMappingURL=MyTags.css.map */

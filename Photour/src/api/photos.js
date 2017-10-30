@@ -9,3 +9,13 @@ export function fetchPhotos(callback) {
       console.log(error)
     })
 }
+
+export function fetchFavourites(callback) {
+  axios.get('/favourites')
+    .then((response) =>
+      callback(response.data)
+    )
+    .catch(function (error) {
+      console.log(error)
+    })
+}

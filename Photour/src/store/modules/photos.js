@@ -1,7 +1,9 @@
 import * as photoApi from '../../api/photos'
 
 const state = {
-  photos: []
+  photos: [],
+  favourites: [],
+  albums: [],
 };
 
 
@@ -10,8 +12,15 @@ const actions = {
   fetchPhotos({commit, state}) {
     photoApi.fetchPhotos((data) => {
       commit('savePhotos', {photos: data})
-      console.log(data)
+
     })
+  },
+
+  fetchFavourites({commit, state}) {
+    photoApi.fetchFavourites((data => {
+      commit('saveFavourites', {favourites: data})
+      console.log(data)
+    }))
   }
 
 };
@@ -23,6 +32,11 @@ const mutations = {
       ...photos
     ]
   },
+  'saveFavourites' (state, {favourites}) {
+    state.favourites = [
+      ...favourites
+    ]
+  }
 };
 
 export default {

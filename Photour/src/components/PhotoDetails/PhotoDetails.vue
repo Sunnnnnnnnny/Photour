@@ -40,7 +40,7 @@
     </div>
 
     <div-header header="图片标签"></div-header>
-    <photo-tags></photo-tags>
+    <photo-tags :canBeEdited="false"></photo-tags>
   </div>
 
 </template>

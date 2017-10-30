@@ -16,7 +16,7 @@
         </div>
 
         <div class="button-wrapper">
-          <el-button type="text" @click="goToSquare">首页</el-button>
+          <el-button type="text" @click="goToSquare">广场</el-button>
           <el-button type="text" @click="signUp">注册</el-button>
           <el-button type="text" @click="signIn">登录</el-button>
           <el-dropdown menu-align="start" @command="handleCommand">
@@ -24,7 +24,7 @@
               我的<i class="el-icon-caret-bottom el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>个人主页</el-dropdown-item>
+              <el-dropdown-item command="UserHomePage">个人主页</el-dropdown-item>
               <el-dropdown-item command="AccountPage">修改资料</el-dropdown-item>
               <el-dropdown-item>退出账号</el-dropdown-item>
             </el-dropdown-menu>
@@ -89,10 +89,6 @@
       handleCommand(command) {
         router.push({name: command})
       },
-      goToModifyUserInfo() {
-        console.log("click!");
-        router.push({name: 'AccountPage'})
-      }
     }
   }
 </script>

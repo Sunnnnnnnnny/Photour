@@ -29,7 +29,7 @@
       font-size: 18px;
     }
 
-    .likes-album {
+    .homepage-wrapper {
       div {
         display: inline-block;
         padding-top: 10px;
@@ -44,9 +44,6 @@
           vertical-align: middle;
         }
 
-        &:first-child {
-          padding-right: 30px;
-        }
       }
     }
   }
@@ -56,9 +53,9 @@
     width: 85%;
 
     /deep/ .el-form-item__label {
+      padding-right: 50px;
       color: $grey;
       width: 150px;
-      padding-right: 50px;
     }
 
     /deep/ .el-input {

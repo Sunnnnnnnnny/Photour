@@ -2,7 +2,7 @@
   <div class="body-wrapper">
     <layout>
       <div class="container">
-        <account-info></account-info>
+        <user-home></user-home>
       </div>
     </layout>
   </div>
@@ -11,22 +11,27 @@
 
 <script>
   import Layout from '../components/Layout/Layout'
-  import AccountInfo from '../components/Account/AccountInfo.vue'
+  import UserHome from '../components/UserHome/UserHome'
   import {router, store} from '../main'
   import {mapMutations} from 'vuex'
 
   export default {
-    name: 'account-page',
+    name: 'user-home-page',
     components: {
       Layout,
-      AccountInfo
+      UserHome
     },
     data() {
       return {}
     },
     computed: {},
-    methods: {}
+    methods: {},
+    beforeRouteEnter(to, from, next) {
+      console.log('before');
+      store.dispatch('fetchFavourites');
+      next(true);
+    }
   }
 </script>
 
-<style scoped src="./AccountPage.css"></style>
+<style scoped></style>

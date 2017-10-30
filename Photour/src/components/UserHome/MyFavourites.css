@@ -19,16 +19,11 @@ button {
 /*
  * grid
  */
-.welcome-wrapper {
-  padding-top: 100px;
-  text-align: left; }
-  .welcome-wrapper h1 {
-    color: #E47877;
-    font-size: 64px;
-    font-weight: 400; }
-  .welcome-wrapper p {
-    padding-bottom: 20px;
-    color: #7b7b7b;
-    font-size: 16px; }
+.warning {
+  padding-top: 50px;
+  text-align: center; }
+  .warning p {
+    padding-top: 50px;
+    color: #7b7b7b; }
 
-/*# sourceMappingURL=Welcome.css.map */
+/*# sourceMappingURL=MyFavourites.css.map */

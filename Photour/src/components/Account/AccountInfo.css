@@ -44,25 +44,23 @@ button {
       margin-top: 5px;
       color: #7b7b7b;
       font-size: 18px; }
-    .account-info-wrapper .avatar-wrapper .likes-album div {
+    .account-info-wrapper .avatar-wrapper .homepage-wrapper div {
       display: inline-block;
       padding-top: 10px;
       cursor: pointer;
       text-align: center; }
-      .account-info-wrapper .avatar-wrapper .likes-album div span {
+      .account-info-wrapper .avatar-wrapper .homepage-wrapper div span {
         color: #7b7b7b;
         font-size: 12px; }
-      .account-info-wrapper .avatar-wrapper .likes-album div img {
+      .account-info-wrapper .avatar-wrapper .homepage-wrapper div img {
         vertical-align: middle; }
-      .account-info-wrapper .avatar-wrapper .likes-album div:first-child {
-        padding-right: 30px; }
   .account-info-wrapper .form-wrapper {
     padding-bottom: 20px;
     width: 85%; }
     .account-info-wrapper .form-wrapper /deep/ .el-form-item__label {
+      padding-right: 50px;
       color: #7b7b7b;
-      width: 150px;
-      padding-right: 50px; }
+      width: 150px; }
     .account-info-wrapper .form-wrapper /deep/ .el-input {
       width: 70%; }
     .account-info-wrapper .form-wrapper .confirm-button-wrapper {

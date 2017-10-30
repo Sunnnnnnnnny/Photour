@@ -54,5 +54,19 @@
     {
       "url": "https://images.unsplash.com/photo-1494765803320-93c95366f4b3?w=1650"
     }
+  ],
+  "favourites": [
+    {
+      "url": "https://images.unsplash.com/photo-1508843731797-991810e0b977?w=1650&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1504816162793-0d49d4a50608?w=668&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1504311640015-772816fba558?w=1649&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1493772588147-71a2dc0a65ae?w=1650&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+    }
   ]
 }

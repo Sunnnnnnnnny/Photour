@@ -9,15 +9,10 @@
 
       <p>Tiann</p>
 
-      <div class="likes-album">
-        <div>
-          <img src="../../assets/img/like.png" width="15">
-          <span>我喜欢的： 239</span>
-        </div>
-
-        <div>
-          <img src="../../assets/img/album.png" width="18">
-          <span>我的相册： 3</span>
+      <div class="homepage-wrapper">
+        <div @click="goToHomepage">
+          <img src="../../assets/img/homepage.png" width="20">
+          <span>我的主页</span>
         </div>
 
       </div>
@@ -70,7 +65,7 @@
     </div>
 
     <div-header header="我的标签"></div-header>
-    <my-tags></my-tags>
+    <my-tags :canBeEdited=true></my-tags>
 
   </div>
 
@@ -80,6 +75,7 @@
   import DivHeader from '../../components/Util/DivHeader'
   import MyTags from '../../components/Util/MyTags'
   import {Tooltip, Input, Form, FormItem, RadioGroup, Radio, Button} from 'element-ui'
+  import {router} from '../../main'
 
   export default {
     name: 'account-info',
@@ -124,6 +120,9 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      goToHomepage() {
+        router.push({name: 'UserHomePage'})
       }
     }
   }

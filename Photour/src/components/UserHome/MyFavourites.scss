@@ -1,0 +1,13 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.warning {
+  padding-top: 50px;
+  text-align: center;
+  p {
+    padding-top: 50px;
+    color: $grey;
+  }
+}
+
