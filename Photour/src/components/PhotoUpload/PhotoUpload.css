@@ -1,0 +1,53 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.upload-photo-button-wrapper {
+  display: inline-block;
+  padding-top: 160px;
+  float: right; }
+  .upload-photo-button-wrapper button {
+    padding: 10px 20px;
+    background: #E47877;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-indent: 1px;
+    cursor: pointer;
+    -webkit-transition: all, 0.5s;
+    -moz-transition: all, 0.5s;
+    -ms-transition: all, 0.5s;
+    -o-transition: all, 0.5s;
+    transition: all, 0.5s; }
+    .upload-photo-button-wrapper button:hover {
+      background: #f47f7e;
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s; }
+    .upload-photo-button-wrapper button img {
+      margin-right: 3px;
+      vertical-align: middle; }
+    .upload-photo-button-wrapper button span {
+      vertical-align: middle; }
+
+/*# sourceMappingURL=PhotoUpload.css.map */

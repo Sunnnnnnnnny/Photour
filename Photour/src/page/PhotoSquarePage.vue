@@ -3,6 +3,7 @@
     <layout>
       <div class="container">
         <welcome></welcome>
+        <photo-upload></photo-upload>
         <photo-wall :photos="photos"></photo-wall>
       </div>
     </layout>
@@ -12,6 +13,7 @@
 <script>
   import Layout from '../components/Layout/Layout'
   import Welcome from '../components/Welcome/Welcome'
+  import PhotoUpload from '../components/PhotoUpload/PhotoUpload'
   import PhotoWall from '../components/PhotoWall/PhotoWall'
   import {mapState, mapActions} from 'vuex'
   import {store} from '../main'
@@ -21,6 +23,7 @@
     components: {
       Layout,
       Welcome,
+      PhotoUpload,
       PhotoWall
     },
     data() {
@@ -37,6 +40,9 @@
       ...mapActions([
         'fetchPhotos'
       ]),
+//      showPhotoUploadModal() {
+//        this.$modal.show('photo-upload-modal');
+//      }
     },
     beforeRouteEnter(to, from, next) {
       console.log('before');

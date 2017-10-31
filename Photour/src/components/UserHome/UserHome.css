@@ -42,6 +42,35 @@ button {
       margin-top: 5px;
       color: #7b7b7b;
       font-size: 18px; }
+    .user-home-wrapper .avatar-wrapper .follow-button-wrapper {
+      display: inline-block;
+      padding-top: 5px; }
+      .user-home-wrapper .avatar-wrapper .follow-button-wrapper button {
+        padding: 5px 15px;
+        background: #E47877;
+        border-radius: 100px;
+        color: #ffffff;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-indent: 1px;
+        cursor: pointer;
+        -webkit-transition: all, 0.5s;
+        -moz-transition: all, 0.5s;
+        -ms-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s; }
+        .user-home-wrapper .avatar-wrapper .follow-button-wrapper button:hover {
+          background: #f47f7e;
+          -webkit-transition: all, 0.5s;
+          -moz-transition: all, 0.5s;
+          -ms-transition: all, 0.5s;
+          -o-transition: all, 0.5s;
+          transition: all, 0.5s; }
+        .user-home-wrapper .avatar-wrapper .follow-button-wrapper button img {
+          margin-right: 3px;
+          vertical-align: middle; }
+        .user-home-wrapper .avatar-wrapper .follow-button-wrapper button span {
+          vertical-align: middle; }
     .user-home-wrapper .avatar-wrapper .likes-album div {
       display: inline-block;
       margin-top: 20px;

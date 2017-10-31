@@ -20,6 +20,7 @@ button {
  * grid
  */
 .welcome-wrapper {
+  display: inline-block;
   padding-top: 100px;
   text-align: left; }
   .welcome-wrapper h1 {

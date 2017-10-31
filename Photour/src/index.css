@@ -81,6 +81,8 @@ html .el-tooltip__popper.is-light[x-placement^="top"] .popper__arrow {
   border-top-color: #E47877; }
 html .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow {
   border-bottom-color: #E47877; }
+html .el-upload-list--picture .el-upload-list__item-name i {
+  display: none; }
 @media (max-width: 1005px) {
   html .container {
     width: 100%; } }

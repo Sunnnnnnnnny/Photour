@@ -71,6 +71,10 @@ html {
     border-bottom-color: $main-color;
   }
 
+  .el-upload-list--picture .el-upload-list__item-name i {
+    display: none;
+  }
+
 
   @media (max-width: 1005px) {
     .container {

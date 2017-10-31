@@ -7,17 +7,29 @@
       <div class="avatar" @click="goToAccountInfo" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
       <p>Tiann</p>
 
-      <el-button>关注</el-button>
+      <!--到时候用v-if做-->
+      <!--<div class="follow-button-wrapper">-->
+        <!--<button>-->
+          <!--<img src="../../assets/img/add.png" width="12"/>-->
+          <!--<span>添加关注</span>-->
+        <!--</button>-->
+
+        <!--<button>-->
+          <!--<img src="../../assets/img/remove.png" width="12"/>-->
+          <!--<span>取消关注</span>-->
+        <!--</button>-->
+      <!--</div>-->
 
       <div class="likes-album">
-        <div @click="goToMyFavourites">
-          <img src="../../assets/img/dislike.png" width="14">
-          <span>我喜欢的： 239</span>
-        </div>
 
         <div @click="goToMyAlbum">
           <img src="../../assets/img/album.png" width="18">
           <span>我的相册： 3</span>
+        </div>
+
+        <div @click="goToMyFavourites">
+          <img src="../../assets/img/dislike.png" width="14">
+          <span>我喜欢的： 239</span>
         </div>
 
         <div>
@@ -31,8 +43,8 @@
         </div>
 
         <!--<div>-->
-          <!--<img src="../../assets/img/upload.png" width="18">-->
-          <!--<span>上传照片</span>-->
+        <!--<img src="../../assets/img/upload.png" width="18">-->
+        <!--<span>上传照片</span>-->
         <!--</div>-->
 
       </div>
@@ -49,7 +61,6 @@
 
 <script>
   import {router} from '../../main'
-  import {Button} from 'element-ui'
   import MyFavourites from './MyFavourites'
   import MyAlbum from './MyAlbum'
 
@@ -58,12 +69,11 @@
     components: {
       MyFavourites,
       MyAlbum,
-      elButton: Button
     },
     data() {
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
-        currentPage: 'MyFavourites'
+        currentPage: 'MyAlbum'
       }
     },
     methods: {
@@ -74,7 +84,7 @@
         this.currentPage = 'MyFavourites'
       },
       goToMyAlbum() {
-        this.currentPage = 'MyAlbum'
+        this.currentPage = 'MyAlbum';
         console.log(this.currentPage)
       }
     }
