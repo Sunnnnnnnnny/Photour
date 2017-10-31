@@ -1,11 +1,11 @@
 <template>
   <div class="photo-wall-wrapper">
     <el-row :gutter="15">
-      <photo
-        v-for="item in photos"
-        :currentUrl="item.url"></photo>
+      <album
+        v-for="item in 4">
+        <!--:currentUrl="item.url"-->
+      </album>
     </el-row>
-
 
 
   </div>
@@ -13,22 +13,21 @@
 </template>
 
 <script>
-  import Photo from './PhotoWrapper'
+  import Album from './AlbumWrapper'
   import {Row, Col} from 'element-ui'
-  import { mapState, mapActions } from 'vuex'
-  import { store } from '../../main'
+  import {mapState, mapActions} from 'vuex'
+  import {store} from '../../main'
 
   export default {
-    name: 'photo-wall',
+    name: 'album-wall',
     components: {
-      Photo,
+      Album,
       elRow: Row,
       elCol: Col,
     },
-    props: ['photos'],
+//    props: ['albums'],
     data() {
-      return {
-      }
+      return {}
     },
     methods: {
 //      ...mapActions ({
@@ -42,4 +41,4 @@
   }
 </script>
 
-<style scoped src="./PhotoWall.css"></style>
+<style scoped src="./AlbumWall.css"></style>

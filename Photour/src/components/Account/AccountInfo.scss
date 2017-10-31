@@ -38,6 +38,12 @@
         span {
           color: $grey;
           font-size: 12px;
+          @include transition(all, 0.3s);
+
+          &:hover {
+            @include transition(all, 0.3s);
+            color: $main-color;
+          }
         }
 
         img {

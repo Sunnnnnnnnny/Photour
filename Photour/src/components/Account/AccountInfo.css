@@ -51,7 +51,19 @@ button {
       text-align: center; }
       .account-info-wrapper .avatar-wrapper .homepage-wrapper div span {
         color: #7b7b7b;
-        font-size: 12px; }
+        font-size: 12px;
+        -webkit-transition: all, 0.3s;
+        -moz-transition: all, 0.3s;
+        -ms-transition: all, 0.3s;
+        -o-transition: all, 0.3s;
+        transition: all, 0.3s; }
+        .account-info-wrapper .avatar-wrapper .homepage-wrapper div span:hover {
+          -webkit-transition: all, 0.3s;
+          -moz-transition: all, 0.3s;
+          -ms-transition: all, 0.3s;
+          -o-transition: all, 0.3s;
+          transition: all, 0.3s;
+          color: #E47877; }
       .account-info-wrapper .avatar-wrapper .homepage-wrapper div img {
         vertical-align: middle; }
   .account-info-wrapper .form-wrapper {

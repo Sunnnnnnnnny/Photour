@@ -13,7 +13,7 @@
 
         <div class="button-wrapper">
           <button>
-            <img src="../../assets/img/unlike.png" width="16"/>
+            <img src="../../assets/img/dislike.png" width="16"/>
             <span>1,230</span>
           </button>
         </div>

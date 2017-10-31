@@ -33,13 +33,19 @@
     .likes-album {
       div {
         display: inline-block;
-        padding-top: 20px;
+        margin-top: 20px;
         margin-right: 30px;
-        cursor: pointer;
         text-align: center;
         span {
           color: $grey;
           font-size: 12px;
+          cursor: pointer;
+          @include transition(all, 0.3s);
+
+          &:hover {
+            @include transition(all, 0.3s);
+            color: $main-color;
+          }
         }
 
         img {
