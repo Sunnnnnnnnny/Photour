@@ -6,6 +6,11 @@
     :adaptive="true"
   >
     <div class="photo-upload-modal-wrapper">
+      <el-button
+        class="close-button"
+        type="primary"
+        icon="close"
+        @click="closeBox"></el-button>
       <el-upload
         class="upload-demo"
         ref="upload"
@@ -15,17 +20,9 @@
         :file-list="fileList"
         list-type="picture"
         :auto-upload="false"
-        :limit="3"
-        :on-exceed="handleExceed"
-        :before-upload="beforeUpload">
-        <!--<button>-->
-        <!--<span>选择照片</span>-->
-        <!--</button>-->
-        <button slot="trigger" size="small" type="primary">选取照片</button>
-        <!--<button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">-->
-          <!--上传到服务器-->
-        <!--</button>-->
-
+        :before-upload="beforeUpload"
+        :on-success="handleSuccess">
+        <button class="select-button" slot="trigger" size="small" type="primary">选取照片</button>
         <el-dropdown @command="submitUpload">
           <span class="el-dropdown-link">
             上传<i class="el-icon-arrow-down el-icon--right"></i>
@@ -44,7 +41,8 @@
 </template>
 
 <script>
-  import {Upload, Button, Dropdown, DropdownMenu, DropdownItem} from 'element-ui'
+  import {Upload, Button, Dropdown, DropdownMenu, DropdownItem, Message} from 'element-ui'
+  import {router} from '../../main'
 
   export default {
     name: 'photo-upload-modal',
@@ -54,6 +52,7 @@
       elDropdown: Dropdown,
       elDropdownMenu: DropdownMenu,
       elDropdownItem: DropdownItem,
+      elMessage: Message,
     },
     data() {
       return {
@@ -73,6 +72,13 @@
       },
       handleExceed(files, fileList) {
         alert('!!!!!!!!')
+      },
+      handleSuccess() {
+        Message({
+          message: '上传成功！',
+          type: 'success'
+        });
+        router.push({name: 'UserHomePage'})
       },
       beforeUpload(file) {
         console.log(this)

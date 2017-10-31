@@ -22,6 +22,11 @@
 
       <div class="likes-album">
 
+        <div>
+          <img src="../../assets/img/events.png" width="18">
+          <span>我的动态： 27</span>
+        </div>
+
         <div @click="goToMyAlbum">
           <img src="../../assets/img/album.png" width="18">
           <span>我的相册： 3</span>
