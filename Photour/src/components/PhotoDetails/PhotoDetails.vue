@@ -19,7 +19,7 @@
         </div>
 
         <div class="button-wrapper">
-          <button>
+          <button @click="handleForward">
             <img src="../../assets/img/share.png" width="16"/>
             <span>分享</span>
           </button>
@@ -71,6 +71,9 @@
     methods: {
       enlargePhoto() {
         this.isEnlarged ? this.isEnlarged = false : this.isEnlarged = true;
+      },
+      handleForward() {
+        this.$modal.show('forward-modal');
       }
     },
   }

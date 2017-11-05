@@ -37,6 +37,7 @@
 
     <sign-in></sign-in>
     <photo-upload-modal></photo-upload-modal>
+    <forward-modal></forward-modal>
 
   </div>
 </template>
@@ -47,6 +48,7 @@
   import {Input, Button, Dropdown, DropdownMenu, DropdownItem} from 'element-ui'
   import AuthModal from '../AuthModal/AuthModal'
   import PhotoUploadModal from '../PhotoUpload/PhotoUploadModal'
+  import ForwardModal from '../ForwardModal/ForwardModal'
   import {router} from '../../main'
 
   import {mapMutations} from 'vuex'
@@ -63,7 +65,8 @@
       elDropdownMenu: DropdownMenu,
       elDropdownItem: DropdownItem,
       SignIn: AuthModal,
-      PhotoUploadModal
+      PhotoUploadModal,
+      ForwardModal,
     },
     data() {
       return {

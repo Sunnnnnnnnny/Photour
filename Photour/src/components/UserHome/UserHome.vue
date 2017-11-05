@@ -9,20 +9,20 @@
 
       <!--到时候用v-if做-->
       <!--<div class="follow-button-wrapper">-->
-        <!--<button>-->
-          <!--<img src="../../assets/img/add.png" width="12"/>-->
-          <!--<span>添加关注</span>-->
-        <!--</button>-->
+      <!--<button>-->
+      <!--<img src="../../assets/img/add.png" width="12"/>-->
+      <!--<span>添加关注</span>-->
+      <!--</button>-->
 
-        <!--<button>-->
-          <!--<img src="../../assets/img/remove.png" width="12"/>-->
-          <!--<span>取消关注</span>-->
-        <!--</button>-->
+      <!--<button>-->
+      <!--<img src="../../assets/img/remove.png" width="12"/>-->
+      <!--<span>取消关注</span>-->
+      <!--</button>-->
       <!--</div>-->
 
       <div class="likes-album">
 
-        <div>
+        <div @click="goToMyEvents">
           <img src="../../assets/img/events.png" width="18">
           <span>我的动态： 27</span>
         </div>
@@ -56,6 +56,7 @@
     </div>
 
     <div class="content-wrapper">
+      <my-events v-if="currentPage === 'MyEvents'"></my-events>
       <my-favourites v-if="currentPage === 'MyFavourites'"></my-favourites>
       <my-album v-if="currentPage === 'MyAlbum'"></my-album>
     </div>
@@ -66,12 +67,14 @@
 
 <script>
   import {router} from '../../main'
+  import MyEvents from './MyEvents'
   import MyFavourites from './MyFavourites'
   import MyAlbum from './MyAlbum'
 
   export default {
     name: 'user-home',
     components: {
+      MyEvents,
       MyFavourites,
       MyAlbum,
     },
@@ -84,6 +87,9 @@
     methods: {
       goToAccountInfo() {
         router.push({name: 'AccountPage'})
+      },
+      goToMyEvents() {
+        this.currentPage = 'MyEvents'
       },
       goToMyFavourites() {
         this.currentPage = 'MyFavourites'

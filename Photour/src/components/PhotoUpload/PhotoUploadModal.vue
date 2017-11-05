@@ -91,10 +91,11 @@
 //        } else {
         console.log(this.toUpload.length);
         console.log(command);
-        if (this.toUpload.length > 1) {
-          alert("!!!!!!")
-        }
+//        if (this.toUpload.length > 1) {
+//          alert("!!!!!!")
+//        }
         this.$refs.upload.submit();
+        
 //        }
 
       },
