@@ -81,7 +81,7 @@
     data() {
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
-        currentPage: 'MyAlbum'
+        currentPage: 'MyEvents'
       }
     },
     methods: {

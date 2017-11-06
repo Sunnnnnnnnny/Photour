@@ -1,0 +1,79 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.single-event-wrapper {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: $white-color;
+
+  .top-wrapper {
+    display: inline-block;
+    width: 100%;
+
+    .user {
+      display: inline-block;
+      float: left;
+      img {
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+      span {
+        vertical-align: middle;
+        color: $grey;
+      }
+    }
+
+    .time {
+      display: inline-block;
+      float: right;
+
+      span {
+        color: $light-grey;
+        font-size: 10px;
+      }
+    }
+
+  }
+
+  .photo-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+    width: 20%;
+    height: 150px;
+    cursor: pointer;
+    .photo {
+      @include cover-img();
+    }
+  }
+
+  .content-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 77%;
+    height: 150px;
+    //overflow: auto;
+    //background-color: $background-color;
+
+    .content-head {
+      padding-bottom: 10px;
+      color: $grey;
+      font-size: 14px;
+      span {
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+    .content-body {
+      height: 115px;
+      overflow: auto;
+      color: $grey;
+    }
+
+  }
+}

@@ -38,8 +38,8 @@
 
 <script>
   import {Button, Input, Form, FormItem} from 'element-ui'
-  import { mapMutations, mapActions } from 'vuex'
-  import { store } from '../../main'
+  import {mapMutations, mapActions} from 'vuex'
+  import {store} from '../../main'
 
   export default {
     name: 'sign-in-form',

@@ -1,0 +1,78 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.single-event-wrapper {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff; }
+  .single-event-wrapper .top-wrapper {
+    display: inline-block;
+    width: 100%; }
+    .single-event-wrapper .top-wrapper .user {
+      display: inline-block;
+      float: left; }
+      .single-event-wrapper .top-wrapper .user img {
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 5px; }
+      .single-event-wrapper .top-wrapper .user span {
+        vertical-align: middle;
+        color: #7b7b7b; }
+    .single-event-wrapper .top-wrapper .time {
+      display: inline-block;
+      float: right; }
+      .single-event-wrapper .top-wrapper .time span {
+        color: #bababa;
+        font-size: 10px; }
+  .single-event-wrapper .photo-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+    width: 20%;
+    height: 150px;
+    cursor: pointer; }
+    .single-event-wrapper .photo-wrapper .photo {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; }
+  .single-event-wrapper .content-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 77%;
+    height: 150px; }
+    .single-event-wrapper .content-wrapper .content-head {
+      padding-bottom: 10px;
+      color: #7b7b7b;
+      font-size: 14px; }
+      .single-event-wrapper .content-wrapper .content-head span {
+        font-size: 18px;
+        font-weight: 400; }
+    .single-event-wrapper .content-wrapper .content-body {
+      height: 115px;
+      overflow: auto;
+      color: #7b7b7b; }
+
+/*# sourceMappingURL=SingleEvent.css.map */
