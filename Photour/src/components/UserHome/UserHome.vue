@@ -24,27 +24,27 @@
 
         <div @click="goToMyEvents">
           <img src="../../assets/img/events.png" width="18">
-          <span>我的动态： 27</span>
+          <span>动态： 27</span>
         </div>
 
         <div @click="goToMyAlbum">
           <img src="../../assets/img/album.png" width="18">
-          <span>我的相册： 3</span>
+          <span>相册： 3</span>
         </div>
 
         <div @click="goToMyFavourites">
           <img src="../../assets/img/dislike.png" width="14">
-          <span>我喜欢的： 239</span>
+          <span>喜欢： 239</span>
         </div>
 
-        <div>
+        <div @click="goToMyFans">
           <img src="../../assets/img/fans.png" width="18">
-          <span>我的粉丝： 0</span>
+          <span>粉丝： 10</span>
         </div>
 
-        <div>
+        <div @click="goToMyFollowings">
           <img src="../../assets/img/following.png" width="18">
-          <span>我的关注： 29</span>
+          <span>关注： 29</span>
         </div>
 
         <!--<div>-->
@@ -59,6 +59,8 @@
       <my-events v-if="currentPage === 'MyEvents'"></my-events>
       <my-favourites v-if="currentPage === 'MyFavourites'"></my-favourites>
       <my-album v-if="currentPage === 'MyAlbum'"></my-album>
+      <my-fans v-if="currentPage === 'MyFans'"></my-fans>
+      <my-followings v-if="currentPage === 'MyFollowings'"></my-followings>
     </div>
 
 
@@ -70,6 +72,8 @@
   import MyEvents from './MyEvents'
   import MyFavourites from './MyFavourites'
   import MyAlbum from './MyAlbum'
+  import MyFans from './MyFans'
+  import MyFollowings from './MyFollowings'
 
   export default {
     name: 'user-home',
@@ -77,6 +81,8 @@
       MyEvents,
       MyFavourites,
       MyAlbum,
+      MyFans,
+      MyFollowings
     },
     data() {
       return {
@@ -96,7 +102,12 @@
       },
       goToMyAlbum() {
         this.currentPage = 'MyAlbum';
-        console.log(this.currentPage)
+      },
+      goToMyFans() {
+        this.currentPage = 'MyFans';
+      },
+      goToMyFollowings() {
+        this.currentPage = 'MyFollowings';
       }
     }
   }

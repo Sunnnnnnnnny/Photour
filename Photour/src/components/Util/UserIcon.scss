@@ -1,0 +1,21 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.icon-wrapper {
+  margin-bottom: 30px;
+  text-align: center;
+  .avatar {
+    @include cover-img();
+    margin: 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  p {
+    padding-top: 5px;
+    color: $grey;
+    font-size: 14px;
+  }
+}

@@ -4,7 +4,28 @@
       <div class="container">
         <welcome></welcome>
         <photo-upload></photo-upload>
-        <photo-wall :photos="photos"></photo-wall>
+
+        <div class="content-wrapper">
+          <el-tabs>
+            <el-tab-pane>
+              <span slot="label">
+                <img src="../assets/img/album.png" width="20"/>
+                照片广场
+              </span>
+              <photo-wall :photos="photos" style="padding-top: 0"></photo-wall>
+            </el-tab-pane>
+            <el-tab-pane>
+              <span slot="label">
+                <img src="../assets/img/events.png" width="20"/>
+                关注动态
+              </span>
+
+
+
+              </el-tab-pane>
+          </el-tabs>
+        </div>
+
       </div>
     </layout>
   </div>
@@ -17,6 +38,7 @@
   import PhotoWall from '../components/PhotoWall/PhotoWall'
   import {mapState, mapActions} from 'vuex'
   import {store} from '../main'
+  import {Tabs, TabPane} from 'element-ui'
 
   export default {
     name: 'photo-square-page',
@@ -24,11 +46,13 @@
       Layout,
       Welcome,
       PhotoUpload,
-      PhotoWall
+      PhotoWall,
+      elTabs: Tabs,
+      elTabPane: TabPane
     },
     data() {
       return {
-        msg: '你的图片旅行'
+        msg: '你的图片旅行',
       }
     },
     computed: {
@@ -40,9 +64,6 @@
       ...mapActions([
         'fetchPhotos'
       ]),
-//      showPhotoUploadModal() {
-//        this.$modal.show('photo-upload-modal');
-//      }
     },
     beforeRouteEnter(to, from, next) {
       console.log('before');
@@ -53,22 +74,4 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-</style>
+<style scoped src="./PhotoSquarePage.css"></style>
