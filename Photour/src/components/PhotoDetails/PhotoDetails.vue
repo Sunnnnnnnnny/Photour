@@ -46,6 +46,20 @@
 
     <div class="comments-wrapper">
       <div-header header="图片评论"></div-header>
+      <div class="input-wrapper">
+        <el-input
+          type="textarea"
+          :rows="4"
+          placeholder="说点什么吧！"
+          v-model="textarea">
+        </el-input>
+
+        <div class="button-wrapper">
+          <button @click="handleComment">
+            评  论
+          </button>
+        </div>
+      </div>
       <single-comment v-for="item in 5"></single-comment>
     </div>
   </div>
@@ -58,17 +72,20 @@
   import DivHeader from '../../components/Util/DivHeader'
   import {mapState} from 'vuex'
   import {store} from '../../main'
+  import {Input} from 'element-ui'
 
   export default {
     name: 'photo-details',
     components: {
       PhotoTags,
       DivHeader,
-      SingleComment
+      SingleComment,
+      elInput: Input
     },
     data() {
       return {
-        isEnlarged: false
+        isEnlarged: false,
+        textarea: ''
       }
     },
 //    props: ['photoUrl'],
@@ -83,6 +100,9 @@
       },
       handleForward() {
         this.$modal.show('forward-modal');
+      },
+      handleComment() {
+
       }
     },
   }

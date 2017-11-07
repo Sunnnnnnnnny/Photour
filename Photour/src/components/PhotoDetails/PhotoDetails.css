@@ -104,6 +104,35 @@ button {
       cursor: pointer; }
   .photo-details-wrapper .tags-wrapper {
     margin-bottom: 30px; }
+  .photo-details-wrapper .comments-wrapper .input-wrapper /deep/ .el-textarea__inner {
+    border: solid 1px #bababa;
+    font-weight: 300; }
+    .photo-details-wrapper .comments-wrapper .input-wrapper /deep/ .el-textarea__inner:focus {
+      border-color: #E47877; }
+  .photo-details-wrapper .comments-wrapper .button-wrapper {
+    display: inline-block;
+    float: right;
+    padding-top: 20px;
+    margin-bottom: 20px; }
+    .photo-details-wrapper .comments-wrapper .button-wrapper button {
+      padding: 5px 20px;
+      border-radius: 100px;
+      background-color: #E47877;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s; }
+      .photo-details-wrapper .comments-wrapper .button-wrapper button:hover {
+        background-color: #f47f7e;
+        -webkit-transition: all, 0.5s;
+        -moz-transition: all, 0.5s;
+        -ms-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s; }
 
 .v--modal-overlay {
   position: fixed; }
