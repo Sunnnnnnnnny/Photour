@@ -96,12 +96,12 @@ button {
     .photo-details-wrapper .photo-wrapper img {
       height: 100%;
       width: auto;
-      cursor: pointer; }
+      cursor: zoom-in; }
     .photo-details-wrapper .photo-wrapper .large {
       margin-bottom: 50px;
       width: 100%;
       height: auto;
-      cursor: pointer; }
+      cursor: zoom-out; }
   .photo-details-wrapper .tags-wrapper {
     margin-bottom: 30px; }
   .photo-details-wrapper .comments-wrapper .input-wrapper /deep/ .el-textarea__inner {

@@ -36,7 +36,7 @@
 
     <div class="photo-wrapper">
       <!--:style="{ backgroundImage: 'url(' + temp + ')' }"-->
-      <img :src=photoUrl @dblclick="enlargePhoto" :class="{ large: isEnlarged }"/>
+      <img :src=photoUrl @click="enlargePhoto" :class="{ large: isEnlarged }"/>
     </div>
 
     <div class="tags-wrapper">

@@ -19,32 +19,35 @@ button {
 /*
  * grid
  */
-.div-wrapper {
-  display: inline-block;
-  width: 240px;
-  height: 210px;
-  padding: 10px;
-  background-color: #ffffff;
-  box-shadow: 0px 1px 2px #bababa; }
-  .div-wrapper .album-wrapper {
-    width: 100%;
-    height: 160px;
-    cursor: pointer; }
-    .div-wrapper .album-wrapper .album {
-      width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover; }
-  .div-wrapper .info-wrapper {
+.grid-content {
+  display: inline-block; }
+  .grid-content .div-wrapper {
     display: inline-block;
-    width: 100%;
-    padding-top: 8px; }
-    .div-wrapper .info-wrapper img {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 240px;
+    height: 210px;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 2px #bababa; }
+    .grid-content .div-wrapper .album-wrapper {
+      width: 100%;
+      height: 160px;
+      cursor: pointer; }
+      .grid-content .div-wrapper .album-wrapper .album {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover; }
+    .grid-content .div-wrapper .info-wrapper {
       display: inline-block;
-      vertical-align: middle; }
-    .div-wrapper .info-wrapper span {
-      color: #7b7b7b;
-      font-size: 10px; }
+      width: 100%;
+      padding-top: 8px; }
+      .grid-content .div-wrapper .info-wrapper img {
+        display: inline-block;
+        vertical-align: middle; }
+      .grid-content .div-wrapper .info-wrapper span {
+        color: #7b7b7b;
+        font-size: 10px; }
 
 /*# sourceMappingURL=AlbumWrapper.css.map */

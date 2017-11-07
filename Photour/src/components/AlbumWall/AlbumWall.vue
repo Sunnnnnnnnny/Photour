@@ -1,11 +1,18 @@
 <template>
   <div class="photo-wall-wrapper">
-    <el-row :gutter="15">
-      <album
-        v-for="item in 4">
-        <!--:currentUrl="item.url"-->
-      </album>
-    </el-row>
+    <!--<el-row :gutter="15">-->
+
+    <album
+      v-for="item in 4">
+      <!--:currentUrl="item.url"-->
+    </album>
+
+    <div class="new-album-wrapper">
+      <span style="font-size: 56px">+</span>
+      <br/>
+      <span>新建相册</span>
+    </div>
+    <!--</el-row>-->
 
 
   </div>

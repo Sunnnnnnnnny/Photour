@@ -31,6 +31,9 @@
             <el-radio label="女"></el-radio>
           </el-radio-group>
         </el-form-item>
+        <el-form-item label="手机">
+          <el-input v-model="ruleForm.phone" auto-complete="off"></el-input>
+        </el-form-item>
         <el-form-item label="邮箱">
           <el-input v-model="ruleForm.email" auto-complete="off"></el-input>
         </el-form-item>
@@ -97,6 +100,7 @@
         ruleForm: {
           username: 'Tiann',
           gender: '男',
+          phone: '',
           email: '',
         },
         ruleForm2: {
