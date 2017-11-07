@@ -96,5 +96,7 @@ button {
         vertical-align: middle; }
       .user-home-wrapper .avatar-wrapper .likes-album div:last-child {
         margin-right: 0; }
+  .user-home-wrapper .content-wrapper {
+    height: auto; }
 
 /*# sourceMappingURL=UserHome.css.map */

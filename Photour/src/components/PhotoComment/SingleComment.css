@@ -1,3 +1,53 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
 
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.single-comment-wrapper {
+  display: inline-block;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  border-bottom: solid 1px #f6f6f6; }
+  .single-comment-wrapper .top-wrapper {
+    display: inline-block;
+    width: 100%; }
+    .single-comment-wrapper .top-wrapper .user {
+      display: inline-block;
+      float: left; }
+      .single-comment-wrapper .top-wrapper .user img {
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 5px; }
+      .single-comment-wrapper .top-wrapper .user span {
+        vertical-align: middle;
+        color: #7b7b7b; }
+    .single-comment-wrapper .top-wrapper .time {
+      display: inline-block;
+      float: right; }
+      .single-comment-wrapper .top-wrapper .time span {
+        color: #bababa;
+        font-size: 10px; }
+  .single-comment-wrapper .content-wrapper {
+    padding-top: 15px;
+    color: #7b7b7b; }
 
 /*# sourceMappingURL=SingleComment.css.map */

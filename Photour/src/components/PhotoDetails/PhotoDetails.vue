@@ -39,14 +39,22 @@
       <img :src=photoUrl @dblclick="enlargePhoto" :class="{ large: isEnlarged }"/>
     </div>
 
-    <div-header header="图片标签"></div-header>
-    <photo-tags :canBeEdited="false"></photo-tags>
+    <div class="tags-wrapper">
+      <div-header header="图片标签"></div-header>
+      <photo-tags :canBeEdited="false"></photo-tags>
+    </div>
+
+    <div class="comments-wrapper">
+      <div-header header="图片评论"></div-header>
+      <single-comment v-for="item in 5"></single-comment>
+    </div>
   </div>
 
 </template>
 
 <script>
   import PhotoTags from '../Util/MyTags.vue'
+  import SingleComment from '../PhotoComment/SingleComment'
   import DivHeader from '../../components/Util/DivHeader'
   import {mapState} from 'vuex'
   import {store} from '../../main'
@@ -55,7 +63,8 @@
     name: 'photo-details',
     components: {
       PhotoTags,
-      DivHeader
+      DivHeader,
+      SingleComment
     },
     data() {
       return {

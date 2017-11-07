@@ -4,11 +4,12 @@
 
 .single-event-wrapper {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 20px;
   width: 100%;
   height: auto;
   background-color: $white-color;
+  border-radius: 5px;
 
   .top-wrapper {
     display: inline-block;
