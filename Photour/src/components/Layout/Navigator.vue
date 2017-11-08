@@ -38,6 +38,7 @@
     <sign-in></sign-in>
     <photo-upload-modal></photo-upload-modal>
     <forward-modal></forward-modal>
+    <create-album-modal></create-album-modal>
 
   </div>
 </template>
@@ -49,6 +50,7 @@
   import AuthModal from '../AuthModal/AuthModal'
   import PhotoUploadModal from '../PhotoUpload/PhotoUploadModal'
   import ForwardModal from '../ForwardModal/ForwardModal'
+  import CreateAlbumModal from '../AlbumWall/CreateAlbumModal'
   import {router} from '../../main'
 
   import {mapMutations} from 'vuex'
@@ -67,6 +69,7 @@
       SignIn: AuthModal,
       PhotoUploadModal,
       ForwardModal,
+      CreateAlbumModal
     },
     data() {
       return {

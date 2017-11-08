@@ -34,6 +34,20 @@ html {
     }
   }
 
+  .el-textarea__inner {
+    border-radius: 10px;
+    border: $light-grey solid 1px;
+    color: $grey;
+    //font-size: 12px;
+
+    //@include placeholder($light-grey, 12px, 400);
+
+    &:hover, &:focus {
+      border: $main-color solid 1px;
+      color: $grey;
+    }
+  }
+
   .el-input__icon {
     color: $main-color;
   }

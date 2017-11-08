@@ -7,7 +7,7 @@
       <!--:currentUrl="item.url"-->
     </album>
 
-    <div class="new-album-wrapper">
+    <div class="new-album-wrapper" @click="handleCreateAlbum">
       <span style="font-size: 56px">+</span>
       <br/>
       <span>新建相册</span>
@@ -37,12 +37,9 @@
       return {}
     },
     methods: {
-//      ...mapActions ({
-//        fetchPhotos: 'fetchPhotos'
-//      }),
-//      ...mapState ({
-//        photos: state => state.photos.photos
-//      })
+      handleCreateAlbum() {
+        this.$modal.show('create-album-modal');
+      }
     },
 
   }

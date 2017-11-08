@@ -1,0 +1,55 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.create-album-wrapper {
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff; }
+  .create-album-wrapper /deep/ .el-form {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 85%; }
+  .create-album-wrapper .button-wrapper {
+    display: inline-block;
+    float: right;
+    padding-top: 20px; }
+    .create-album-wrapper .button-wrapper button {
+      padding: 5px 20px;
+      border-radius: 100px;
+      background-color: #E47877;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s; }
+      .create-album-wrapper .button-wrapper button:hover {
+        background-color: #f47f7e;
+        -webkit-transition: all, 0.5s;
+        -moz-transition: all, 0.5s;
+        -ms-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s; }
+
+/*# sourceMappingURL=CreateAlbumModal.css.map */
