@@ -33,7 +33,8 @@
     },
     computed: {},
     methods: {
-      ...mapMutations([
+      //TODO
+      ...mapMutations('', [
         'savePhotoUrl'
       ])
     },

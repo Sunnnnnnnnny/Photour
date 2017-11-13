@@ -56,12 +56,14 @@
       }
     },
     computed: {
+      // TODO
       ...mapState({
         photos: state => state.photos.photos
       })
     },
     methods: {
-      ...mapActions([
+      // TODO
+      ...mapActions('', [
         'fetchPhotos'
       ]),
     },

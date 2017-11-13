@@ -5,7 +5,7 @@
 
     <el-form :model="signUpForm" :rules="rules2" ref="signUpForm" labelPosition="top">
 
-      <el-form-item label="手机／邮箱账号" prop="username">
+      <el-form-item label="邮箱账号" prop="username">
         <el-input v-model="signUpForm.username"></el-input>
       </el-form-item>
 
@@ -40,7 +40,7 @@
 
 <script>
   import {Button, Input, Form, FormItem} from 'element-ui'
-  import { mapMutations } from 'vuex'
+  import {mapMutations} from 'vuex'
 
   export default {
     name: 'sign-up-form',
@@ -53,7 +53,7 @@
     data() {
       let checkUsername = (rule, value, callback) => {
         if (!value) {
-          return callback(new Error('请输入手机／邮箱账号'))
+          return callback(new Error('请输入邮箱账号'))
         } else {
           callback()
         }
@@ -96,8 +96,8 @@
       }
     },
     methods: {
-      ...mapMutations([
-        'goSignIn',
+      ...mapMutations('auth', [
+        'goSignIn'
       ]),
       submitForm() {
         console.log("sign up!!!")

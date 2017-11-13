@@ -6,7 +6,7 @@
 
     <el-form :model="signInForm" :rules="rules2" ref="signInForm" labelPosition="top">
 
-      <el-form-item label="手机／邮箱账号" prop="username">
+      <el-form-item label="邮箱账号" prop="username">
         <el-input v-model="signInForm.username"></el-input>
       </el-form-item>
 
@@ -37,8 +37,8 @@
 
 
 <script>
-  import {Button, Input, Form, FormItem} from 'element-ui'
-  import {mapMutations, mapActions} from 'vuex'
+  import {Button, Input, Form, FormItem, Message} from 'element-ui'
+  import {mapMutations, mapActions, mapState} from 'vuex'
   import {store} from '../../main'
 
   export default {
@@ -52,7 +52,7 @@
     data() {
       let checkUsername = (rule, value, callback) => {
         if (!value) {
-          return callback(new Error('请输入手机／邮箱账号'))
+          return callback(new Error('请输入邮箱账号'))
         } else {
           callback()
         }
@@ -81,20 +81,33 @@
         }
       }
     },
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      })
+    },
     methods: {
-      ...mapMutations([
+      ...mapMutations('auth', [
         'goSignUp',
       ]),
-      ...mapActions({
-        submitForm: 'signIn',
-      }),
+      ...mapActions('auth', [
+        'signIn'
+      ]),
       submitForm(data) {
         this.$refs[data].validate((valid) => {
           if (valid) {
-            console.log(this.signInForm);
-            store.dispatch('signIn', {
-              username: this.signInForm.username,
-              password: this.signInForm.password
+//            console.log(this.signInForm);
+            this.signIn({
+              body: {
+                email: this.signInForm.username,
+                password: this.signInForm.password
+              },
+              onSuccess: (username) => {
+                this.confirmSignIn(username);
+              },
+              onError: (error) => {
+                Message.error(error)
+              }
             })
 //            console.log(this.$refs[data])
 //            alert('submit!');
@@ -104,6 +117,19 @@
           }
         });
       },
+
+      confirmSignIn(username) {
+        console.log(this.user);
+        console.log("confirm!");
+        if (this.user !== null) {
+          this.$modal.hide('sign-in');
+          console.log("login success!!")
+          Message({
+            message: 'Hi, ' + username + '!',
+            type: 'success'
+          });
+        }
+      }
     }
   }
 </script>

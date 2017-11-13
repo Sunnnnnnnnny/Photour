@@ -39,8 +39,8 @@
   import SignInForm from './SignInForm.vue';
   import SignUpForm from './SignUpForm.vue';
 
-  import { mapState } from 'vuex'
-  import { store } from '../../main'
+  import {mapState} from 'vuex'
+  import {store} from '../../main'
 
   export default {
     name: 'auth-modal',
@@ -65,8 +65,8 @@
       }
     },
     computed: {
-      ...mapState({
-        isSignIn: state => state.auth.isSignIn
+      ...mapState('auth', {
+        isSignIn: state => state.isSignIn
       })
     },
     methods: {

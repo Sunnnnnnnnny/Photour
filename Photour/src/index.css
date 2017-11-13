@@ -90,6 +90,20 @@ html .el-tooltip__popper.is-light[x-placement^="bottom"] .popper__arrow {
   border-bottom-color: #E47877; }
 html .el-upload-list--picture .el-upload-list__item-name i {
   display: none; }
+html .el-message {
+  top: 80px;
+  border-radius: 100px; }
+html .el-message__group {
+  text-align: center; }
+  html .el-message__group p {
+    color: #7b7b7b; }
+html .el-message__img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  top: 10px;
+  left: 10px;
+  border-radius: 100px; }
 @media (max-width: 1005px) {
   html .container {
     width: 100%; } }
