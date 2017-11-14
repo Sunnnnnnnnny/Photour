@@ -3,7 +3,7 @@
 @import "../../assets/scss/mixin";
 
 .info-wrapper {
-  padding-top: 40px;
+  padding-top: 25px;
   padding-left: 40px;
 
   p {
@@ -15,10 +15,10 @@
 
   /deep/ .el-form {
     width: 80%;
-    padding-top: 35px;
+    padding-top: 30px;
 
     /deep/ .el-form-item {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     label {

@@ -8,10 +8,19 @@ const state = {
 // actions 可异步
 const actions = {
 
+  signUp({commit}, {body, onSuccess, onError}) {
+    authApi.signUp((data => {
+      if (data.error !== undefined) {
+        onError(data.error)
+      } else {
+        onSuccess(data.success)
+      }
+    }), body)
+  },
+
   signIn({dispatch}, {body, onSuccess, onError}) {
     authApi.signIn((data => {
       if (data.error !== undefined) {
-        console.log("error!")
         onError(data.error)
       } else {
         localStorage.setItem('token', data.token)
@@ -28,6 +37,13 @@ const actions = {
     commit('saveUser', null)
     if (onSuccess) {
       onSuccess(username)
+    }
+  },
+
+  refreshUser({dispatch}, {onSuccess}) {
+    const token = localStorage.getItem('token')
+    if (token) {
+      dispatch('fetchUser', {onSuccess})
     }
   },
 

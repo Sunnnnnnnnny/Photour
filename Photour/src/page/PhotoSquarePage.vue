@@ -21,8 +21,7 @@
               </span>
 
 
-
-              </el-tab-pane>
+            </el-tab-pane>
           </el-tabs>
         </div>
 
@@ -66,10 +65,21 @@
       ...mapActions('', [
         'fetchPhotos'
       ]),
+      ...mapActions('auth', [
+        'refreshUser'
+      ])
+    },
+    created() {
+      this.refreshUser({
+          onSuccess: () => {
+            this.fetchPhotos()
+          }
+        }
+      )
     },
     beforeRouteEnter(to, from, next) {
       console.log('before');
-      store.dispatch('fetchPhotos')
+//      store.dispatch('fetchPhotos')
       next(true)
     }
   }

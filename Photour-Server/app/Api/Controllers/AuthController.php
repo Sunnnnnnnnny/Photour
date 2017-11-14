@@ -8,8 +8,10 @@
 
 namespace App\Api\Controllers;
 
+use App\User;
 use App\Api\Controllers\BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends BaseController
@@ -46,5 +48,20 @@ class AuthController extends BaseController
         }
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
+    }
+
+    public function register(Request $request)
+    {
+        // grab credentials from the request
+        $registerInfo = $request->only('username', 'email', 'password');
+        $registerInfo["password"] = Hash::make($registerInfo["password"]);
+        if (User::where('username', $registerInfo["username"])) {
+            return response()->json(['error' => '用户名已被注册！']);
+        } else if (User::where('email', $registerInfo["email"])) {
+            return response()->json(['error' => '邮箱已被注册！']);
+        } else {
+            User::create($registerInfo);
+            return response()->json(['success' => '注册成功！']);
+        }
     }
 }
