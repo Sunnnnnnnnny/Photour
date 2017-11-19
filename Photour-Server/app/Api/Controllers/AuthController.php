@@ -58,11 +58,13 @@ class AuthController extends BaseController
         // grab credentials from the request
         $registerInfo = $request->only('username', 'email', 'password');
         $registerInfo["password"] = Hash::make($registerInfo["password"]);
-        if (User::where('username', $registerInfo["username"])) {
+        if (!User::where('username', $registerInfo["username"])->get()->isEmpty()) {
             return response()->json(['error' => '用户名已被注册！']);
-        } else if (User::where('email', $registerInfo["email"])) {
+        } else if (!User::where('email', $registerInfo["email"])->get()->isEmpty()) {
             return response()->json(['error' => '邮箱已被注册！']);
         } else {
+//            $registerInfo["phone"] = "";
+//            $registerInfo["gender"] = "男";
             User::create($registerInfo);
             return response()->json(['success' => '注册成功！']);
         }
