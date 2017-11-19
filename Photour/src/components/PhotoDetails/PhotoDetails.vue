@@ -83,16 +83,18 @@
       elInput: Input
     },
     data() {
+      let photoName = this.$route.params.photoId
       return {
         isEnlarged: false,
-        textarea: ''
+        textarea: '',
+        photoUrl: require('/Users/st/Pictures/Photour/' + photoName)
       }
     },
 //    props: ['photoUrl'],
     computed: {
-      ...mapState({
-        photoUrl: state => state.photoDetails.photoUrl
-      })
+//      ...mapState('photoDetails', {
+//        photoName: state => state.photoUrl
+//      }),
     },
     methods: {
       enlargePhoto() {

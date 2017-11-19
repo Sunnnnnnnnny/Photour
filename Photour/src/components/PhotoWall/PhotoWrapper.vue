@@ -4,15 +4,15 @@
       <div class="div-wrapper">
 
         <div class="photo-wrapper" @click="goToPhotoDetails">
-          <div class="photo" :style="{ backgroundImage: 'url(' + currentUrl + ')' }">
-
+          <div class="photo" :style="{ backgroundImage: 'url(' + photoUrl + ')' }">
+            <!--<img :src="currentUrl" />-->
           </div>
         </div>
 
         <div class="info-wrapper">
           <img src="../../assets/img/user.png" width="17"/>
           <span class="author-name">
-        tiann97
+        {{currentPhoto.author[0].username}}
       </span>
 
           <div class="right-wrapper">
@@ -21,7 +21,7 @@
             &nbsp;
             <div class="like-section">
               <img src="../../assets/img/like.png" width="14"/>
-              <span>249</span>
+              <span>{{currentPhoto.likes}}</span>
             </div>
           </div>
         </div>
@@ -42,16 +42,18 @@
       elCol: Col,
     },
     data() {
+      let name = this.currentPhoto.url.split('/')[this.currentPhoto.url.split('/').length - 1];
       return {
-//        photoUrl: 'https://cdn.dribbble.com/users/226242/screenshots/3871814/1976_chevrolet_blazer.png',
-        photoUrl: [require('../../assets/img/photo.png')]
+        photoUrl: require('/Users/st/Pictures/Photour/' + name),
       }
     },
-    props: ['currentUrl'],
+    created() {
+      console.log(this.currentPhoto);
+    },
+    props: ['currentPhoto'],
     methods: {
       goToPhotoDetails() {
-//        console.log("click!" + this.currentUrl);
-        router.push({name: 'PhotoDetailsPage', params: {photoId: this.currentUrl}});
+        router.push({name: 'PhotoDetailsPage', params: {photoId: this.currentPhoto.url}});
         window.scrollTo(0, 0);
       }
     }

@@ -12,7 +12,6 @@ const actions = {
   fetchPhotos({commit, state}) {
     photoApi.fetchPhotos((data) => {
       commit('savePhotos', {photos: data})
-
     })
   },
 
@@ -26,20 +25,16 @@ const actions = {
 };
 
 const mutations = {
-  'savePhotos' (state, {photos}) {
-    state.photos = [
-      // ...state.photos,
-      ...photos
-    ]
+  'savePhotos'(state, photos) {
+    state.photos = photos
   },
-  'saveFavourites' (state, {favourites}) {
-    state.favourites = [
-      ...favourites
-    ]
+  'saveFavourites'(state, favourites) {
+    state.favourites = favourites
   }
 };
 
 export default {
+  namespaced: true,
   state,
   // getters,
   actions,

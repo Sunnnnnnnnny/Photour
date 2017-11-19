@@ -19,8 +19,6 @@
                 <img src="../assets/img/events.png" width="20"/>
                 关注动态
               </span>
-
-
             </el-tab-pane>
           </el-tabs>
         </div>
@@ -55,14 +53,12 @@
       }
     },
     computed: {
-      // TODO
-      ...mapState({
+      ...mapState('photos',{
         photos: state => state.photos.photos
       })
     },
     methods: {
-      // TODO
-      ...mapActions('', [
+      ...mapActions('photos', [
         'fetchPhotos'
       ]),
       ...mapActions('auth', [
@@ -70,16 +66,14 @@
       ])
     },
     created() {
+      this.fetchPhotos();
       this.refreshUser({
           onSuccess: () => {
-            this.fetchPhotos()
           }
         }
       )
     },
     beforeRouteEnter(to, from, next) {
-      console.log('before');
-//      store.dispatch('fetchPhotos')
       next(true)
     }
   }

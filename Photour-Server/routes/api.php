@@ -25,6 +25,10 @@ $api->version('v1', function ($api) {
         });
     });
 
+    $api->group(['namespace' => 'App\Http\Controllers\Photo'], function ($api) {
+        $api->get('photos', 'FetchPhotosController@fetchPhotos');
+    });
+
 });
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {

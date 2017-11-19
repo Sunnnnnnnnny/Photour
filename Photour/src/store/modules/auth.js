@@ -42,13 +42,12 @@ const actions = {
 
   refreshUser({dispatch}, {onSuccess}) {
     const token = localStorage.getItem('token')
-    if (token) {
+    if (token !== null) {
       dispatch('fetchUser', {onSuccess})
     }
   },
 
   fetchUser({commit, state}, {onSuccess}) {
-    console.log("!!!!!!")
     let token = localStorage.getItem('token');
     authApi.currentUser((data => {
       console.log('data', data)

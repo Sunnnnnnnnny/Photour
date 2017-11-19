@@ -3,7 +3,7 @@
     <el-row :gutter="15">
       <photo
         v-for="item in photos"
-        :currentUrl="item.url"></photo>
+        :currentPhoto="item"></photo>
     </el-row>
 
 

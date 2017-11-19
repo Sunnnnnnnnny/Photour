@@ -26,21 +26,16 @@
       return {}
     },
     created() {
-      console.log(this.$route.params.photoId);
-      store.commit('savePhotoUrl', {
+      this.savePhotoUrl({
         photoUrl: this.$route.params.photoId
       })
     },
     computed: {},
     methods: {
-      //TODO
-      ...mapMutations('', [
+      ...mapMutations('photoDetails', [
         'savePhotoUrl'
       ])
     },
-//    beforeRouteEnter(to, from, next) {
-//      console.log("!!!!!!!!!!!" + to.params.photoId)
-//    },
   }
 </script>
 
