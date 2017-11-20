@@ -11,7 +11,7 @@
 
 <script>
   import PhotoUploadModal from './PhotoUploadModal'
-  import {mapState} from 'vuex'
+  import {mapState, mapActions} from 'vuex'
   import {Message} from 'element-ui'
 
   export default {
@@ -26,9 +26,12 @@
     computed: {
       ...mapState('auth', {
         user: state => state.user
-      })
+      }),
     },
     methods: {
+      ...mapActions('photos', [
+        'fetchAlbums'
+      ]),
       showPhotoUploadModal() {
         if (this.user === null) {
           Message({
@@ -37,7 +40,13 @@
           });
           this.$modal.show('sign-in');
         } else {
-          this.$modal.show('photo-upload-modal');
+          this.fetchAlbums({
+              userId: this.user.id,
+              onSuccess: () => {
+                this.$modal.show('photo-upload-modal');
+              }
+            }
+          )
         }
 
       }

@@ -11,6 +11,7 @@ namespace App\Api\Controllers;
 use App\User;
 use App\Api\Controllers\BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -65,7 +66,13 @@ class AuthController extends BaseController
         } else {
 //            $registerInfo["phone"] = "";
 //            $registerInfo["gender"] = "男";
-            User::create($registerInfo);
+            $id = User::create($registerInfo)->id;
+            DB::table('albums')->insert([
+                'author_id' => $id,
+                'permission' => "public",
+                'name' => "默认相册",
+                'description' => ""
+            ]);
             return response()->json(['success' => '注册成功！']);
         }
     }

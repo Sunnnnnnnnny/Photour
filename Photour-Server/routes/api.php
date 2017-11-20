@@ -21,6 +21,7 @@ $api->version('v1', function ($api) {
         $api->post('user/register', 'AuthController@register');
         $api->get('photos', 'PhotosController@fetchPhotos');
         $api->post('photos/upload', 'PhotosController@uploadPhotos');
+        $api->get('albums', 'AlbumsController@fetchAlbums');
 
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             $api->get('user/me', 'AuthController@getAuthenticatedUser');

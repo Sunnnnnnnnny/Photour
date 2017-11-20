@@ -50,7 +50,6 @@ const actions = {
   fetchUser({commit, state}, {onSuccess}) {
     let token = localStorage.getItem('token');
     authApi.currentUser((data => {
-      console.log('data', data)
       commit('saveUser', data.user)
       if (onSuccess) {
         onSuccess(state.user.username)

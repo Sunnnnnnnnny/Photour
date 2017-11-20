@@ -37,9 +37,12 @@
       <div class="albums-wrapper">
         <p>选择上传相册</p>
         <el-radio-group v-model="uploadData.album">
-          <el-radio label="默认相册"></el-radio>
-          <el-radio label="相册1"></el-radio>
-          <el-radio label="相册2"></el-radio>
+          <el-radio
+            v-for="item in albums"
+            :label="item.name"
+          >
+            {{item.name}}
+          </el-radio>
         </el-radio-group>
       </div>
 
@@ -63,7 +66,7 @@
   import {Input, Upload, Button, RadioGroup, Radio, Message, Dialog} from 'element-ui'
   import MyTags from '../Util/MyTags'
   import {router} from '../../main'
-  import {mapActions} from 'vuex'
+  import {mapActions, mapState} from 'vuex'
 
   export default {
     name: 'photo-upload-modal',
@@ -77,6 +80,11 @@
       elMessage: Message,
       elDialog: Dialog
     },
+    computed: {
+      ...mapState('photos', {
+        albums: state => state.albums
+      }),
+    },
     data() {
       return {
         uploadData: {
@@ -89,6 +97,9 @@
         uploadAction: '/api/photos/upload'
       }
     },
+    created() {
+      console.log("created", this.albums)
+    },
     methods: {
       ...mapActions('photos', [
         'uploadPhotos'
@@ -98,7 +109,6 @@
         this.files = []
       },
       submitUpload() {
-        console.log(this.$refs.upload.data);
         this.$refs.upload.submit();
       },
       handleSuccess(response) {
