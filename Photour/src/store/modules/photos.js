@@ -20,6 +20,17 @@ const actions = {
       commit('saveFavourites', {favourites: data})
       console.log(data)
     }))
+  },
+
+  uploadPhotos({commit}, {toUpload, onSuccess}) {
+    console.log(toUpload)
+    photoApi.uploadPhotos((data => {
+      console.log(data)
+      if(onSuccess) {
+        let message = "上传成功"
+        onSuccess(message)
+      }
+    }))
   }
 
 };

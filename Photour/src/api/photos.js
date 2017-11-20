@@ -20,3 +20,17 @@ export function fetchFavourites(callback) {
       console.log(error)
     })
 }
+
+export function uploadPhotos(callback, toUpload) {
+  axios.post('/photos/upload',
+    toUpload,
+    {
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(function (response) {
+      callback(response)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}

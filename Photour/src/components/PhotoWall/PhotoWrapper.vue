@@ -17,7 +17,7 @@
 
           <div class="right-wrapper">
             <img src="../../assets/img/comment.png" width="14"/>
-            <span>12</span>
+            <span>{{currentPhoto.comments}}</span>
             &nbsp;
             <div class="like-section">
               <img src="../../assets/img/like.png" width="14"/>
@@ -47,9 +47,9 @@
         photoUrl: require('/Users/st/Pictures/Photour/' + name),
       }
     },
-    created() {
-      console.log(this.currentPhoto);
-    },
+//    created() {
+//      console.log(this.currentPhoto);
+//    },
     props: ['currentPhoto'],
     methods: {
       goToPhotoDetails() {

@@ -1,7 +1,7 @@
 <template>
   <modal
     name="photo-upload-modal"
-    :height="400"
+    :height="550"
     :clickToClose="false"
     :adaptive="true"
   >
@@ -11,96 +11,123 @@
         type="primary"
         icon="close"
         @click="closeBox"></el-button>
-      <el-upload
-        class="upload-demo"
-        ref="upload"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :on-preview="handlePreview"
-        :on-remove="handleRemove"
-        :file-list="fileList"
-        list-type="picture"
-        :auto-upload="false"
-        :before-upload="beforeUpload"
-        :on-success="handleSuccess">
-        <button class="select-button" slot="trigger" size="small" type="primary">选取照片</button>
-        <el-dropdown @command="submitUpload">
-          <span class="el-dropdown-link">
-            上传<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="1">相册一</el-dropdown-item>
-            <el-dropdown-item command="2">相册二</el-dropdown-item>
-            <el-dropdown-item command="3">相册三</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+      <!--<input type="file" :disabled=isUploading @change="updatePhoto($event.target.files)" accept="image/*"/>-->
+      <!--<my-tags :canBeEdited=true :dynamicTags="[]"></my-tags>-->
+      <!--<el-button @click="uploadPhoto()">确认上传</el-button>-->
+
+      <div class="upload-wrapper">
+        <el-upload
+          ref="upload"
+          :action="uploadAction"
+          list-type="picture-card"
+          :on-remove="handleRemove"
+          :on-success="handleSuccess"
+          :before-upload="handleBefore"
+          :file-list="files"
+          :auto-upload="false"
+          accept="image/*"
+          :data="uploadData"
+          :mutiple="false"
+          limit=1>
+          <i class="el-icon-plus"></i>
+        </el-upload>
+        <p>（每次限定上传一张）</p>
+      </div>
+
+      <div class="albums-wrapper">
+        <p>选择上传相册</p>
+        <el-radio-group v-model="uploadData.album">
+          <el-radio label="默认相册"></el-radio>
+          <el-radio label="相册1"></el-radio>
+          <el-radio label="相册2"></el-radio>
+        </el-radio-group>
+      </div>
+
+      <div class="tags-wrapper">
+        <p>
+          填写图片标签（使用空格隔开）
+        </p>
+        <el-input v-model="uploadData.tags"></el-input>
+      </div>
+
+      <div class="upload-button">
+        <el-button @click="submitUpload">确认上传</el-button>
+      </div>
 
 
-      </el-upload>
     </div>
   </modal>
 </template>
 
 <script>
-  import {Upload, Button, Dropdown, DropdownMenu, DropdownItem, Message} from 'element-ui'
+  import {Input, Upload, Button, RadioGroup, Radio, Message, Dialog} from 'element-ui'
+  import MyTags from '../Util/MyTags'
   import {router} from '../../main'
+  import {mapActions} from 'vuex'
 
   export default {
     name: 'photo-upload-modal',
     components: {
+      MyTags,
+      elInput: Input,
       elUpload: Upload,
       elButton: Button,
-      elDropdown: Dropdown,
-      elDropdownMenu: DropdownMenu,
-      elDropdownItem: DropdownItem,
+      elRadio: Radio,
+      elRadioGroup: RadioGroup,
       elMessage: Message,
+      elDialog: Dialog
     },
     data() {
       return {
-        fileList: [],
-        toUpload: [],
+        uploadData: {
+          album: '默认相册',
+          tags: ''
+        },
+        toUpload: null,
+        isUploading: false,
+        files: [],
+        uploadAction: '/api/photos/upload'
       }
     },
     methods: {
+      ...mapActions('photos', [
+        'uploadPhotos'
+      ]),
       closeBox() {
         this.$modal.hide('photo-upload-modal');
+        this.files = []
+      },
+      submitUpload() {
+        console.log(this.$refs.upload.data);
+        this.$refs.upload.submit();
+      },
+      handleSuccess(response) {
+        console.log(response)
+//        let photo = response.photo
+        this.files = [{
+          name: response.name,
+          url: response.photo,
+        }]
+
+        if (response.message === 'success') {
+          Message({
+            message: '上传成功!',
+            type: 'success'
+          });
+          this.$modal.hide('photo-upload-modal');
+          this.files = []
+        }
+      },
+      handleBefore() {
+        return this.files.length !== 1 // 只让它上传一张
       },
       handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-      handleExceed(files, fileList) {
-        alert('!!!!!!!!')
-      },
-      handleSuccess() {
-        Message({
-          message: '上传成功！',
-          type: 'success'
-        });
-        router.push({name: 'UserHomePage'})
-      },
-      beforeUpload(file) {
-        console.log(this)
-        this.toUpload.push(file.name)
-//        console.log(file)
-      },
-      submitUpload(command) {
-//        if (this.fileList.length === 0) {
-//          alert('!!!!');
-//        } else {
-        console.log(this.toUpload.length);
-        console.log(command);
-//        if (this.toUpload.length > 1) {
-//          alert("!!!!!!")
-//        }
-        this.$refs.upload.submit();
-        
-//        }
+        console.log(file, fileList)
+      }
 
-      },
-    }
+    },
   }
+
 
 </script>
 
