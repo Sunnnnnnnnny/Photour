@@ -35,6 +35,8 @@ class PhotosController extends Controller
                 } else {
                     $photo->liked = true;
                 }
+            } else {
+                $photo->liked = false;
             }
         }
         return json_encode($photos);
