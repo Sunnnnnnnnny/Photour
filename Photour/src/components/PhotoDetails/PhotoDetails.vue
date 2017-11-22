@@ -87,7 +87,7 @@
       return {
         isEnlarged: false,
         textarea: '',
-        photoUrl: require('/Users/st/Pictures/Photour/' + photoName)
+        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + photoName)
       }
     },
 //    props: ['photoUrl'],

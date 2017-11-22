@@ -9,14 +9,16 @@ const state = {
 
 const actions = {
 
-  fetchPhotos({commit, state}) {
+  fetchPhotos({commit, state, rootState}) {
+    let userId = rootState.auth.user ? rootState.auth.user.id : null
     photoApi.fetchPhotos((data) => {
       commit('savePhotos', {photos: data})
-    })
+    }, userId)
   },
 
   fetchAlbums({commit}, {userId, onSuccess}) {
     photoApi.fetchAlbums((data) => {
+      console.log(data)
       commit('saveAlbums', {albums: data})
       if (onSuccess) {
         onSuccess()
@@ -31,15 +33,10 @@ const actions = {
     }))
   },
 
-  uploadPhotos({commit}, {toUpload, onSuccess}) {
-    console.log(toUpload)
-    photoApi.uploadPhotos((data => {
+  likePhotos({commit}, likeInfo) {
+    photoApi.likePhotos((data => {
       console.log(data)
-      if (onSuccess) {
-        let message = "上传成功"
-        onSuccess(message)
-      }
-    }))
+    }), likeInfo)
   }
 
 };
@@ -50,11 +47,10 @@ const mutations = {
   },
   'saveAlbums'(state, {albums}) {
     state.albums = albums
-    console.log("state", state.albums)
   },
   'saveFavourites'(state, favourites) {
     state.favourites = favourites
-  }
+  },
 };
 
 export default {

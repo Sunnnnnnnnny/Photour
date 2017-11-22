@@ -18,14 +18,24 @@ use Storage;
 
 class PhotosController extends Controller
 {
-    public function fetchPhotos()
+    public function fetchPhotos(Request $request)
     {
+        $userId = $request->input('userId');
         $photos = DB::table('photos')->get();
         foreach ($photos as $photo) {
-//            $author = DB::table('Users')->select('id', 'id as' . $photo->author_id)->get();
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
             $photo->author = $author;
-//            echo $author_name;
+            if ($userId) {
+                if (DB::table('likes')->where([
+                    ['author_id', '=', $userId],
+                    ['photo_id', '=', $photo->id]
+                ])->get()->isEmpty()
+                ) {
+                    $photo->liked = false;
+                } else {
+                    $photo->liked = true;
+                }
+            }
         }
         return json_encode($photos);
     }
@@ -43,19 +53,63 @@ class PhotosController extends Controller
             $ext = $file->getClientOriginalExtension();     // 扩展名
             $realPath = $file->getRealPath();   //临时文件的绝对路径
             $type = $file->getClientMimeType();     // image/jpeg
+            $album = $request->input('album');
+            $tags = $request->input('tags');
+            $userId = $request->input('userId');
+            $albumId = DB::table('albums')->where([
+                ['author_id', '=', $userId],
+                ['name', '=', $album],
+            ])->value('id');
 
             // 使用我们新建的uploads本地存储空间（目录）
             $path = $file->store('photos', 'uploads');
+            $array = explode("/", $path);
+
+            DB::table('photos')->insert([
+                'author_id' => $userId,
+                'album_id' => $albumId,
+                'url' => $array[sizeof($array) - 1],
+                'likes' => 0,
+                'comments' => 0,
+                'tags' => $tags
+            ]);
+
             return response()->json([
                 'status_code' => 200,
-                'message' => 'success',
-                'photo' => $path,
-                'name' => $originalName,
-                'data' => $request->input()
+                'message' => 'success'
             ]);
 
         } else {
             return response()->json(['message' => '文件未通过验证'], 500);
         }
+    }
+
+    public function likePhotos(Request $request)
+    {
+        $userId = $request->input('userId');
+        $photoId = $request->input('photoId');
+        if (DB::table('likes')->where([
+            ['author_id', '=', $userId],
+            ['photo_id', '=', $photoId]
+        ])->get()->isEmpty()
+        ) {
+            // 点赞
+            DB::table('likes')->insert([
+                'author_id' => $userId,
+                'photo_id' => $photoId
+            ]);
+            DB::table('photos')->where('id', $photoId)->increment('likes', 1);
+        } else {
+            // 取消点赞
+            DB::table('likes')->where([
+                ['author_id', '=', $userId],
+                ['photo_id', '=', $photoId]
+            ])->delete();
+            DB::table('photos')->where('id', $photoId)->decrement('likes', 1);
+        }
+        return response()->json([
+            'status_code' => 200,
+            'message' => 'success',
+        ]);
     }
 }

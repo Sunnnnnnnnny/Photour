@@ -83,27 +83,22 @@
     computed: {
       ...mapState('photos', {
         albums: state => state.albums
-      }),
+      })
     },
+    props: ['user'],
     data() {
+//      console.error("data", this, this.user)
       return {
         uploadData: {
           album: '默认相册',
-          tags: ''
+          tags: '',
+          userId: this.user.id
         },
-        toUpload: null,
-        isUploading: false,
         files: [],
         uploadAction: '/api/photos/upload'
       }
     },
-    created() {
-      console.log("created", this.albums)
-    },
     methods: {
-      ...mapActions('photos', [
-        'uploadPhotos'
-      ]),
       closeBox() {
         this.$modal.hide('photo-upload-modal');
         this.files = []

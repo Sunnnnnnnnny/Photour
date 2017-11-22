@@ -19,9 +19,10 @@
             <img src="../../assets/img/comment.png" width="14"/>
             <span>{{currentPhoto.comments}}</span>
             &nbsp;
-            <div class="like-section">
-              <img src="../../assets/img/like.png" width="14"/>
-              <span>{{currentPhoto.likes}}</span>
+            <div class="like-section" @click="handleLike">
+              <img v-if="this.liked" src="../../assets/img/like.png" width="14"/>
+              <img v-else="!this.liked" src="../../assets/img/dislike.png" width="14"/>
+              <span>{{this.likes}}</span>
             </div>
           </div>
         </div>
@@ -33,8 +34,9 @@
 
 <script>
 
-  import {Row, Col} from 'element-ui'
+  import {Row, Col, Message} from 'element-ui'
   import {router} from '../../main'
+  import {mapState, mapActions} from 'vuex'
 
   export default {
     name: 'photo',
@@ -44,17 +46,46 @@
     data() {
       let name = this.currentPhoto.url.split('/')[this.currentPhoto.url.split('/').length - 1];
       return {
-        photoUrl: require('/Users/st/Pictures/Photour/' + name),
+        liked: this.currentPhoto.liked,
+        likes: this.currentPhoto.likes,
+        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + name),
       }
     },
-//    created() {
-//      console.log(this.currentPhoto);
-//    },
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      }),
+    },
     props: ['currentPhoto'],
     methods: {
+      ...mapActions('photos', [
+        'likePhotos'
+      ]),
       goToPhotoDetails() {
         router.push({name: 'PhotoDetailsPage', params: {photoId: this.currentPhoto.url}});
         window.scrollTo(0, 0);
+      },
+      handleLike() {
+        if (!this.user) {
+          Message({
+            message: '请先登录！',
+            type: 'warning'
+          })
+        } else {
+          if (this.liked) {
+            this.likes--;
+          } else {
+            this.likes++;
+          }
+          this.liked = this.liked !== true;
+          this.likePhotos({
+            likeInfo: {
+              userId: this.user.id,
+              photoId: this.currentPhoto.id
+            }
+          })
+        }
+
       }
     }
   }

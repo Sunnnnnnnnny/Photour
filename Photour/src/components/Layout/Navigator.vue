@@ -17,8 +17,8 @@
 
         <div class="button-wrapper">
           <el-button type="text" @click="goToSquare">广场</el-button>
-          <el-button v-if="this.user === null" type="text" @click="signUp">注册</el-button>
-          <el-button v-if="this.user === null" type="text" @click="signIn">登录</el-button>
+          <el-button v-if="!user" type="text" @click="signUp">注册</el-button>
+          <el-button v-if="!user" type="text" @click="signIn">登录</el-button>
           <el-dropdown v-else menu-align="start" @command="handleCommand">
             <span class="el-dropdown-link">
               {{user.username}}<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -36,7 +36,7 @@
     </div>
 
     <sign-in></sign-in>
-    <photo-upload-modal></photo-upload-modal>
+    <photo-upload-modal v-if="user" :user="user"></photo-upload-modal>
     <forward-modal></forward-modal>
     <create-album-modal></create-album-modal>
 

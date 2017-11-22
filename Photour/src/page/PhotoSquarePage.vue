@@ -53,9 +53,9 @@
       }
     },
     computed: {
-      ...mapState('photos',{
+      ...mapState('photos', {
         photos: state => state.photos.photos
-      })
+      }),
     },
     methods: {
       ...mapActions('photos', [
@@ -66,14 +66,20 @@
       ])
     },
     created() {
-      this.fetchPhotos();
-      this.refreshUser({
-          onSuccess: () => {
-          }
-        }
-      )
+//      this.fetchPhotos();
+//      this.refreshUser({
+//          onSuccess: () => {
+//
+//          }
+//        }
+//      )
     },
     beforeRouteEnter(to, from, next) {
+      store.dispatch('auth/refreshUser', {
+        onSuccess: () => {
+          store.dispatch('photos/fetchPhotos')
+        }
+      })
       next(true)
     }
   }
