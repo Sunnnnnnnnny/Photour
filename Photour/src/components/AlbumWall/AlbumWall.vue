@@ -3,7 +3,8 @@
     <!--<el-row :gutter="15">-->
 
     <album
-      v-for="item in 4">
+      v-for="item in this.albums"
+      :currentAlbum="item">
       <!--:currentUrl="item.url"-->
     </album>
 
@@ -32,7 +33,7 @@
       elRow: Row,
       elCol: Col,
     },
-//    props: ['albums'],
+    props: ['albums'],
     data() {
       return {}
     },

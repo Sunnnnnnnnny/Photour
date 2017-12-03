@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import auth from './modules/auth'
 import photos from './modules/photos'
 import photoDetails from './modules/photoDetails'
+import albums from './modules/albums'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -17,7 +18,8 @@ export default new Vuex.Store({
   modules: {
     auth,
     photos,
-    photoDetails
+    photoDetails,
+    albums
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

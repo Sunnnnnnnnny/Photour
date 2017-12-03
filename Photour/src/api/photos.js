@@ -16,23 +16,6 @@ export function fetchPhotos(callback, userId) {
     })
 }
 
-export function fetchAlbums(callback, userId) {
-  axios.get('/albums',
-    {
-      params: {
-        userId: userId
-      }
-    }
-  )
-    .then((response) => {
-        callback(response.data)
-      }
-    )
-    .catch(function (error) {
-      console.log(error)
-    })
-}
-
 export function fetchFavourites(callback, userId) {
   axios.get('/photos/favourites',
     {

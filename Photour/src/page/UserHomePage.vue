@@ -13,7 +13,7 @@
   import Layout from '../components/Layout/Layout'
   import UserHome from '../components/UserHome/UserHome'
   import {router, store} from '../main'
-  import {mapMutations} from 'vuex'
+  import {mapMutations, mapState} from 'vuex'
 
   export default {
     name: 'user-home-page',

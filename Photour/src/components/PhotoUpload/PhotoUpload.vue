@@ -29,7 +29,7 @@
       }),
     },
     methods: {
-      ...mapActions('photos', [
+      ...mapActions('albums', [
         'fetchAlbums'
       ]),
       showPhotoUploadModal() {

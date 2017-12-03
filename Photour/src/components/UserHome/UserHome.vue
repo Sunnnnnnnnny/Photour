@@ -24,27 +24,27 @@
 
         <div @click="goToMyEvents">
           <img src="../../assets/img/events.png" width="18">
-          <span>动态： 27</span>
+          <span>动态</span>
         </div>
 
         <div @click="goToMyAlbum">
           <img src="../../assets/img/album.png" width="18">
-          <span>相册： 3</span>
+          <span>相册</span>
         </div>
 
         <div @click="goToMyFavourites">
           <img src="../../assets/img/dislike.png" width="14">
-          <span>喜欢： 239</span>
+          <span>喜欢</span>
         </div>
 
         <div @click="goToMyFans">
           <img src="../../assets/img/fans.png" width="18">
-          <span>粉丝： 10</span>
+          <span>粉丝</span>
         </div>
 
         <div @click="goToMyFollowings">
           <img src="../../assets/img/following.png" width="18">
-          <span>关注： 29</span>
+          <span>关注</span>
         </div>
 
         <!--<div>-->
@@ -56,11 +56,13 @@
     </div>
 
     <div class="content-wrapper">
-      <my-events v-if="currentPage === 'MyEvents'"></my-events>
-      <my-favourites :favourites=this.favourites v-if="currentPage === 'MyFavourites'"></my-favourites>
-      <my-album v-if="currentPage === 'MyAlbum'"></my-album>
-      <my-fans v-if="currentPage === 'MyFans'"></my-fans>
-      <my-followings v-if="currentPage === 'MyFollowings'"></my-followings>
+      <my-events v-if="currentPage === 'MyEvents' && !this.isShowingPhotos"></my-events>
+      <my-favourites :favourites=this.favourites
+                     v-if="currentPage === 'MyFavourites' && !this.isShowingPhotos"></my-favourites>
+      <my-album :albums=this.albums v-if="currentPage === 'MyAlbum' && !this.isShowingPhotos"></my-album>
+      <my-fans v-if="currentPage === 'MyFans' && !this.isShowingPhotos"></my-fans>
+      <my-followings v-if="currentPage === 'MyFollowings' && !this.isShowingPhotos"></my-followings>
+      <photo-wall v-if="this.isShowingPhotos" :photos="this.photosInAlbums"></photo-wall>
     </div>
 
 
@@ -74,7 +76,8 @@
   import MyAlbum from './MyAlbum'
   import MyFans from './MyFans'
   import MyFollowings from './MyFollowings'
-  import {mapActions, mapState} from 'vuex'
+  import PhotoWall from '../PhotoWall/PhotoWall'
+  import {mapActions, mapState, mapMutations} from 'vuex'
 
   export default {
     name: 'user-home',
@@ -83,10 +86,10 @@
       MyFavourites,
       MyAlbum,
       MyFans,
-      MyFollowings
+      MyFollowings,
+      PhotoWall
     },
     data() {
-      console.log('userhome', this.favourites)
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
         currentPage: 'MyEvents'
@@ -98,34 +101,51 @@
       }),
       ...mapState('photos', {
         favourites: state => state.favourites
+      }),
+      ...mapState('albums', {
+        albums: state => state.albums,
+        photosInAlbums: state => state.photosInAlbums,
+        isShowingPhotos: state => state.isShowingPhotos
       })
     },
-
     methods: {
       ...mapActions('photos', [
         'fetchFavourites'
       ]),
+      ...mapActions('albums', [
+        'fetchAlbums'
+      ]),
+      ...mapMutations('albums', [
+        'showingPhotos'
+      ]),
       goToAccountInfo() {
+        this.showingPhotos(false)
         router.push({name: 'AccountPage'})
       },
       goToMyEvents() {
+        this.showingPhotos(false)
         this.currentPage = 'MyEvents'
       },
       goToMyFavourites() {
 //        console.log(this.user)
+        this.showingPhotos(false)
         this.fetchFavourites(this.user.id)
         this.currentPage = 'MyFavourites'
       },
       goToMyAlbum() {
+        this.showingPhotos(false)
+        this.fetchAlbums({userId: this.user.id})
         this.currentPage = 'MyAlbum';
       },
       goToMyFans() {
+        this.showingPhotos(false)
         this.currentPage = 'MyFans';
       },
       goToMyFollowings() {
+        this.showingPhotos(false)
         this.currentPage = 'MyFollowings';
       }
-    }
+    },
   }
 
 </script>

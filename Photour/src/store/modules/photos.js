@@ -17,15 +17,6 @@ const actions = {
     }, userId)
   },
 
-  fetchAlbums({commit}, {userId, onSuccess}) {
-    photoApi.fetchAlbums((data) => {
-      console.log(data)
-      commit('saveAlbums', {albums: data})
-      if (onSuccess) {
-        onSuccess()
-      }
-    }, userId)
-  },
 
   fetchFavourites({commit, state}, userId) {
     // console.log(userId)
@@ -46,9 +37,7 @@ const mutations = {
   'savePhotos'(state, photos) {
     state.photos = photos
   },
-  'saveAlbums'(state, {albums}) {
-    state.albums = albums
-  },
+
   'saveFavourites'(state, {favourites}) {
     state.favourites = favourites
     console.log(state.favourites)

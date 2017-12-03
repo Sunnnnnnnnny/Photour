@@ -42,4 +42,10 @@ button {
 .row-bg {
   padding: 10px 0; }
 
+.empty-photo {
+  padding-top: 30px;
+  text-align: center;
+  color: #7b7b7b;
+  font-size: 16px; }
+
 /*# sourceMappingURL=PhotoWall.css.map */

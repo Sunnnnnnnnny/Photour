@@ -2,11 +2,7 @@
 
   <div class="album-wall-wrapper">
 
-    <!--<div class="warning" v-if="favourites.length===0">-->
-    <!--<p>暂时没有喜欢的照片，去广场看看</p>-->
-    <!--</div>-->
-
-    <album-wall></album-wall>
+    <album-wall :albums="this.albums"></album-wall>
   </div>
 
 </template>
@@ -22,11 +18,7 @@
     data() {
       return {}
     },
-    computed: {
-//      ...mapState({
-//        favourites: state => state.photos.favourites
-//      })
-    },
+    props: ['albums'],
     methods: {},
   }
 

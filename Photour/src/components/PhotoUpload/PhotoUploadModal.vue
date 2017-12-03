@@ -81,7 +81,7 @@
       elDialog: Dialog
     },
     computed: {
-      ...mapState('photos', {
+      ...mapState('albums', {
         albums: state => state.albums
       })
     },
