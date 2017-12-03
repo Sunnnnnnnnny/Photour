@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-wall-wrapper">
+  <div v-if="this.user" class="photo-wall-wrapper">
     <!--<el-row :gutter="15">-->
 
     <album
@@ -8,7 +8,7 @@
       <!--:currentUrl="item.url"-->
     </album>
 
-    <div class="new-album-wrapper" @click="handleCreateAlbum">
+    <div v-if="this.user.id === this.userId" class="new-album-wrapper" @click="handleCreateAlbum">
       <span style="font-size: 56px">+</span>
       <br/>
       <span>新建相册</span>
@@ -34,8 +34,15 @@
       elCol: Col,
     },
     props: ['albums'],
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      })
+    },
     data() {
-      return {}
+      return {
+        userId: parseInt(this.$route.params.userId),
+      }
     },
     methods: {
       handleCreateAlbum() {

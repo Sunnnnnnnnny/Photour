@@ -4,17 +4,18 @@
 
     <div class="operation-wrapper">
 
-      <div class="left-wrapper">
+      <div class="left-wrapper" @click="goToUserHomePage">
         <img src="../../assets/img/user.png" width="25"/>
-        <span>tiann</span>
+        <span>{{this.currentPhoto.author[0].username}}</span>
       </div>
 
       <div class="right-wrapper">
 
-        <div class="button-wrapper">
+        <div class="button-wrapper" @click="handleLike">
           <button>
-            <img src="../../assets/img/dislike.png" width="16"/>
-            <span>1,230</span>
+            <img v-if="this.liked" src="../../assets/img/like.png" width="16"/>
+            <img v-else="!this.liked" src="../../assets/img/dislike.png" width="16"/>
+            <span>{{this.likes}}</span>
           </button>
         </div>
 
@@ -70,9 +71,9 @@
   import PhotoTags from '../Util/MyTags.vue'
   import SingleComment from '../PhotoComment/SingleComment'
   import DivHeader from '../../components/Util/DivHeader'
-  import {mapState} from 'vuex'
+  import {mapState, mapActions, mapMutations} from 'vuex'
   import {store, router} from '../../main'
-  import {Input} from 'element-ui'
+  import {Input, Message} from 'element-ui'
 
   export default {
     name: 'photo-details',
@@ -80,11 +81,14 @@
       PhotoTags,
       DivHeader,
       SingleComment,
+      Message,
       elInput: Input
     },
     data() {
       let photoName = this.$route.params.photoId
       return {
+        liked: this.currentPhoto.liked,
+        likes: this.currentPhoto.likes,
         isEnlarged: false,
         textarea: '',
         photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + photoName),
@@ -92,14 +96,26 @@
       }
     },
     created() {
-      console.log('created', this.currentPhoto)
       if (this.currentPhoto === null) {
         router.push({name: 'PhotoSquarePage'});
       }
     },
-    computed: {},
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      })
+    },
     props: ['currentPhoto'],
     methods: {
+      ...mapMutations('auth', [
+        'saveCurrentUser'
+      ]),
+      ...mapActions('photos', [
+        'likePhotos'
+      ]),
+      ...mapMutations('albums', [
+        'showingPhotos'
+      ]),
       enlargePhoto() {
         this.isEnlarged ? this.isEnlarged = false : this.isEnlarged = true;
       },
@@ -108,6 +124,31 @@
       },
       handleComment() {
 
+      },
+      goToUserHomePage() {
+        this.showingPhotos(false)
+        router.push({name: 'UserHomePage', params: {userId: this.currentPhoto.author_id}})
+      },
+      handleLike() {
+        if (!this.user) {
+          Message({
+            message: '请先登录！',
+            type: 'warning'
+          })
+        } else {
+          if (this.liked) {
+            this.likes--;
+          } else {
+            this.likes++;
+          }
+          this.liked = this.liked !== true;
+          this.likePhotos({
+            likeInfo: {
+              userId: this.user.id,
+              photoId: this.currentPhoto.id
+            }
+          })
+        }
       }
     },
   }

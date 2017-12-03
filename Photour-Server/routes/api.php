@@ -19,6 +19,7 @@ $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
         $api->post('user/login', 'AuthController@authenticate');
         $api->post('user/register', 'AuthController@register');
+        $api->get('user/get', 'AuthController@fetchCurrentUserById');
         $api->get('photos', 'PhotosController@fetchPhotos');
         $api->post('photos/upload', 'PhotosController@uploadPhotos');
         $api->post('photos/like', 'PhotosController@likePhotos');

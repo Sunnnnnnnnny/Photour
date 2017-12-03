@@ -20,7 +20,7 @@
     name: 'photo-details-page',
     components: {
       Layout,
-      PhotoDetails
+      PhotoDetails,
     },
     data() {
       return {}
@@ -38,14 +38,14 @@
     methods: {
       ...mapMutations('photoDetails', [
         'savePhotoUrl'
-      ])
-    },
-    beforeRouteEnter(to, from, next) {
-      store.dispatch('auth/refreshUser', {
-        onSuccess: () => {
-        }
-      })
-      next(true)
+      ]),
+      beforeRouteEnter(to, from, next) {
+        store.dispatch('auth/refreshUser', {
+          onSuccess: () => {
+          }
+        })
+        next(true)
+      }
     }
   }
 </script>

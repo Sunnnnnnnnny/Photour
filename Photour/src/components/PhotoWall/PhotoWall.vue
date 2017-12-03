@@ -1,6 +1,6 @@
 <template>
   <div class="photo-wall-wrapper">
-    <el-row v-if="photos.length>0" :gutter="15">
+    <el-row v-if="photos && photos.length > 0" :gutter="15">
       <photo
         v-for="item in photos"
         :currentPhoto="item"></photo>

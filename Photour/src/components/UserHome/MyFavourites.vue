@@ -2,9 +2,9 @@
 
   <div>
 
-    <div class="warning" v-if="favourites.length===0">
-      <p>暂时没有喜欢的照片，去广场看看</p>
-    </div>
+    <!--<div class="warning" v-if="favourites.length===0">-->
+      <!--<p>暂时没有喜欢的照片，去广场看看</p>-->
+    <!--</div>-->
 
     <photo-wall :photos="favourites"></photo-wall>
   </div>

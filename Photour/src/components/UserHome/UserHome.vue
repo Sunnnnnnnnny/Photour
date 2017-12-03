@@ -1,11 +1,11 @@
 <template>
 
-  <div class="user-home-wrapper">
+  <div v-if="this.user" class="user-home-wrapper">
 
     <div class="avatar-wrapper">
 
       <div class="avatar" @click="goToAccountInfo" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
-      <p>Tiann</p>
+      <p>{{this.user.username}}</p>
 
       <!--到时候用v-if做-->
       <!--<div class="follow-button-wrapper">-->
@@ -91,13 +91,14 @@
     },
     data() {
       return {
+        userId: this.$route.params.userId,
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
         currentPage: 'MyEvents'
       }
     },
     computed: {
       ...mapState('auth', {
-        user: state => state.user
+        user: state => state.currentUser
       }),
       ...mapState('photos', {
         favourites: state => state.favourites
@@ -108,12 +109,18 @@
         isShowingPhotos: state => state.isShowingPhotos
       })
     },
+    created() {
+      this.fetchCurrentUserById(this.userId)
+    },
     methods: {
       ...mapActions('photos', [
         'fetchFavourites'
       ]),
       ...mapActions('albums', [
         'fetchAlbums'
+      ]),
+      ...mapActions('auth', [
+        'fetchCurrentUserById'
       ]),
       ...mapMutations('albums', [
         'showingPhotos'
@@ -129,12 +136,12 @@
       goToMyFavourites() {
 //        console.log(this.user)
         this.showingPhotos(false)
-        this.fetchFavourites(this.user.id)
+        this.fetchFavourites(this.userId)
         this.currentPage = 'MyFavourites'
       },
       goToMyAlbum() {
         this.showingPhotos(false)
-        this.fetchAlbums({userId: this.user.id})
+        this.fetchAlbums({userId: this.userId})
         this.currentPage = 'MyAlbum';
       },
       goToMyFans() {

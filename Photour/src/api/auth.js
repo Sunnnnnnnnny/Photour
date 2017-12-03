@@ -43,3 +43,18 @@ export function signUp(callback, body) {
       console.log(error)
     })
 }
+
+export function fetchCurrentUserById(callback, userId) {
+  axios.get('/user/get', {
+      params: {
+        userId: userId
+      }
+    }
+  )
+    .then(function (response) {
+      callback(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}

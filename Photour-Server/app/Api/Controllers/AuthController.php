@@ -76,4 +76,11 @@ class AuthController extends BaseController
             return response()->json(['success' => '注册成功！']);
         }
     }
+
+    public function fetchCurrentUserById(Request $request)
+    {
+        $userId = $request->userId;
+        $user = DB::table('Users')->where('id', $userId)->get();
+        return response()->json(compact('user'));
+    }
 }

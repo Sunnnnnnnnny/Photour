@@ -85,7 +85,7 @@
             this.likes++;
           }
           this.liked = this.liked !== true;
-          console.log('like',this.currentPhoto.id)
+          console.log('like', this.currentPhoto.id)
           this.likePhotos({
             likeInfo: {
               userId: this.user.id,

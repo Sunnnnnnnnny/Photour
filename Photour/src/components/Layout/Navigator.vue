@@ -84,9 +84,13 @@
       ...mapMutations('auth', [
         'goSignIn',
         'goSignUp',
+        'saveCurrentUser'
       ]),
       ...mapActions('auth', [
         'signOut'
+      ]),
+      ...mapMutations('albums', [
+        'showingPhotos'
       ]),
       handleIconClick(ev) {
         console.log(ev);
@@ -104,7 +108,13 @@
       },
       handleCommand(command) {
         if (command !== 'signOut') {
-          router.push({name: command})
+          if (command === 'UserHomePage') {
+            this.showingPhotos(false)
+            this.saveCurrentUser(this.user.id)
+            router.push({name: 'UserHomePage', params: {userId: this.user.id}})
+          } else {
+            router.push({name: command})
+          }
         } else {
           this.signOut({
             onSuccess: (username) => {

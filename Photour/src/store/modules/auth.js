@@ -2,7 +2,8 @@ import * as authApi from '../../api/auth'
 
 const state = {
   isSignIn: false,
-  user: null
+  user: null,
+  currentUser: null,
 }
 
 // actions 可异步
@@ -55,6 +56,12 @@ const actions = {
         onSuccess(state.user.username)
       }
     }), token)
+  },
+
+  fetchCurrentUserById({commit}, userId) {
+    authApi.fetchCurrentUserById((data => {
+      commit('saveCurrentUser', data.user[0])
+    }), userId)
   }
 };
 
@@ -70,6 +77,10 @@ const mutations = {
 
   'saveUser'(state, user) {
     state.user = user
+  },
+
+  'saveCurrentUser'(state, currentUser) {
+    state.currentUser = currentUser
   }
 
 };
