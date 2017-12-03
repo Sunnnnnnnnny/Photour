@@ -57,7 +57,7 @@
 
     <div class="content-wrapper">
       <my-events v-if="currentPage === 'MyEvents'"></my-events>
-      <my-favourites v-if="currentPage === 'MyFavourites'"></my-favourites>
+      <my-favourites :favourites=this.favourites v-if="currentPage === 'MyFavourites'"></my-favourites>
       <my-album v-if="currentPage === 'MyAlbum'"></my-album>
       <my-fans v-if="currentPage === 'MyFans'"></my-fans>
       <my-followings v-if="currentPage === 'MyFollowings'"></my-followings>
@@ -74,6 +74,7 @@
   import MyAlbum from './MyAlbum'
   import MyFans from './MyFans'
   import MyFollowings from './MyFollowings'
+  import {mapActions, mapState} from 'vuex'
 
   export default {
     name: 'user-home',
@@ -85,12 +86,25 @@
       MyFollowings
     },
     data() {
+      console.log('userhome', this.favourites)
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
         currentPage: 'MyEvents'
       }
     },
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      }),
+      ...mapState('photos', {
+        favourites: state => state.favourites
+      })
+    },
+
     methods: {
+      ...mapActions('photos', [
+        'fetchFavourites'
+      ]),
       goToAccountInfo() {
         router.push({name: 'AccountPage'})
       },
@@ -98,6 +112,8 @@
         this.currentPage = 'MyEvents'
       },
       goToMyFavourites() {
+//        console.log(this.user)
+        this.fetchFavourites(this.user.id)
         this.currentPage = 'MyFavourites'
       },
       goToMyAlbum() {

@@ -27,9 +27,12 @@
     computed: {},
     methods: {},
     beforeRouteEnter(to, from, next) {
-      console.log('before');
-      store.dispatch('fetchFavourites');
-      next(true);
+      store.dispatch('auth/refreshUser', {
+        onSuccess: () => {
+
+        }
+      })
+      next(true)
     }
   }
 </script>

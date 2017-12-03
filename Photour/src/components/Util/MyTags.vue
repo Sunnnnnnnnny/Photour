@@ -34,6 +34,7 @@
 <script>
   import DivHeader from './DivHeader'
   import {Button, Input, Tag} from 'element-ui'
+  import {mapState} from 'vuex'
 
   export default {
     name: 'tags',
@@ -45,12 +46,17 @@
     },
     data() {
       return {
-        dynamicTags: ['风景', '人文', '小清新', '高端摄影', '123321', '二次元'],
+//        dynamicTags: this.currentPhoto.tags,
         inputVisible: false,
         inputValue: ''
       }
     },
-    props: ['canBeEdited'],
+    props: ['canBeEdited', 'dynamicTags'],
+    computed: {
+      ...mapState('photos', {
+        currentPhoto: state => state.currentPhoto
+      })
+    },
     methods: {
       handleClose(tag) {
         this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);

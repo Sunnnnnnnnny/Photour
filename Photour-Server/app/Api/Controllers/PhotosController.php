@@ -114,4 +114,24 @@ class PhotosController extends Controller
             'message' => 'success',
         ]);
     }
+
+    public function getFavouritePhotos(Request $request)
+    {
+        $userId = $request->input('userId');
+
+        $photos = DB::table('photos')
+            ->join('likes', 'photos.id', '=', 'likes.photo_id')
+            ->where('likes.author_id', $userId)
+            ->get();
+        foreach ($photos as $photo) {
+            $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
+            $photo->author = $author;
+            $photo->liked = true;
+        }
+        return response()->json([
+            'status_code' => 200,
+            'photoUrls' => $photos,
+
+        ]);
+    }
 }

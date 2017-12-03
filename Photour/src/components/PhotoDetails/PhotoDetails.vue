@@ -41,7 +41,7 @@
 
     <div class="tags-wrapper">
       <div-header header="图片标签"></div-header>
-      <photo-tags :canBeEdited="false"></photo-tags>
+      <photo-tags :canBeEdited="false" :dynamicTags="tags.length>0?tags.split(' '):['暂无标签']"></photo-tags>
     </div>
 
     <div class="comments-wrapper">
@@ -71,7 +71,7 @@
   import SingleComment from '../PhotoComment/SingleComment'
   import DivHeader from '../../components/Util/DivHeader'
   import {mapState} from 'vuex'
-  import {store} from '../../main'
+  import {store, router} from '../../main'
   import {Input} from 'element-ui'
 
   export default {
@@ -87,15 +87,18 @@
       return {
         isEnlarged: false,
         textarea: '',
-        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + photoName)
+        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + photoName),
+        tags: this.currentPhoto.tags
       }
     },
-//    props: ['photoUrl'],
-    computed: {
-//      ...mapState('photoDetails', {
-//        photoName: state => state.photoUrl
-//      }),
+    created() {
+      console.log('created', this.currentPhoto)
+      if (this.currentPhoto === null) {
+        router.push({name: 'PhotoSquarePage'});
+      }
     },
+    computed: {},
+    props: ['currentPhoto'],
     methods: {
       enlargePhoto() {
         this.isEnlarged ? this.isEnlarged = false : this.isEnlarged = true;

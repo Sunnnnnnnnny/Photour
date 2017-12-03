@@ -36,7 +36,7 @@
 
   import {Row, Col, Message} from 'element-ui'
   import {router} from '../../main'
-  import {mapState, mapActions} from 'vuex'
+  import {mapState, mapActions, mapMutations} from 'vuex'
 
   export default {
     name: 'photo',
@@ -45,6 +45,9 @@
     },
     data() {
       let name = this.currentPhoto.url.split('/')[this.currentPhoto.url.split('/').length - 1];
+//      let name = this.currentPhoto.url
+//      console.log('name', name)
+//      console.log('photo', this.currentPhoto)
       return {
         liked: this.currentPhoto.liked,
         likes: this.currentPhoto.likes,
@@ -61,7 +64,11 @@
       ...mapActions('photos', [
         'likePhotos'
       ]),
+      ...mapMutations('photos', [
+        'saveCurrentPhoto'
+      ]),
       goToPhotoDetails() {
+        this.saveCurrentPhoto(this.currentPhoto)
         router.push({name: 'PhotoDetailsPage', params: {photoId: this.currentPhoto.url}});
         window.scrollTo(0, 0);
       },
@@ -78,6 +85,7 @@
             this.likes++;
           }
           this.liked = this.liked !== true;
+          console.log('like',this.currentPhoto.id)
           this.likePhotos({
             likeInfo: {
               userId: this.user.id,

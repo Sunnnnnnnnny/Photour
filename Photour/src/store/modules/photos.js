@@ -4,6 +4,7 @@ const state = {
   photos: [],
   favourites: [],
   albums: [],
+  currentPhoto: null,
 };
 
 
@@ -26,11 +27,11 @@ const actions = {
     }, userId)
   },
 
-  fetchFavourites({commit, state}) {
+  fetchFavourites({commit, state}, userId) {
+    // console.log(userId)
     photoApi.fetchFavourites((data => {
-      commit('saveFavourites', {favourites: data})
-      console.log(data)
-    }))
+      commit('saveFavourites', {favourites: data.photoUrls})
+    }), userId)
   },
 
   likePhotos({commit}, likeInfo) {
@@ -48,8 +49,12 @@ const mutations = {
   'saveAlbums'(state, {albums}) {
     state.albums = albums
   },
-  'saveFavourites'(state, favourites) {
+  'saveFavourites'(state, {favourites}) {
     state.favourites = favourites
+    console.log(state.favourites)
+  },
+  'saveCurrentPhoto'(state, currentPhoto) {
+    state.currentPhoto = currentPhoto
   },
 };
 

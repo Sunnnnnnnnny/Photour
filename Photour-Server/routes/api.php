@@ -22,6 +22,7 @@ $api->version('v1', function ($api) {
         $api->get('photos', 'PhotosController@fetchPhotos');
         $api->post('photos/upload', 'PhotosController@uploadPhotos');
         $api->post('photos/like', 'PhotosController@likePhotos');
+        $api->get('photos/favourites', 'PhotosController@getFavouritePhotos');
         $api->get('albums', 'AlbumsController@fetchAlbums');
 
         $api->group(['middleware' => 'jwt.auth'], function ($api) {

@@ -24,10 +24,11 @@
     data() {
       return {}
     },
+    props: ['favourites'],
     computed: {
-      ...mapState({
-        favourites: state => state.photos.favourites
-      })
+//      ...mapState('photos', {
+//        favourites: state => state.favourites
+//      })
     },
     methods: {},
   }

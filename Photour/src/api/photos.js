@@ -33,8 +33,13 @@ export function fetchAlbums(callback, userId) {
     })
 }
 
-export function fetchFavourites(callback) {
-  axios.get('/favourites')
+export function fetchFavourites(callback, userId) {
+  axios.get('/photos/favourites',
+    {
+      params: {
+        userId: userId
+      }
+    })
     .then((response) =>
       callback(response.data)
     )

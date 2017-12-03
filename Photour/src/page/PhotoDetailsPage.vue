@@ -2,7 +2,7 @@
   <div class="body-wrapper">
     <layout>
       <div class="container">
-        <photo-details>
+        <photo-details v-if="this.currentPhoto" :currentPhoto="this.currentPhoto">
 
         </photo-details>
       </div>
@@ -14,7 +14,7 @@
   import Layout from '../components/Layout/Layout'
   import PhotoDetails from '../components/PhotoDetails/PhotoDetails'
   import {router, store} from '../main'
-  import {mapMutations} from 'vuex'
+  import {mapMutations, mapState} from 'vuex'
 
   export default {
     name: 'photo-details-page',
@@ -30,12 +30,23 @@
         photoUrl: this.$route.params.photoId
       })
     },
-    computed: {},
+    computed: {
+      ...mapState('photos', {
+        currentPhoto: state => state.currentPhoto
+      })
+    },
     methods: {
       ...mapMutations('photoDetails', [
         'savePhotoUrl'
       ])
     },
+    beforeRouteEnter(to, from, next) {
+      store.dispatch('auth/refreshUser', {
+        onSuccess: () => {
+        }
+      })
+      next(true)
+    }
   }
 </script>
 
