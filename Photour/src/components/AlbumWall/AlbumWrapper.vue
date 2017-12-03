@@ -15,7 +15,7 @@
         {{this.currentAlbum.name}}
       </span>
 
-          <div class="right-wrapper" @click="handleDelete">
+          <div v-if="this.user.id === this.userId" class="right-wrapper" @click="handleDelete">
             <img src="../../assets/img/delete.png" width="14"/>
             <span>删除</span>
           </div>
@@ -39,6 +39,7 @@
     },
     data() {
       return {
+        userId: parseInt(this.$route.params.userId),
         photoUrl: 'https://cdn.dribbble.com/users/226242/screenshots/3871814/1976_chevrolet_blazer.png',
       }
     },
