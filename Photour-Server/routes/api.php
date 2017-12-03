@@ -27,6 +27,7 @@ $api->version('v1', function ($api) {
         $api->get('albums', 'AlbumsController@fetchAlbums');
         $api->get('albums/photos', 'AlbumsController@fetchPhotosInAlbums');
         $api->post('albums/create', 'AlbumsController@createAlbum');
+        $api->get('albums/delete', 'AlbumsController@deleteAlbum');
 
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             $api->get('user/me', 'AuthController@getAuthenticatedUser');

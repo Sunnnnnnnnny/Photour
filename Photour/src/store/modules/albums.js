@@ -36,6 +36,22 @@ const actions = {
         onError(data.message)
       }
     }, albumInfo)
+  },
+
+  deleteAlbum({commit, state, rootState, dispatch}, {onSuccess, onError}) {
+    let albumId = state.currentAlbum ? state.currentAlbum.id : null
+    let userId = rootState.auth.user ? rootState.auth.user.id : null
+    console.log(albumId)
+    albumsApi.deleteAlbum((data) => {
+      if (data.message === 'success') {
+        dispatch('fetchAlbums', {userId: userId})
+        if (onSuccess) {
+          onSuccess('删除成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }, albumId)
   }
 };
 

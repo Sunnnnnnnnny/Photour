@@ -49,5 +49,9 @@ button {
       .grid-content .div-wrapper .info-wrapper span {
         color: #7b7b7b;
         font-size: 10px; }
+      .grid-content .div-wrapper .info-wrapper .right-wrapper {
+        display: inline-block;
+        float: right;
+        cursor: pointer; }
 
 /*# sourceMappingURL=AlbumWrapper.css.map */

@@ -44,3 +44,18 @@ export function createAlbum(callback, albumInfo) {
     console.log(error)
   })
 }
+
+export function deleteAlbum(callback, albumId) {
+  axios.get('/albums/delete',
+    {
+      params: {
+        albumId: albumId,
+      }
+    }
+  ).then((response) => {
+      callback(response.data)
+    }
+  ).catch(function (error) {
+    console.log(error)
+  })
+}

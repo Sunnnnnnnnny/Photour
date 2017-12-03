@@ -14,6 +14,11 @@
           <span class="author-name">
         {{this.currentAlbum.name}}
       </span>
+
+          <div class="right-wrapper" @click="handleDelete">
+            <img src="../../assets/img/delete.png" width="14"/>
+            <span>删除</span>
+          </div>
         </div>
 
       </div>
@@ -62,6 +67,10 @@
             userId: this.user.id
           })
         this.showingPhotos(true)
+      },
+      handleDelete() {
+        this.saveCurrentAlbum(this.currentAlbum)
+        this.$modal.show('delete-album-modal')
       }
     }
   }

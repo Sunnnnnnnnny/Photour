@@ -67,6 +67,21 @@ class AlbumsController extends Controller
                 'message' => 'success',
             ]);
         }
+    }
 
+    public function deleteAlbum(Request $request)
+    {
+        $albumId = $request->albumId;
+        if (DB::table('albums')->where('id', $albumId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该相册！',
+            ]);
+        } else {
+            DB::table('albums')->where('id', $albumId)->delete();
+            DB::table('photos')->where('album_id', $albumId)->delete();
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
     }
 }

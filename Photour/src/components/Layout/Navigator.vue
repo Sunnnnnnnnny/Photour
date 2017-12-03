@@ -39,6 +39,7 @@
     <photo-upload-modal v-if="user" :user="user"></photo-upload-modal>
     <forward-modal></forward-modal>
     <create-album-modal></create-album-modal>
+    <delete-album-modal></delete-album-modal>
 
   </div>
 </template>
@@ -51,8 +52,8 @@
   import PhotoUploadModal from '../PhotoUpload/PhotoUploadModal'
   import ForwardModal from '../ForwardModal/ForwardModal'
   import CreateAlbumModal from '../AlbumWall/CreateAlbumModal'
+  import DeleteAlbumModal from '../AlbumWall/DeleteAlbumModal'
   import {router} from '../../main'
-
   import {mapMutations, mapState, mapActions} from 'vuex'
 
   //  Vue.use(Input)
@@ -60,6 +61,7 @@
   export default {
     name: 'navigator',
     components: {
+      DeleteAlbumModal,
       elInput: Input,
       elButton: Button,
       elDropdown: Dropdown,
@@ -68,7 +70,9 @@
       SignIn: AuthModal,
       PhotoUploadModal,
       ForwardModal,
-      CreateAlbumModal
+      CreateAlbumModal,
+      DeleteAlbumModal
+
     },
     data() {
       return {
