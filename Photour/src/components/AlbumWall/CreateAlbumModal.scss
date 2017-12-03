@@ -3,13 +3,12 @@
 @import "../../assets/scss/mixin";
 
 .create-album-wrapper {
-  padding: 30px;
+  padding: 50px 30px 30px;
   width: 100%;
   height: 100%;
   background-color: $white-color;
 
   /deep/ .el-form {
-    padding-top: 20px;
     margin: 0 auto;
     width: 85%;
   }

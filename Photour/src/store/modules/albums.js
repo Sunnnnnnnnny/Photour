@@ -22,6 +22,20 @@ const actions = {
     albumsApi.fetchPhotosInAlbums((data) => {
       commit('savePhotosInAlbums', {photos: data})
     }, {albumId, userId})
+  },
+
+  createAlbum({commit, rootState, dispatch}, {albumInfo, onSuccess, onError}) {
+    let userId = rootState.auth.user ? rootState.auth.user.id : null
+    albumsApi.createAlbum((data) => {
+      if (data.message === 'success') {
+        dispatch('fetchAlbums', {userId: userId})
+        if (onSuccess) {
+          onSuccess('创建成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }, albumInfo)
   }
 };
 

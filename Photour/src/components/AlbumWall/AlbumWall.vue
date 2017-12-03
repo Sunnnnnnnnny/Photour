@@ -47,6 +47,7 @@
     methods: {
       handleCreateAlbum() {
         this.$modal.show('create-album-modal');
+
       }
     },
 

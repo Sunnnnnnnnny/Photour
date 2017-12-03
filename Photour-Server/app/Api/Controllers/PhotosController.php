@@ -131,7 +131,6 @@ class PhotosController extends Controller
         return response()->json([
             'status_code' => 200,
             'photoUrls' => $photos,
-
         ]);
     }
 }

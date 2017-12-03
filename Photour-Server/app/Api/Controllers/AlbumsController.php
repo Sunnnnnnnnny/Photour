@@ -9,6 +9,7 @@
 namespace App\Api\Controllers;
 
 use App\User;
+use App\Album;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -47,5 +48,25 @@ class AlbumsController extends Controller
             }
         }
         return json_encode($photos);
+    }
+
+    public function createAlbum(Request $request)
+    {
+        if (!DB::table('albums')->where('name', $request->name)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '相册名称重复！',
+            ]);
+        } else {
+            DB::table('albums')->insert([
+                'author_id' => $request->author_id,
+                'name' => $request->name,
+                'description' => $request->description,
+                'permission' => $request->permission == '公开' ? 'public' : 'private'
+            ]);
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+
     }
 }

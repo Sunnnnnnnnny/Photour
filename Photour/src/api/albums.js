@@ -30,3 +30,17 @@ export function fetchPhotosInAlbums(callback, {albumId, userId}) {
     console.log(error)
   })
 }
+
+export function createAlbum(callback, albumInfo) {
+  axios.post('/albums/create',
+    albumInfo,
+    {
+      headers: {'Content-Type': 'application/json'}
+    }
+  ).then((response) => {
+      callback(response.data)
+    }
+  ).catch(function (error) {
+    console.log(error)
+  })
+}

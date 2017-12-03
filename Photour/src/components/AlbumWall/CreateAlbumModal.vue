@@ -2,7 +2,7 @@
   <modal
     name="create-album-modal"
     :clickToClose="true"
-    :height="360">
+    :height="420">
     <div class="create-album-wrapper">
       <div-header header="新建相册"></div-header>
 
@@ -12,6 +12,12 @@
         </el-form-item>
         <el-form-item label="相册描述" prop="description">
           <el-input type="textarea" :rows="4" v-model="ruleForm.description"></el-input>
+        </el-form-item>
+        <el-form-item label="相册权限" prop="permission">
+          <el-radio-group v-model="ruleForm.permission">
+            <el-radio label="公开">公开</el-radio>
+            <el-radio label="私密">私密</el-radio>
+          </el-radio-group>
         </el-form-item>
         <!--<el-form-item>-->
         <!--<el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>-->
@@ -31,8 +37,8 @@
 </template>
 
 <script>
-  import {Input, Message, Form, FormItem} from 'element-ui'
-  import {mapState} from 'vuex'
+  import {Input, Message, Form, FormItem, RadioGroup, Radio} from 'element-ui'
+  import {mapState, mapActions} from 'vuex'
   import {router} from '../../main'
   import DivHeader from '../Util/DivHeader'
 
@@ -42,14 +48,19 @@
       elInput: Input,
       elForm: Form,
       elFormItem: FormItem,
-      DivHeader
+      elRadio: Radio,
+      elRadioGroup: RadioGroup,
+      DivHeader,
+      Message
     },
     data() {
       return {
         textarea: '',
         ruleForm: {
+          author_id: this.$route.params.userId,
           name: '',
-          description: ''
+          description: '',
+          permission: '公开'
         },
         rules: {
           name: [
@@ -57,6 +68,9 @@
           ],
           description: [
             {required: true, message: '请输入相册描述', trigger: 'blur'},
+          ],
+          permission: [
+            {required: true}
           ]
         }
       };
@@ -64,12 +78,28 @@
     },
     computed: {},
     methods: {
+      ...mapActions('albums', [
+        'createAlbum'
+      ]),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             console.log(this.ruleForm);
+            this.createAlbum({
+              albumInfo: this.ruleForm,
+              onSuccess: (success) => {
+                this.$modal.hide('create-album-modal');
+                Message({
+                  message: success,
+                  type: 'success'
+                });
+              },
+              onError: (error) => {
+                Message.error(error)
+              }
+            })
           } else {
-            console.log('error submit!!');
+            Message.error('请按照正确格式填写！')
             return false;
           }
         });
