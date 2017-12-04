@@ -29,6 +29,19 @@ const actions = {
     photoApi.likePhotos((data => {
       console.log(data)
     }), likeInfo)
+  },
+
+  deletePhoto({state, rootState, dispatch}, {onSuccess, onError}) {
+    let photoId = state.currentPhoto ? state.currentPhoto.id : null
+    photoApi.deletePhoto((data => {
+      if (data.message === 'success') {
+        if (onSuccess) {
+          onSuccess('删除成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), photoId)
   }
 
 };

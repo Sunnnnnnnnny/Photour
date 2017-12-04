@@ -44,3 +44,18 @@ export function likePhotos(callback, {likeInfo}) {
       console.log(error)
     })
 }
+
+export function deletePhoto(callback, photoId) {
+  axios.get('/photos/delete',
+    {
+      params: {
+        photoId: photoId
+      }
+    })
+    .then((response) =>
+      callback(response.data)
+    )
+    .catch(function (error) {
+      console.log(error)
+    })
+}

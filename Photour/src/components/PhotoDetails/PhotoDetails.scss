@@ -69,6 +69,19 @@
             color: $white-color;
           }
         }
+
+        .delete-button {
+          border: solid 1px $grey;
+          @include transition(all, 0.5s);
+          &:hover {
+            @include transition(all, 0.5s);
+            background-color: $background-color;
+          }
+          span, a {
+            color: $grey;
+          }
+        }
+
       }
 
     }

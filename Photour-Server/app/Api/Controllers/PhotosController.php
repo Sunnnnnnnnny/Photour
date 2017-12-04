@@ -57,6 +57,7 @@ class PhotosController extends Controller
             $type = $file->getClientMimeType();     // image/jpeg
             $album = $request->input('album');
             $tags = $request->input('tags');
+            $description = $request->input('description');
             $userId = $request->input('userId');
             $albumId = DB::table('albums')->where([
                 ['author_id', '=', $userId],
@@ -73,7 +74,8 @@ class PhotosController extends Controller
                 'url' => $array[sizeof($array) - 1],
                 'likes' => 0,
                 'comments' => 0,
-                'tags' => $tags
+                'tags' => $tags,
+                'description' => $description
             ]);
 
             return response()->json([
@@ -132,5 +134,20 @@ class PhotosController extends Controller
             'status_code' => 200,
             'photoUrls' => $photos,
         ]);
+    }
+
+    public function deletePhoto(Request $request)
+    {
+        $photoId = $request->photoId;
+        if (DB::table('photos')->where('id', $photoId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该照片！',
+            ]);
+        } else {
+            DB::table('photos')->where('id', $photoId)->delete();
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
     }
 }

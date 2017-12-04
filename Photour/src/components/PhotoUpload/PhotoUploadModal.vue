@@ -1,7 +1,7 @@
 <template>
   <modal
     name="photo-upload-modal"
-    :height="550"
+    :height="650"
     :clickToClose="false"
     :adaptive="true"
   >
@@ -48,9 +48,16 @@
 
       <div class="tags-wrapper">
         <p>
-          填写图片标签（使用空格隔开）
+          图片标签（使用空格隔开）
         </p>
         <el-input v-model="uploadData.tags"></el-input>
+      </div>
+
+      <div class="tags-wrapper">
+        <p>
+          图片描述
+        </p>
+        <el-input type="textarea" :rows="2" v-model="uploadData.description"></el-input>
       </div>
 
       <div class="upload-button">
@@ -92,6 +99,7 @@
         uploadData: {
           album: '默认相册',
           tags: '',
+          description: '我上传了一张照片，快来看看吧！',
           userId: this.user.id
         },
         files: [],

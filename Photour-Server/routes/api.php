@@ -20,10 +20,15 @@ $api->version('v1', function ($api) {
         $api->post('user/login', 'AuthController@authenticate');
         $api->post('user/register', 'AuthController@register');
         $api->get('user/get', 'AuthController@fetchCurrentUserById');
+
+
         $api->get('photos', 'PhotosController@fetchPhotos');
         $api->post('photos/upload', 'PhotosController@uploadPhotos');
         $api->post('photos/like', 'PhotosController@likePhotos');
         $api->get('photos/favourites', 'PhotosController@getFavouritePhotos');
+        $api->get('photos/delete', 'PhotosController@deletePhoto');
+
+
         $api->get('albums', 'AlbumsController@fetchAlbums');
         $api->get('albums/photos', 'AlbumsController@fetchPhotosInAlbums');
         $api->post('albums/create', 'AlbumsController@createAlbum');

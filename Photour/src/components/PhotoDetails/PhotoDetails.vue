@@ -32,6 +32,14 @@
             <a :href=photoUrl download>下载</a>
           </button>
         </div>
+
+        <div v-if="this.user.id === this.photoAuthorId" class="button-wrapper">
+          <button class="delete-button" @click="handleDelete">
+            <img src="../../assets/img/delete.png" width="16"/>
+            <span>删除</span>
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -87,6 +95,7 @@
     data() {
       let photoName = this.$route.params.photoId
       return {
+        photoAuthorId: parseInt(this.currentPhoto.author_id),
         liked: this.currentPhoto.liked,
         likes: this.currentPhoto.likes,
         isEnlarged: false,
@@ -121,6 +130,9 @@
       },
       handleForward() {
         this.$modal.show('forward-modal');
+      },
+      handleDelete() {
+        this.$modal.show('delete-photo-modal');
       },
       handleComment() {
 

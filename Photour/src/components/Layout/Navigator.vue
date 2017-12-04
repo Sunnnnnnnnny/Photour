@@ -40,7 +40,7 @@
     <forward-modal></forward-modal>
     <create-album-modal></create-album-modal>
     <delete-album-modal></delete-album-modal>
-
+    <delete-photo-modal></delete-photo-modal>
   </div>
 </template>
 
@@ -53,6 +53,7 @@
   import ForwardModal from '../ForwardModal/ForwardModal'
   import CreateAlbumModal from '../AlbumWall/CreateAlbumModal'
   import DeleteAlbumModal from '../AlbumWall/DeleteAlbumModal'
+  import DeletePhotoModal from '../PhotoDetails/DeletePhotoModal'
   import {router} from '../../main'
   import {mapMutations, mapState, mapActions} from 'vuex'
 
@@ -61,7 +62,6 @@
   export default {
     name: 'navigator',
     components: {
-      DeleteAlbumModal,
       elInput: Input,
       elButton: Button,
       elDropdown: Dropdown,
@@ -71,8 +71,8 @@
       PhotoUploadModal,
       ForwardModal,
       CreateAlbumModal,
-      DeleteAlbumModal
-
+      DeleteAlbumModal,
+      DeletePhotoModal
     },
     data() {
       return {

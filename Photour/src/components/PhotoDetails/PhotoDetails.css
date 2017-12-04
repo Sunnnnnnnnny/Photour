@@ -86,6 +86,22 @@ button {
             background-color: #f47f7e; }
           .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button span, .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .download-button a {
             color: #ffffff; }
+        .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .delete-button {
+          border: solid 1px #7b7b7b;
+          -webkit-transition: all, 0.5s;
+          -moz-transition: all, 0.5s;
+          -ms-transition: all, 0.5s;
+          -o-transition: all, 0.5s;
+          transition: all, 0.5s; }
+          .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .delete-button:hover {
+            -webkit-transition: all, 0.5s;
+            -moz-transition: all, 0.5s;
+            -ms-transition: all, 0.5s;
+            -o-transition: all, 0.5s;
+            transition: all, 0.5s;
+            background-color: #f6f6f6; }
+          .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .delete-button span, .photo-details-wrapper .operation-wrapper .right-wrapper .button-wrapper .delete-button a {
+            color: #7b7b7b; }
   .photo-details-wrapper .photo-wrapper {
     display: inline-block;
     padding-top: 20px;
