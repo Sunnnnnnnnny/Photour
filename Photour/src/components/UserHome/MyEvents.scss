@@ -7,4 +7,10 @@
   width: 100%;
   height: auto;
   //background-color: $white-color;
+
+  .empty-events {
+    padding-top: 20px;
+    text-align: center;
+    color: $grey;
+  }
 }

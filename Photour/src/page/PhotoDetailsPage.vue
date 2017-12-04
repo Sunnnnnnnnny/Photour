@@ -26,6 +26,7 @@
       return {}
     },
     created() {
+      console.log('create', this.currentPhoto)
       this.savePhotoUrl({
         photoUrl: this.$route.params.photoId
       })

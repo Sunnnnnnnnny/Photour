@@ -11,7 +11,6 @@ const mutations = {
 
   'savePhotoUrl'(state, {photoUrl}) {
     state.photoUrl = photoUrl;
-    console.log(state.photoUrl)
   }
 
 };

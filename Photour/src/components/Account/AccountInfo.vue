@@ -201,7 +201,7 @@
 
       },
       goToHomepage() {
-        router.push({name: 'UserHomePage'})
+        router.push({name: 'UserHomePage', params: {userId: this.user.id}})
       }
     }
   }

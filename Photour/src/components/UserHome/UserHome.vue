@@ -56,7 +56,7 @@
     </div>
 
     <div class="content-wrapper">
-      <my-events v-if="currentPage === 'MyEvents' && !this.isShowingPhotos"></my-events>
+      <my-events v-if="currentPage === 'MyEvents' && !this.isShowingPhotos" :events="this.events"></my-events>
       <my-favourites :favourites=this.favourites
                      v-if="currentPage === 'MyFavourites' && !this.isShowingPhotos"></my-favourites>
       <my-album :albums=this.albums v-if="currentPage === 'MyAlbum' && !this.isShowingPhotos"></my-album>
@@ -107,10 +107,14 @@
         albums: state => state.albums,
         photosInAlbums: state => state.photosInAlbums,
         isShowingPhotos: state => state.isShowingPhotos
+      }),
+      ...mapState('event', {
+        events: state => state.events
       })
     },
     created() {
       this.fetchCurrentUserById(this.userId)
+      this.fetchEvents(this.userId)
     },
     methods: {
       ...mapActions('photos', [
@@ -121,6 +125,9 @@
       ]),
       ...mapActions('auth', [
         'fetchCurrentUserById'
+      ]),
+      ...mapActions('event', [
+        'fetchEvents'
       ]),
       ...mapMutations('albums', [
         'showingPhotos'

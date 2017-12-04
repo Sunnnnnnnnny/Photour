@@ -19,7 +19,7 @@
       </div>
 
       <div class="button-wrapper">
-        <button @click="forward">
+        <button @click="handleForward">
           转  发
         </button>
       </div>
@@ -33,7 +33,7 @@
 <script>
   import DivHeader from '../Util/DivHeader'
   import {Input, Message} from 'element-ui'
-  import {mapState} from 'vuex'
+  import {mapState, mapActions} from 'vuex'
   import {router} from '../../main'
 
   export default {
@@ -43,22 +43,41 @@
       elInput: Input
     },
     data() {
+      let name = this.currentPhoto.url.split('/')[this.currentPhoto.url.split('/').length - 1];
       return {
+        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + name),
         textarea: ''
       }
     },
     computed: {
-      ...mapState({
-        photoUrl: state => state.photoDetails.photoUrl
+      ...mapState('auth', {
+        user: state => state.user
       })
     },
+    props: ['currentPhoto'],
     methods: {
-      forward() {
-        Message({
-          message: '转发成功！',
-          type: 'success'
-        });
-        router.push({name: 'UserHomePage'});
+      ...mapActions('event', [
+        'createEvent'
+      ]),
+      handleForward() {
+        this.createEvent({
+          eventInfo: {
+            eventContent: this.textarea,
+            type: 'forward',
+            photoId: this.currentPhoto.id,
+          },
+          onSuccess: () => {
+            this.$modal.hide('forward-modal');
+            router.push({name: 'UserHomePage', params: {userId: this.user.id}})
+            Message({
+              message: '转发成功！',
+              type: 'success'
+            });
+          },
+          onError: (error) => {
+            Message.error(error)
+          }
+        })
       }
     }
   }

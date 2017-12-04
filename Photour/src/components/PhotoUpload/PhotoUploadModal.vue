@@ -90,7 +90,7 @@
     computed: {
       ...mapState('albums', {
         albums: state => state.albums
-      })
+      }),
     },
     props: ['user'],
     data() {
@@ -107,6 +107,9 @@
       }
     },
     methods: {
+      ...mapActions('event', [
+        'createEvent'
+      ]),
       closeBox() {
         this.$modal.hide('photo-upload-modal');
         this.files = []
@@ -123,10 +126,22 @@
         }]
 
         if (response.message === 'success') {
-          Message({
-            message: '上传成功!',
-            type: 'success'
-          });
+          this.createEvent({
+            eventInfo: {
+              eventContent: this.uploadData.description,
+              type: 'upload',
+            },
+            onSuccess: () => {
+              router.push({name: 'UserHomePage', params: {userId: this.user.id}})
+              Message({
+                message: '上传成功！',
+                type: 'success'
+              });
+            },
+            onError: (error) => {
+              Message.error(error)
+            }
+          })
           this.$modal.hide('photo-upload-modal');
           this.files = []
         }

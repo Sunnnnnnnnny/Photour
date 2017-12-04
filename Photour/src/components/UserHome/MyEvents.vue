@@ -1,8 +1,9 @@
 <template>
 
   <div class="events-wrapper">
-    <single-event v-for="item in 5"></single-event>
-
+    <p v-if="this.events.length===0" class="empty-events">暂时没有动态哦～</p>
+    <single-event v-else v-for="item in events"
+                  :currentEvent="item"></single-event>
   </div>
 
 </template>
@@ -18,8 +19,10 @@
       SingleEvent
     },
     data() {
+      console.log(this.events.length)
       return {}
     },
+    props: ['events'],
     computed: {
 //      ...mapState({
 //        favourites: state => state.photos.favourites

@@ -37,7 +37,7 @@
 
     <sign-in></sign-in>
     <photo-upload-modal v-if="user" :user="user"></photo-upload-modal>
-    <forward-modal></forward-modal>
+    <forward-modal v-if="this.currentPhoto" :currentPhoto="this.currentPhoto"></forward-modal>
     <create-album-modal></create-album-modal>
     <delete-album-modal></delete-album-modal>
     <delete-photo-modal></delete-photo-modal>
@@ -82,6 +82,9 @@
     computed: {
       ...mapState('auth', {
         user: state => state.user
+      }),
+      ...mapState('photos', {
+        currentPhoto: state => state.currentPhoto
       })
     },
     methods: {

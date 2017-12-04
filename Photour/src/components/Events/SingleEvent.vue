@@ -5,11 +5,11 @@
 
       <div class="user">
         <img src="../../assets/img/user.png" width="20"/>
-        <span>tiann</span>
+        <span>{{this.currentEvent.author_name}}</span>
       </div>
 
       <div class="time">
-        <span>2017-11-06 21:33:20</span>
+        <span>{{this.currentEvent.create_at}}</span>
       </div>
 
     </div>
@@ -21,15 +21,12 @@
 
     <div class="content-wrapper">
       <div class="content-head">
-        <span>tiann </span>
-        发布了一张照片
+        <span>{{this.currentEvent.author_name}} </span>
+        {{this.currentEvent.type === 'forward' ? '转发了一张照片' : '发布了一张照片'}}
       </div>
 
       <div class="content-body">
-        这张照片我真的非常喜欢！！ ：）
-        这张照片我真的非常喜欢！！ ：）
-        这张照片我真的非常喜欢！！ ：）
-        这张照片我真的非常喜欢！！ ：）
+        {{this.currentEvent.content}}
       </div>
 
     </div>
@@ -39,15 +36,16 @@
 </template>
 
 <script>
-  import {mapState, mapActions} from 'vuex'
+  import {mapState, mapActions, mapMutations} from 'vuex'
   import {store, router} from '../../main'
 
   export default {
     name: 'single-event',
     components: {},
     data() {
+      let name = this.currentEvent.photo.url.split('/')[this.currentEvent.photo.url.split('/').length - 1];
       return {
-        photoUrl: 'https://images.unsplash.com/photo-1498248193836-88f8c8d70a3f?w=2091'
+        photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + name),
       }
     },
     computed: {
@@ -55,9 +53,14 @@
 //        favourites: state => state.photos.favourites
 //      })
     },
+    props: ['currentEvent'],
     methods: {
+      ...mapMutations('photos', [
+        'saveCurrentPhoto'
+      ]),
       goToPhotoDetails() {
-        router.push({name: 'PhotoDetailsPage', params: {photoId: this.photoUrl}});
+        this.saveCurrentPhoto(this.currentEvent.photo)
+        router.push({name: 'PhotoDetailsPage', params: {photoId: this.currentEvent.photo.url}});
         window.scrollTo(0, 0);
       }
     },
