@@ -58,3 +58,46 @@ export function fetchCurrentUserById(callback, userId) {
       console.log(error)
     })
 }
+
+export function editUserInfo(callback, userInfo) {
+  axios.post('/user/editInfo',
+    userInfo,
+    {
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(function (response) {
+      callback(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+
+export function editUserPw(callback, pwInfo) {
+  axios.post('/user/editPw',
+    pwInfo,
+    {
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(function (response) {
+      callback(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+
+
+export function editUserTags(callback, editInfo) {
+  axios.post('/user/editTags',
+    editInfo,
+    {
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(function (response) {
+      callback(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+}

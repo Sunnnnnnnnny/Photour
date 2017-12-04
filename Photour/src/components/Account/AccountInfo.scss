@@ -68,6 +68,11 @@
       width: 70%;
     }
 
+    /deep/ .el-form-item__error {
+      padding-top: 2px;
+      padding-left: 150px;
+    }
+
     .confirm-button-wrapper {
       display: block;
       padding-right: 11%;

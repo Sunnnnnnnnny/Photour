@@ -83,4 +83,79 @@ class AuthController extends BaseController
         $user = DB::table('Users')->where('id', $userId)->get();
         return response()->json(compact('user'));
     }
+
+    public function editUserInfo(Request $request)
+    {
+        $userId = $request->userId;
+        $username = $request->username;
+        $phone = $request->phone;
+        $gender = $request->gender;
+        if (DB::table('Users')->where('id', $userId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该用户！',
+            ]);
+        } else {
+            DB::table('Users')
+                ->where('id', $userId)
+                ->update([
+                    'username' => $username,
+                    'phone' => $phone,
+                    'gender' => $gender
+                ]);
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+    }
+
+    public function editUserPw(Request $request)
+    {
+        $userId = $request->userId;
+        $oldPw = $request->password;
+        $newPw = $request->newPw;
+        $confirmPw = $request->comfirmPw;
+//        return response()->json([
+//            'message' => Hash::check((string)$oldPw, DB::table('Users')->where('id', $userId)->value('password')),
+//            'oldPw' => (string)$oldPw,
+//            'realPw' => DB::table('Users')->where('id', $userId)->value('password')
+//        ]);
+        if (DB::table('Users')->where('id', $userId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该用户！',
+            ]);
+        } else if (!Hash::check((string)$oldPw, DB::table('Users')->where('id', $userId)->value('password'))) {
+            return response()->json([
+                'message' => '用户密码错误！',
+            ]);
+        } else if (!$newPw === $confirmPw) {
+            return response()->json([
+                'message' => '两次密码不一致！',
+            ]);
+        } else {
+            DB::table('Users')
+                ->where('id', $userId)
+                ->update(['password' => Hash::make($newPw)]);
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+    }
+
+    public function editUserTags(Request $request)
+    {
+        $userId = $request->userId;
+        $tags = $request->tags;
+        if (DB::table('Users')->where('id', $userId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该用户！',
+            ]);
+        } else {
+            DB::table('Users')
+                ->where('id', $userId)
+                ->update(['tags' => $tags]);
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+    }
 }

@@ -1,8 +1,8 @@
 <template>
-  <div class="body-wrapper">
+  <div v-if="this.user" class="body-wrapper">
     <layout>
       <div class="container">
-        <account-info></account-info>
+        <account-info :user="this.user"></account-info>
       </div>
     </layout>
   </div>
@@ -12,8 +12,9 @@
 <script>
   import Layout from '../components/Layout/Layout'
   import AccountInfo from '../components/Account/AccountInfo.vue'
+  import {Message} from 'element-ui'
   import {router, store} from '../main'
-  import {mapMutations} from 'vuex'
+  import {mapMutations, mapState} from 'vuex'
 
   export default {
     name: 'account-page',
@@ -24,8 +25,24 @@
     data() {
       return {}
     },
-    computed: {},
-    methods: {}
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      })
+    },
+    methods: {},
+    beforeRouteEnter(to, from, next) {
+      store.dispatch('auth/refreshUser', {
+        onSuccess: () => {
+
+        },
+        onError: (error) => {
+          Message.error('请先登录！')
+          router.push({name: 'PhotoSquarePage'})
+        }
+      })
+      next(true)
+    }
   }
 </script>
 

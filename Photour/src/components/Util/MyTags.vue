@@ -4,7 +4,7 @@
     <div v-if="canBeEdited">
       <el-tag
         :key="tag"
-        v-for="tag in dynamicTags"
+        v-for="tag in tags"
         :closable="true"
         :close-transition="false"
         @close="handleClose(tag)"
@@ -25,7 +25,7 @@
     </div>
 
     <div v-else>
-      <el-tag v-for="tag in dynamicTags">{{tag}}</el-tag>
+      <el-tag v-for="tag in tags">{{tag}}</el-tag>
     </div>
   </div>
 
@@ -33,8 +33,8 @@
 
 <script>
   import DivHeader from './DivHeader'
-  import {Button, Input, Tag} from 'element-ui'
-  import {mapState} from 'vuex'
+  import {Button, Input, Tag, Message} from 'element-ui'
+  import {mapState, mapActions} from 'vuex'
 
   export default {
     name: 'tags',
@@ -42,10 +42,12 @@
       DivHeader,
       elButton: Button,
       elInput: Input,
-      elTag: Tag
+      elTag: Tag,
+      Message
     },
     data() {
       return {
+        tags: this.dynamicTags,
 //        dynamicTags: this.currentPhoto.tags,
         inputVisible: false,
         inputValue: ''
@@ -58,8 +60,12 @@
       })
     },
     methods: {
+      ...mapActions('auth', [
+        'editUserTags'
+      ]),
       handleClose(tag) {
-        this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+        this.tags.splice(this.tags.indexOf(tag), 1);
+        this.handleEditTags()
       },
 
       showInput() {
@@ -72,10 +78,26 @@
       handleInputConfirm() {
         let inputValue = this.inputValue;
         if (inputValue) {
-          this.dynamicTags.push(inputValue);
+          this.tags.push(inputValue);
+          this.handleEditTags()
         }
         this.inputVisible = false;
         this.inputValue = '';
+      },
+
+      handleEditTags() {
+        this.editUserTags({
+          tags: this.tags.join(' '),
+          onSuccess: () => {
+            Message({
+              message: '修改成功！',
+              type: 'success'
+            });
+          },
+          onError: (error) => {
+            Message.error(error)
+          }
+        })
       }
     }
   }

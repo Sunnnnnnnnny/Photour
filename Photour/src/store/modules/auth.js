@@ -62,6 +62,50 @@ const actions = {
     authApi.fetchCurrentUserById((data => {
       commit('saveCurrentUser', data.user[0])
     }), userId)
+  },
+
+  editUserInfo({state}, {userInfo, onSuccess, onError}) {
+    let userId = state.user ? state.user.id : null
+    userInfo.userId = userId
+    authApi.editUserInfo((data => {
+      if (data.message === 'success') {
+        if (onSuccess) {
+          onSuccess('修改成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), userInfo)
+  },
+
+  editUserPw({state}, {pwInfo, onSuccess, onError}) {
+    let userId = state.user ? state.user.id : null
+    pwInfo.userId = userId
+    authApi.editUserPw((data => {
+      if (data.message === 'success') {
+        if (onSuccess) {
+          onSuccess('修改成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), pwInfo)
+  },
+
+  editUserTags({state}, {tags, onSuccess, onError}) {
+    let editInfo = {
+      userId: state.user ? state.user.id : null,
+      tags: tags
+    }
+    authApi.editUserTags((data => {
+      if (data.message === 'success') {
+        if (onSuccess) {
+          onSuccess('修改成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), editInfo)
   }
 };
 

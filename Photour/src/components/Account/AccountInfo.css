@@ -75,6 +75,9 @@ button {
       width: 150px; }
     .account-info-wrapper .form-wrapper /deep/ .el-input {
       width: 70%; }
+    .account-info-wrapper .form-wrapper /deep/ .el-form-item__error {
+      padding-top: 2px;
+      padding-left: 150px; }
     .account-info-wrapper .form-wrapper .confirm-button-wrapper {
       display: block;
       padding-right: 11%;
