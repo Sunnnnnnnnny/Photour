@@ -16,6 +16,7 @@
     name: 'my-album',
     components: {AlbumWall},
     data() {
+      console.log(this.albums)
       return {}
     },
     props: ['albums'],

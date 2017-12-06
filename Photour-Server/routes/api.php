@@ -44,6 +44,9 @@ $api->version('v1', function ($api) {
         $api->post('comments/add', 'CommentsController@addComment');
         $api->get('comments', 'CommentsController@fetchComments');
 
+        $api->get('follows', 'FollowsController@fetchFollows');
+        $api->post('follows/edit', 'FollowsController@editFollows');
+
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             $api->get('user/me', 'AuthController@getAuthenticatedUser');
         });

@@ -9,7 +9,6 @@ const actions = {
   createEvent({rootState}, {eventInfo, onSuccess, onError}) {
     let userId = rootState.auth.user ? rootState.auth.user.id : null
     eventInfo.userId = userId
-    console.log(userId)
     eventApi.createEvent((data => {
       if (data.message === 'success') {
         if (onSuccess) {

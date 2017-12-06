@@ -2,7 +2,7 @@
   <div class="body-wrapper">
     <layout>
       <div class="container">
-        <user-home></user-home>
+        <user-home v-if="this.user" :user=this.user></user-home>
       </div>
     </layout>
   </div>
@@ -24,7 +24,11 @@
     data() {
       return {}
     },
-    computed: {},
+    computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      }),
+    },
     methods: {},
     beforeRouteEnter(to, from, next) {
       store.dispatch('auth/refreshUser', {

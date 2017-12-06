@@ -1,20 +1,22 @@
 <template>
 
-  <div v-if="this.user" class="user-home-wrapper">
+  <div v-if="this.currentUser && this.user" class="user-home-wrapper">
 
     <div class="avatar-wrapper">
 
       <div class="avatar" @click="goToAccountInfo" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
-      <p>{{this.user.username}}</p>
+      <p>{{this.currentUser.username}}</p>
 
       <!--到时候用v-if做-->
-      <div class="follow-button-wrapper">
-        <button>
+      <div v-if="parseInt(this.user.id) !== this.userId" class="follow-button-wrapper">
+        <button v-if="this.followings !== null && !this.followings.includes(this.userId)"
+                @click="addFollow">
           <img src="../../assets/img/add.png" width="12"/>
           <span>添加关注</span>
         </button>
 
-        <button>
+        <button v-if="this.followings !== null && this.followings.includes(this.userId)"
+                @click="removeFollow">
           <img src="../../assets/img/remove.png" width="12"/>
           <span>取消关注</span>
         </button>
@@ -77,6 +79,7 @@
   import MyFans from './MyFans'
   import MyFollowings from './MyFollowings'
   import PhotoWall from '../PhotoWall/PhotoWall'
+  import {Message} from 'element-ui'
   import {mapActions, mapState, mapMutations} from 'vuex'
 
   export default {
@@ -87,18 +90,21 @@
       MyAlbum,
       MyFans,
       MyFollowings,
-      PhotoWall
+      PhotoWall,
+      Message
     },
     data() {
       return {
-        userId: this.$route.params.userId,
+        userId: parseInt(this.$route.params.userId),
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
-        currentPage: 'MyEvents'
+        currentPage: 'MyEvents',
+        isFollowing: false
       }
     },
     computed: {
       ...mapState('auth', {
-        user: state => state.currentUser
+        currentUser: state => state.currentUser,
+//        user: state => state.user
       }),
       ...mapState('photos', {
         favourites: state => state.favourites
@@ -110,13 +116,18 @@
       }),
       ...mapState('event', {
         events: state => state.events
+      }),
+      ...mapState('follows', {
+        fans: state => state.fans,
+        followings: state => state.followings
       })
     },
     created() {
-      console.log('created', this.userId)
+      this.fetchFollows(this.user.id)
       this.fetchCurrentUserById(this.userId)
       this.fetchEvents(this.userId)
     },
+    props: ['user'],
     methods: {
       ...mapActions('photos', [
         'fetchFavourites'
@@ -129,6 +140,10 @@
       ]),
       ...mapActions('event', [
         'fetchEvents'
+      ]),
+      ...mapActions('follows', [
+        'fetchFollows',
+        'editFollows'
       ]),
       ...mapMutations('albums', [
         'showingPhotos'
@@ -159,6 +174,44 @@
       goToMyFollowings() {
         this.showingPhotos(false)
         this.currentPage = 'MyFollowings';
+      },
+      addFollow() {
+        this.editFollows({
+          info: {
+            userId: this.user.id,
+            followId: this.userId,
+            isFollowing: true
+          },
+          onSuccess: () => {
+            this.isFollowing = true;
+            Message({
+              type: 'success',
+              message: '关注成功！'
+            });
+          },
+          onError: (error) => {
+            Message.error(error)
+          }
+        })
+      },
+      removeFollow() {
+        this.editFollows({
+          info: {
+            userId: this.user.id,
+            followId: this.userId,
+            isFollowing: false
+          },
+          onSuccess: () => {
+            this.isFollowing = false;
+            Message({
+              type: 'success',
+              message: '取消关注成功！'
+            });
+          },
+          onError: (error) => {
+            Message.error(error)
+          }
+        })
       }
     },
   }
