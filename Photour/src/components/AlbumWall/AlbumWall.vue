@@ -41,6 +41,7 @@
     },
     data() {
       return {
+//        publicAlbums: this.albums.filter(album => album.permission === 'public'),
         userId: parseInt(this.$route.params.userId),
       }
     },

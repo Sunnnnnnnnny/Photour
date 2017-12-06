@@ -1,5 +1,7 @@
 <template>
-  <el-col :xs="12" :sm="8" :md="6" :lg="6">
+  <el-col :xs="12" :sm="8" :md="6" :lg="6"
+          v-if="this.user.id === this.userId || this.currentAlbum.permission === 'public'"
+  >
     <div class="grid-content">
       <div class="div-wrapper">
 
@@ -12,8 +14,10 @@
         <div class="info-wrapper">
           <img src="../../assets/img/album.png" width="17"/>
           <span class="author-name">
-        {{this.currentAlbum.name}}
-      </span>
+            {{this.currentAlbum.name}}
+            <img v-if="this.user.id === this.userId && this.currentAlbum.permission === 'private'"
+                 src="../../assets/img/lock.png" width="12"/>
+          </span>
 
           <div v-if="this.user.id === this.userId" class="right-wrapper" @click="handleDelete">
             <img src="../../assets/img/delete.png" width="14"/>
