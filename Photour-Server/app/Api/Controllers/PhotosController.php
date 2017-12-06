@@ -174,6 +174,7 @@ class PhotosController extends Controller
             ]);
         } else {
             DB::table('photos')->where('id', $photoId)->delete();
+            DB::table('events')->where('photo_id', $photoId)->delete();
             return response()->json([
                 'message' => 'success',
             ]);

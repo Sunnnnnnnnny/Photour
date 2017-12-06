@@ -31,7 +31,11 @@ export function fetchEvents(callback, userId) {
 }
 
 export function fetchAllEvents(callback) {
-  axios.get('/events')
+  axios.get('/events', {
+    params: {
+      userId: null
+    }
+  })
     .then((response) => {
         callback(response.data)
       }

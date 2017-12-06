@@ -80,6 +80,10 @@ class AlbumsController extends Controller
             ]);
         } else {
             DB::table('albums')->where('id', $albumId)->delete();
+            $photosToDelete = DB::table('photos')->where('album_id', $albumId)->get();
+            foreach ($photosToDelete as $photo) {
+                DB::table('events')->where('photo_id', $photo->id)->delete();
+            }
             DB::table('photos')->where('album_id', $albumId)->delete();
             return response()->json([
                 'message' => 'success',

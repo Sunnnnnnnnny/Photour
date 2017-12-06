@@ -53,10 +53,8 @@
       ]),
     },
     beforeRouteEnter(to, from, next) {
-      console.log('before')
       store.dispatch('auth/refreshUser', {
         onSuccess: () => {
-          console.log('success')
         }
       })
       next(true)

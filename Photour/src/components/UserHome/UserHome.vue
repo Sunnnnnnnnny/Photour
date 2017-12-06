@@ -8,17 +8,17 @@
       <p>{{this.user.username}}</p>
 
       <!--到时候用v-if做-->
-      <!--<div class="follow-button-wrapper">-->
-      <!--<button>-->
-      <!--<img src="../../assets/img/add.png" width="12"/>-->
-      <!--<span>添加关注</span>-->
-      <!--</button>-->
+      <div class="follow-button-wrapper">
+        <button>
+          <img src="../../assets/img/add.png" width="12"/>
+          <span>添加关注</span>
+        </button>
 
-      <!--<button>-->
-      <!--<img src="../../assets/img/remove.png" width="12"/>-->
-      <!--<span>取消关注</span>-->
-      <!--</button>-->
-      <!--</div>-->
+        <button>
+          <img src="../../assets/img/remove.png" width="12"/>
+          <span>取消关注</span>
+        </button>
+      </div>
 
       <div class="likes-album">
 
@@ -113,6 +113,7 @@
       })
     },
     created() {
+      console.log('created', this.userId)
       this.fetchCurrentUserById(this.userId)
       this.fetchEvents(this.userId)
     },

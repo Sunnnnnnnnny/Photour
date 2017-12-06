@@ -38,7 +38,7 @@ class EventsController extends Controller
     public function fetchEvents(Request $request)
     {
         $author_id = (integer)$request->userId;
-        if (!$author_id === 0) {
+        if ($author_id) {
             $events = DB::table('events')->where('author_id', $author_id)->orderBy('create_at', 'desc')->get();
         } else {
             $events = DB::table('events')->orderBy('create_at', 'desc')->get();

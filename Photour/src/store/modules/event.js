@@ -22,6 +22,7 @@ const actions = {
   },
 
   fetchEvents({commit}, userId) {
+    console.log(userId)
     eventApi.fetchEvents((data => {
       commit('saveEvents', data)
     }), userId)
