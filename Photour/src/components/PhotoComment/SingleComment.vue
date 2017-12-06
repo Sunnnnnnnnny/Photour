@@ -4,7 +4,7 @@
     <div class="top-wrapper">
       <div class="user">
         <img src="../../assets/img/user.png" width="20"/>
-        <span>tiann</span>
+        <span>{{this.comment.author_name}}</span>
       </div>
 
       <div class="time">
