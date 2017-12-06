@@ -34,27 +34,33 @@ const actions = {
 
   signOut({commit}, {onSuccess}) {
     const username = state.user.username
-    localStorage.setItem('token', null)
+    localStorage.setItem('token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE1MTIzOTU2NTAsImV4cCI6MTUxMjM5OTI1MCwibmJmIjoxNTEyMzk1NjUwLCJqdGkiOiIxRm1Xa0t1bU9XcUV0OFh3In0.yLsZUJ27kx4OspPezf7Trtjeu4gTeaxptut2TcF8EZU")
     commit('saveUser', null)
     if (onSuccess) {
       onSuccess(username)
     }
   },
 
-  refreshUser({dispatch}, {onSuccess}) {
+  refreshUser({dispatch}, {onSuccess, onError}) {
     const token = localStorage.getItem('token')
     if (token !== null) {
-      dispatch('fetchUser', {onSuccess})
+      dispatch('fetchUser', {onSuccess, onError})
     }
   },
 
-  fetchUser({commit, state}, {onSuccess}) {
+  fetchUser({commit, state}, {onSuccess, onError}) {
     let token = localStorage.getItem('token');
     authApi.currentUser((data => {
-      commit('saveUser', data.user)
-      if (onSuccess) {
-        onSuccess(state.user.username)
+      console.log(data)
+      commit('saveUser', data.user.user)
+      if (data.message === 'success') {
+        if (onSuccess) {
+          onSuccess(state.user.username)
+        }
+      } else {
+        onError('登录已过期，请重新登录！')
       }
+
     }), token)
   },
 

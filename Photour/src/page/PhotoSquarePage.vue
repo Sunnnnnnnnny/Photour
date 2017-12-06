@@ -19,10 +19,10 @@
                 <img src="../assets/img/events.png" width="20"/>
                 关注动态
               </span>
+              <my-events :events="events"></my-events>
             </el-tab-pane>
           </el-tabs>
         </div>
-
       </div>
     </layout>
   </div>
@@ -33,9 +33,10 @@
   import Welcome from '../components/Welcome/Welcome'
   import PhotoUpload from '../components/PhotoUpload/PhotoUpload'
   import PhotoWall from '../components/PhotoWall/PhotoWall'
+  import MyEvents from '../components/UserHome/MyEvents'
   import {mapState, mapActions} from 'vuex'
   import {store} from '../main'
-  import {Tabs, TabPane} from 'element-ui'
+  import {Tabs, TabPane, Message} from 'element-ui'
 
   export default {
     name: 'photo-square-page',
@@ -44,6 +45,8 @@
       Welcome,
       PhotoUpload,
       PhotoWall,
+      MyEvents,
+      Message,
       elTabs: Tabs,
       elTabPane: TabPane
     },
@@ -56,6 +59,9 @@
       ...mapState('photos', {
         photos: state => state.photos.photos
       }),
+      ...mapState('event', {
+        events: state => state.events
+      })
     },
     methods: {
       ...mapActions('photos', [
@@ -66,18 +72,17 @@
       ])
     },
     created() {
-//      this.fetchPhotos();
-//      this.refreshUser({
-//          onSuccess: () => {
-//
-//          }
-//        }
-//      )
     },
     beforeRouteEnter(to, from, next) {
       store.dispatch('auth/refreshUser', {
         onSuccess: () => {
           store.dispatch('photos/fetchPhotos')
+          store.dispatch('event/fetchAllEvents')
+        },
+        onError: (error) => {
+          Message.error(error)
+          store.dispatch('photos/fetchPhotos')
+          store.dispatch('event/fetchAllEvents')
         }
       })
       next(true)

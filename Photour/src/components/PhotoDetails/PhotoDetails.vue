@@ -33,7 +33,7 @@
           </button>
         </div>
 
-        <div v-if="this.user.id === this.photoAuthorId" class="button-wrapper">
+        <div v-if="this.user && this.user.id === this.photoAuthorId" class="button-wrapper">
           <button class="delete-button" @click="handleDelete">
             <img src="../../assets/img/delete.png" width="16"/>
             <span>删除</span>
@@ -60,7 +60,7 @@
           type="textarea"
           :rows="4"
           placeholder="说点什么吧！"
-          v-model="textarea">
+          v-model="commentContent">
         </el-input>
 
         <div class="button-wrapper">
@@ -69,7 +69,7 @@
           </button>
         </div>
       </div>
-      <single-comment v-for="item in 5"></single-comment>
+      <single-comment v-for="item in this.comments" :comment="item"></single-comment>
     </div>
   </div>
 
@@ -99,12 +99,13 @@
         liked: this.currentPhoto.liked,
         likes: this.currentPhoto.likes,
         isEnlarged: false,
-        textarea: '',
+        commentContent: '',
         photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + photoName),
         tags: this.currentPhoto.tags
       }
     },
     created() {
+      this.saveComments(this.currentPhoto.comments)
       if (this.currentPhoto === null) {
         router.push({name: 'PhotoSquarePage'});
       }
@@ -112,6 +113,9 @@
     computed: {
       ...mapState('auth', {
         user: state => state.user
+      }),
+      ...mapState('comments', {
+        comments: state => state.comments
       })
     },
     props: ['currentPhoto'],
@@ -119,8 +123,15 @@
       ...mapMutations('auth', [
         'saveCurrentUser'
       ]),
+      ...mapMutations('comments', [
+        'saveComments'
+      ]),
       ...mapActions('photos', [
-        'likePhotos'
+        'likePhotos',
+        'fetchPhotoByUrl'
+      ]),
+      ...mapActions('comments', [
+        'addComment'
       ]),
       ...mapMutations('albums', [
         'showingPhotos'
@@ -135,7 +146,26 @@
         this.$modal.show('delete-photo-modal');
       },
       handleComment() {
-
+        if (!this.user) {
+          Message({
+            message: '请先登录！',
+            type: 'warning'
+          })
+        } else {
+          this.addComment({
+            info: {
+              photoId: this.currentPhoto.id,
+              commentContent: this.commentContent
+            },
+            onSuccess: () => {
+              this.commentContent = ''
+              Message({
+                type: 'success',
+                message: '评论成功！'
+              })
+            }
+          })
+        }
       },
       goToUserHomePage() {
         this.showingPhotos(false)

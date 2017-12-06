@@ -14,7 +14,7 @@
   import Layout from '../components/Layout/Layout'
   import PhotoDetails from '../components/PhotoDetails/PhotoDetails'
   import {router, store} from '../main'
-  import {mapMutations, mapState} from 'vuex'
+  import {mapMutations, mapState, mapActions} from 'vuex'
 
   export default {
     name: 'photo-details-page',
@@ -23,10 +23,15 @@
       PhotoDetails,
     },
     data() {
+      let photoUrl = this.$route.params.photoId
       return {}
     },
     created() {
-      console.log('create', this.currentPhoto)
+      this.fetchPhotoByUrl({
+        photoInfo: {
+          photoUrl: this.$route.params.photoId
+        }
+      })
       this.savePhotoUrl({
         photoUrl: this.$route.params.photoId
       })
@@ -34,19 +39,27 @@
     computed: {
       ...mapState('photos', {
         currentPhoto: state => state.currentPhoto
+      }),
+      ...mapState('auth', {
+        user: state => state.user
       })
     },
     methods: {
       ...mapMutations('photoDetails', [
         'savePhotoUrl'
       ]),
-      beforeRouteEnter(to, from, next) {
-        store.dispatch('auth/refreshUser', {
-          onSuccess: () => {
-          }
-        })
-        next(true)
-      }
+      ...mapActions('photos', [
+        'fetchPhotoByUrl'
+      ]),
+    },
+    beforeRouteEnter(to, from, next) {
+      console.log('before')
+      store.dispatch('auth/refreshUser', {
+        onSuccess: () => {
+          console.log('success')
+        }
+      })
+      next(true)
     }
   }
 </script>

@@ -17,8 +17,7 @@
 
           <div class="right-wrapper">
             <img src="../../assets/img/comment.png" width="14"/>
-            <span>{{currentPhoto.comments}}</span>
-            &nbsp;
+            <span>{{currentPhoto.comments.length}}</span>
             <div class="like-section" @click="handleLike">
               <img v-if="this.liked" src="../../assets/img/like.png" width="14"/>
               <img v-else="!this.liked" src="../../assets/img/dislike.png" width="14"/>

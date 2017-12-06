@@ -29,3 +29,14 @@ export function fetchEvents(callback, userId) {
       console.log(error)
     })
 }
+
+export function fetchAllEvents(callback) {
+  axios.get('/events')
+    .then((response) => {
+        callback(response.data)
+      }
+    )
+    .catch(function (error) {
+      console.log(error)
+    })
+}

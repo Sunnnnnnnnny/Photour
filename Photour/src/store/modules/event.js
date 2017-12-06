@@ -25,6 +25,12 @@ const actions = {
     eventApi.fetchEvents((data => {
       commit('saveEvents', data)
     }), userId)
+  },
+
+  fetchAllEvents({commit}) {
+    eventApi.fetchAllEvents((data => {
+      commit('saveEvents', data)
+    }))
   }
 };
 

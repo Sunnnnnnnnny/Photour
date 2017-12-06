@@ -25,6 +25,8 @@ class PhotosController extends Controller
         foreach ($photos as $photo) {
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
             $photo->author = $author;
+            $comments = DB::table('comments')->where('photo_id', $photo->id)->get();
+            $photo->comments = $comments;
             if ($userId) {
                 if (DB::table('likes')->where([
                     ['author_id', '=', $userId],
@@ -40,6 +42,31 @@ class PhotosController extends Controller
             }
         }
         return json_encode($photos);
+    }
+
+    public function fetchPhotoByUrl(Request $request)
+    {
+        $photoUrl = $request->photoUrl;
+        $userId = $request->userId;
+        $photo = DB::table('photos')->where('url', $photoUrl)->first();
+        $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
+        $photo->author = $author;
+        $comments = DB::table('comments')->where('photo_id', $photo->id)->orderBy('create_at', 'desc')->get();
+        $photo->comments = $comments;
+        if ($userId) {
+            if (DB::table('likes')->where([
+                ['author_id', '=', $userId],
+                ['photo_id', '=', $photo->id]
+            ])->get()->isEmpty()
+            ) {
+                $photo->liked = false;
+            } else {
+                $photo->liked = true;
+            }
+        } else {
+            $photo->liked = false;
+        }
+        return response()->json($photo);
     }
 
     public function uploadPhotos(Request $request)
@@ -128,6 +155,8 @@ class PhotosController extends Controller
         foreach ($photos as $photo) {
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
             $photo->author = $author;
+            $comments = DB::table('comments')->where('photo_id', $photo->id)->get();
+            $photo->comments = $comments;
             $photo->liked = true;
         }
         return response()->json([

@@ -26,6 +26,7 @@ $api->version('v1', function ($api) {
 
 
         $api->get('photos', 'PhotosController@fetchPhotos');
+        $api->get('photos/get', 'PhotosController@fetchPhotoByUrl');
         $api->post('photos/upload', 'PhotosController@uploadPhotos');
         $api->post('photos/like', 'PhotosController@likePhotos');
         $api->get('photos/favourites', 'PhotosController@getFavouritePhotos');
@@ -39,6 +40,9 @@ $api->version('v1', function ($api) {
 
         $api->get('events', 'EventsController@fetchEvents');
         $api->post('events/create', 'EventsController@createEvent');
+
+        $api->post('comments/add', 'CommentsController@addComment');
+        $api->get('comments', 'CommentsController@fetchComments');
 
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             $api->get('user/me', 'AuthController@getAuthenticatedUser');

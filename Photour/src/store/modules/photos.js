@@ -17,6 +17,14 @@ const actions = {
     }, userId)
   },
 
+  fetchPhotoByUrl({commit, rootState}, {photoInfo}) {
+    let userId = rootState.auth.user ? rootState.auth.user.id : null
+    photoInfo.userId = userId
+    console.log(photoInfo)
+    photoApi.fetchPhotoByUrl((data => {
+      commit('saveCurrentPhoto', data)
+    }), photoInfo.photoUrl, photoInfo.userId)
+  },
 
   fetchFavourites({commit, state}, userId) {
     // console.log(userId)

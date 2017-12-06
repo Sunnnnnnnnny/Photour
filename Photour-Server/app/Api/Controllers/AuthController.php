@@ -44,14 +44,23 @@ class AuthController extends BaseController
                 return response()->json(['user_not_found'], 404);
             }
         } catch (TokenExpiredException $e) {
-            return response()->json(['token_expired'], $e->getStatusCode());
+            return response()->json([
+                'message' => 'token_expired'
+            ]);
         } catch (TokenInvalidException $e) {
-            return response()->json(['token_invalid'], $e->getStatusCode());
+            return response()->json([
+                'message' => 'token_invalid'
+            ]);
         } catch (JWTException $e) {
-            return response()->json(['token_absent'], $e->getStatusCode());
+            return response()->json([
+                'message' => 'token_absent'
+            ]);
         }
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return response()->json([
+            'user' => compact('user'),
+            'message' => 'success'
+        ]);
     }
 
     public function register(Request $request)

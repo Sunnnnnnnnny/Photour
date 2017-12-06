@@ -19,7 +19,6 @@
       SingleEvent
     },
     data() {
-      console.log(this.events.length)
       return {}
     },
     props: ['events'],

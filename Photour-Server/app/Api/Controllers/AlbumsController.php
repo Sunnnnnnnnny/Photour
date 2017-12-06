@@ -33,6 +33,8 @@ class AlbumsController extends Controller
         foreach ($photos as $photo) {
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
             $photo->author = $author;
+            $comments = DB::table('comments')->where('photo_id', $photo->id)->orderBy('create_at', 'desc')->get();
+            $photo->comments = $comments;
             if ($userId) {
                 if (DB::table('likes')->where([
                     ['author_id', '=', $userId],

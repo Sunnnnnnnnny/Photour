@@ -7,6 +7,7 @@ import photos from './modules/photos'
 import photoDetails from './modules/photoDetails'
 import albums from './modules/albums'
 import event from './modules/event'
+import comments from './modules/comments'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     photos,
     photoDetails,
     albums,
-    event
+    event,
+    comments
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []
