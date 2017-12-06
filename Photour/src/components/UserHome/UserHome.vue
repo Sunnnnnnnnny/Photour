@@ -9,13 +9,13 @@
 
       <!--到时候用v-if做-->
       <div v-if="parseInt(this.user.id) !== this.userId" class="follow-button-wrapper">
-        <button v-if="this.followings !== null && !this.followings.includes(this.userId)"
+        <button v-if="this.followings !== null && !this.followingsId.includes(this.userId)"
                 @click="addFollow">
           <img src="../../assets/img/add.png" width="12"/>
           <span>添加关注</span>
         </button>
 
-        <button v-if="this.followings !== null && this.followings.includes(this.userId)"
+        <button v-if="this.followings !== null && this.followingsId.includes(this.userId)"
                 @click="removeFollow">
           <img src="../../assets/img/remove.png" width="12"/>
           <span>取消关注</span>
@@ -62,8 +62,9 @@
       <my-favourites :favourites=this.favourites
                      v-if="currentPage === 'MyFavourites' && !this.isShowingPhotos"></my-favourites>
       <my-album :albums=this.albums v-if="currentPage === 'MyAlbum' && !this.isShowingPhotos"></my-album>
-      <my-fans v-if="currentPage === 'MyFans' && !this.isShowingPhotos"></my-fans>
-      <my-followings v-if="currentPage === 'MyFollowings' && !this.isShowingPhotos"></my-followings>
+      <my-fans v-if="currentPage === 'MyFans' && !this.isShowingPhotos" :fans="this.fans"></my-fans>
+      <my-followings v-if="currentPage === 'MyFollowings' && !this.isShowingPhotos"
+                     :followings="this.followings"></my-followings>
       <photo-wall v-if="this.isShowingPhotos" :photos="this.photosInAlbums"></photo-wall>
     </div>
 
@@ -119,7 +120,9 @@
       }),
       ...mapState('follows', {
         fans: state => state.fans,
-        followings: state => state.followings
+        followings: state => state.followings,
+        fansId: state => state.fansId,
+        followingsId: state => state.followingsId
       })
     },
     created() {

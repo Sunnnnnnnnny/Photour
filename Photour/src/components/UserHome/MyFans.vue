@@ -1,7 +1,7 @@
 <template>
 
   <div class="fans-wrapper">
-    <user-icon v-for="item in 10"></user-icon>
+    <user-icon v-for="item in this.fans" :currentFollow="item"></user-icon>
   </div>
 
 </template>
@@ -19,6 +19,7 @@
     data() {
       return {}
     },
+    props: ['fans'],
     computed: {
 //      ...mapState({
 //        favourites: state => state.photos.favourites

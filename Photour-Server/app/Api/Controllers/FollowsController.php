@@ -22,17 +22,19 @@ class FollowsController extends Controller
     {
         $followers = DB::table('follows')->select('follower_id')->where('following_id', (integer)$request->userId)->get(); // 粉丝
         $followings = DB::table('follows')->select('following_id')->where('follower_id', (integer)$request->userId)->get(); // 关注
-        $followings_array = [];
-        $followers_array = [];
+//        $followings_array = [];
+//        $followers_array = [];
         foreach ($followings as $following) {
-            array_push($followings_array, (integer)$following->following_id);
+            $following->username = DB::table('Users')->where('id', $following->following_id)->value('username');
+            $following->pic_url = DB::table('Users')->where('id', $following->following_id)->value('pic_url');
         }
         foreach ($followers as $follower) {
-            array_push($followers_array, (integer)$follower->follower_id);
+            $follower->username = DB::table('Users')->where('id', $follower->follower_id)->value('username');
+            $follower->pic_url = DB::table('Users')->where('id', $follower->follower_id)->value('pic_url');
         }
         return response()->json([
-            'fans' => $followers_array,
-            'followings' => $followings_array
+            'fans' => $followers,
+            'followings' => $followings
         ]);
     }
 

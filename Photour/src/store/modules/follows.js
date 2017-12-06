@@ -2,7 +2,9 @@ import * as followsApi from '../../api/follows'
 
 const state = {
   fans: null,
-  followings: null
+  followings: null,
+  followingsId: null,
+  fansId: null,
 };
 
 
@@ -35,14 +37,20 @@ const mutations = {
   'saveFollows'(state, follows) {
     state.fans = follows.fans
     state.followings = follows.followings
+    state.fansId = follows.fans.map(fan => {
+      return parseInt(fan.follower_id)
+    })
+    state.followingsId = follows.followings.map(following => {
+      return parseInt(following.following_id)
+    })
   },
 
   'addFollows'(state, followId) {
-    state.followings.unshift(followId)
+    state.followingsId.unshift(followId)
   },
 
   'removeFollows'(state, followId) {
-    state.followings.splice(state.followings.indexOf(followId), 1)
+    state.followingsId.splice(state.followingsId.indexOf(followId), 1)
   }
 };
 
