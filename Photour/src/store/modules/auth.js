@@ -4,6 +4,7 @@ const state = {
   isSignIn: false,
   user: null,
   currentUser: null,
+  currentPage: 'MyEvents'
 }
 
 // actions 可异步
@@ -131,6 +132,10 @@ const mutations = {
 
   'saveCurrentUser'(state, currentUser) {
     state.currentUser = currentUser
+  },
+
+  'saveCurrentPage'(state, currentPage) {
+    state.currentPage = currentPage
   }
 
 };

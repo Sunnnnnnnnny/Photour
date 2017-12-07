@@ -17,5 +17,9 @@ use Dingo\Api\Exception\StoreResourceFailedException;
 
 class SearchController extends Controller
 {
-    
+    public function search(Request $request)
+    {
+        $input = $request->input;
+        
+    }
 }

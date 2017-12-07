@@ -65,7 +65,7 @@
         'fetchPhotosInAlbums'
       ]),
       goToAlbumDetails() {
-        this.saveCurrentAlbum(this.currentAlbum.id)
+        this.saveCurrentAlbum(this.currentAlbum)
         this.fetchPhotosInAlbums(
           {
             albumId: this.currentAlbum.id,

@@ -110,6 +110,14 @@
     }
   }
 
+  .description-wrapper {
+    margin-bottom: 40px;
+    p {
+      color: $grey;
+      font-size: 16px;
+    }
+  }
+
   .tags-wrapper {
     margin-bottom: 30px;
   }

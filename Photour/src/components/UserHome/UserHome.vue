@@ -65,7 +65,8 @@
       <my-fans v-if="currentPage === 'MyFans' && !this.isShowingPhotos" :fans="this.fans"></my-fans>
       <my-followings v-if="currentPage === 'MyFollowings' && !this.isShowingPhotos"
                      :followings="this.followings"></my-followings>
-      <photo-wall v-if="this.isShowingPhotos" :photos="this.photosInAlbums"></photo-wall>
+      <my-album-photos v-if="this.isShowingPhotos" :photos="this.photosInAlbums"
+                       :currentAlbum="this.currentAlbum"></my-album-photos>
     </div>
 
 
@@ -80,6 +81,7 @@
   import MyFans from './MyFans'
   import MyFollowings from './MyFollowings'
   import PhotoWall from '../PhotoWall/PhotoWall'
+  import MyAlbumPhotos from './MyAlbumPhotos'
   import {Message} from 'element-ui'
   import {mapActions, mapState, mapMutations} from 'vuex'
 
@@ -92,19 +94,21 @@
       MyFans,
       MyFollowings,
       PhotoWall,
+      MyAlbumPhotos,
       Message
     },
     data() {
       return {
         userId: parseInt(this.$route.params.userId),
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
-        currentPage: 'MyEvents',
+//        currentPage: 'MyEvents',
         isFollowing: false
       }
     },
     computed: {
       ...mapState('auth', {
         currentUser: state => state.currentUser,
+        currentPage: state => state.currentPage
 //        user: state => state.user
       }),
       ...mapState('photos', {
@@ -112,6 +116,7 @@
       }),
       ...mapState('albums', {
         albums: state => state.albums,
+        currentAlbum: state => state.currentAlbum,
         photosInAlbums: state => state.photosInAlbums,
         isShowingPhotos: state => state.isShowingPhotos
       }),
@@ -151,32 +156,35 @@
       ...mapMutations('albums', [
         'showingPhotos'
       ]),
+      ...mapMutations('auth', [
+        'saveCurrentPage'
+      ]),
       goToAccountInfo() {
         this.showingPhotos(false)
         router.push({name: 'AccountPage'})
       },
       goToMyEvents() {
         this.showingPhotos(false)
-        this.currentPage = 'MyEvents'
+        this.saveCurrentPage('MyEvents')
       },
       goToMyFavourites() {
 //        console.log(this.user)
         this.showingPhotos(false)
         this.fetchFavourites(this.userId)
-        this.currentPage = 'MyFavourites'
+        this.saveCurrentPage('MyFavourites')
       },
       goToMyAlbum() {
         this.showingPhotos(false)
         this.fetchAlbums({userId: this.userId})
-        this.currentPage = 'MyAlbum';
+        this.saveCurrentPage('MyAlbum')
       },
       goToMyFans() {
         this.showingPhotos(false)
-        this.currentPage = 'MyFans';
+        this.saveCurrentPage('MyFans')
       },
       goToMyFollowings() {
         this.showingPhotos(false)
-        this.currentPage = 'MyFollowings';
+        this.saveCurrentPage('MyFollowings')
       },
       addFollow() {
         this.editFollows({

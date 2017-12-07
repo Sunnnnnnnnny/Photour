@@ -48,6 +48,11 @@
       <img :src=photoUrl @click="enlargePhoto" :class="{ large: isEnlarged }"/>
     </div>
 
+    <div class="description-wrapper">
+      <div-header header="图片描述"></div-header>
+      <p>"{{this.currentPhoto.description}}"</p>
+    </div>
+
     <div class="tags-wrapper">
       <div-header header="图片标签"></div-header>
       <photo-tags :canBeEdited="false" :dynamicTags="tags.length>0?tags.split(' '):['暂无标签']"></photo-tags>
@@ -150,6 +155,11 @@
           Message({
             message: '请先登录！',
             type: 'warning'
+          })
+        } else if (this.commentContent === '') {
+          Message({
+            message: '请填写评论内容！',
+            type: 'error'
           })
         } else {
           this.addComment({

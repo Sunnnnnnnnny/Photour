@@ -118,6 +118,11 @@ button {
       width: 100%;
       height: auto;
       cursor: zoom-out; }
+  .photo-details-wrapper .description-wrapper {
+    margin-bottom: 40px; }
+    .photo-details-wrapper .description-wrapper p {
+      color: #7b7b7b;
+      font-size: 16px; }
   .photo-details-wrapper .tags-wrapper {
     margin-bottom: 30px; }
   .photo-details-wrapper .comments-wrapper .input-wrapper /deep/ .el-textarea__inner {
