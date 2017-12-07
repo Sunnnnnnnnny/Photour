@@ -21,7 +21,7 @@
     <div-header header="个人信息"></div-header>
 
     <div class="form-wrapper">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
+      <el-form :model="ruleForm" :rules="phoneRule" ref="ruleForm" class="demo-ruleForm">
         <el-form-item label="用户名">
           <el-input v-model="ruleForm.username" auto-complete="off"></el-input>
         </el-form-item>
@@ -31,7 +31,7 @@
             <el-radio label="女"></el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="手机">
+        <el-form-item label="手机" prop="phone">
           <el-input v-model="ruleForm.phone" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="邮箱">
@@ -39,7 +39,7 @@
         </el-form-item>
         <el-form-item>
           <div class="confirm-button-wrapper">
-            <el-button type="text" @click="handleEditUserInfo">确认修改</el-button>
+            <el-button type="text" @click="handleEditUserInfo('ruleForm')">确认修改</el-button>
           </div>
         </el-form-item>
       </el-form>
@@ -96,6 +96,15 @@
       elButton: Button
     },
     data() {
+      let checkPhone = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error('请输入手机号'))
+        } else if (!/^1[34578]\d{9}$/.test(value)) {
+          return callback(new Error('请输入正确的手机号'))
+        } else {
+          callback()
+        }
+      };
       let validatePassword = (rule, value, callback) => {
         if (!value) {
           callback(new Error('请输入原密码'))
@@ -123,7 +132,7 @@
         avatarUrl: "https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg",
         ruleForm: {
           username: this.user.username,
-          gender: '男',
+          gender: this.user.gender,
           phone: this.user.phone === null ? '' : this.user.phone,
           email: this.user.email,
         },
@@ -131,6 +140,11 @@
           password: '',
           newPw: '',
           confirmPw: ''
+        },
+        phoneRule: {
+          phone: [
+            {validator: checkPhone, trigger: 'blur'}
+          ],
         },
         rules: {
           password: [
@@ -151,37 +165,29 @@
         'editUserInfo',
         'editUserPw'
       ]),
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+      handleEditUserInfo(data) {
+        this.$refs[data].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.editUserInfo({
+              userInfo: this.ruleForm,
+              onSuccess: () => {
+                Message({
+                  message: '修改成功！',
+                  type: 'success'
+                });
+              },
+              onError: (error) => {
+                Message.error(error)
+              }
+            })
           } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-      handleEditUserInfo() {
-        this.editUserInfo({
-          userInfo: this.ruleForm,
-          onSuccess: () => {
-            Message({
-              message: '修改成功！',
-              type: 'success'
-            });
-          },
-          onError: (error) => {
-            Message.error(error)
+            Message.error("请正确填写信息！")
           }
         })
       },
       handleEditPw(data) {
         this.$refs[data].validate((valid) => {
           if (valid) {
-            console.log(this.ruleForm2)
             this.editUserPw({
               pwInfo: this.ruleForm2,
               onSuccess: () => {

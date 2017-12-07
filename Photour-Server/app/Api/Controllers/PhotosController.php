@@ -21,7 +21,7 @@ class PhotosController extends Controller
     public function fetchPhotos(Request $request)
     {
         $userId = $request->input('userId');
-        $photos = DB::table('photos')->get();
+        $photos = DB::table('photos')->orderBy('likes', 'desc')->get();
         foreach ($photos as $photo) {
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
             $photo->author = $author;
