@@ -47,6 +47,8 @@ $api->version('v1', function ($api) {
         $api->get('follows', 'FollowsController@fetchFollows');
         $api->post('follows/edit', 'FollowsController@editFollows');
 
+        $api->get('search', 'SearchController@search');
+
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             $api->get('user/me', 'AuthController@getAuthenticatedUser');
         });

@@ -3,7 +3,7 @@
     <div class="grid-content">
       <div class="icon-wrapper">
         <div class="avatar" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
-        <p>{{this.currentFollow.username}}</p>
+        <p>{{this.users.username}}</p>
 
       </div>
     </div>
@@ -18,7 +18,7 @@
     components: {
       elCol: Col
     },
-    props: ['currentFollow'],
+    props: ['users'],
     data() {
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',

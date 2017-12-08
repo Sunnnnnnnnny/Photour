@@ -11,7 +11,7 @@
                     placeholder="搜索图片、作者"
                     icon="search"
                     v-model="input2"
-                    :on-icon-click="handleIconClick">
+                    :on-icon-click="handleSearch">
           </el-input>
         </div>
 
@@ -96,11 +96,23 @@
       ...mapActions('auth', [
         'signOut'
       ]),
+      ...mapActions('search', [
+        'search'
+      ]),
       ...mapMutations('albums', [
         'showingPhotos'
       ]),
-      handleIconClick(ev) {
-        console.log(ev);
+      ...mapMutations('search', [
+        'saveSearchInput'
+      ]),
+      handleSearch() {
+        this.saveSearchInput(this.input2)
+        this.search({
+          input: {
+            input: this.input2
+          }
+        })
+        router.push({name: 'SearchResultPage'})
       },
       signIn() {
         this.$modal.show('sign-in');

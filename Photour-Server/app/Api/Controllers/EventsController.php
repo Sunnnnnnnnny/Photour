@@ -44,7 +44,7 @@ class EventsController extends Controller
             $events = DB::table('events')->orderBy('create_at', 'desc')->get();
         }
         foreach ($events as $event) {
-            $event->author_name = DB::table('Users')->where('id', $author_id)->value('username');
+            $event->author_name = DB::table('Users')->where('id', $event->author_id)->value('username');
             $event->photo = DB::table('photos')->where('id', $event->photo_id)->first();
             $author = DB::table('Users')->select('username')->where('id', $event->photo->author_id)->get();
             $event->photo->author = $author;

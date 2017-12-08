@@ -4,6 +4,7 @@ import PhotoSquarePage from '@/page/PhotoSquarePage'
 import PhotoDetailsPage from '@/page/PhotoDetailsPage'
 import AccountPage from '@/page/AccountPage'
 import UserHomePage from '@/page/UserHomePage'
+import SearchResultPage from '@/page/SearchResultPage'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/user/home/:userId',
       name: 'UserHomePage',
       component: UserHomePage
+    },
+    {
+      path: '/search',
+      name: 'SearchResultPage',
+      component: SearchResultPage
     }
   ]
 })

@@ -1,7 +1,7 @@
 <template>
 
   <div class="fans-wrapper">
-    <user-icon v-for="item in this.fans" :currentFollow="item"></user-icon>
+    <user-icon v-for="item in this.fans" :users="item"></user-icon>
   </div>
 
 </template>
