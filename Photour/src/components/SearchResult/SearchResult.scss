@@ -27,7 +27,20 @@
     }
 
     &:hover {
+      color: $main-color;
       @include transition(all, 0.3s);
+    }
+  }
+
+  .key-wrapper {
+    h1 {
+      padding-bottom: 20px;
+      color: $grey;
+      //font-weight: 400;
+
+      span {
+        font-size: 16px;
+      }
     }
   }
 

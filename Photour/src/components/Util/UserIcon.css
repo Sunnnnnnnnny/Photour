@@ -47,6 +47,7 @@ button {
   .icon-wrapper .info-wrapper {
     display: inline-block;
     padding-left: 20px;
+    width: 300px;
     vertical-align: top; }
     .icon-wrapper .info-wrapper p {
       overflow: hidden;

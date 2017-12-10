@@ -35,11 +35,17 @@ button {
       margin-right: 2px;
       vertical-align: sub; }
     .search-result-wrapper /deep/ .el-tabs__item:hover {
+      color: #E47877;
       -webkit-transition: all, 0.3s;
       -moz-transition: all, 0.3s;
       -ms-transition: all, 0.3s;
       -o-transition: all, 0.3s;
       transition: all, 0.3s; }
+  .search-result-wrapper .key-wrapper h1 {
+    padding-bottom: 20px;
+    color: #7b7b7b; }
+    .search-result-wrapper .key-wrapper h1 span {
+      font-size: 16px; }
   .search-result-wrapper .back-button {
     margin-bottom: 20px;
     background: none;

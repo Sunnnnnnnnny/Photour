@@ -126,7 +126,8 @@
     props: ['currentPhoto'],
     methods: {
       ...mapMutations('auth', [
-        'saveCurrentUser'
+        'saveCurrentUser',
+        'saveCurrentPage'
       ]),
       ...mapMutations('comments', [
         'saveComments'
@@ -178,6 +179,7 @@
         }
       },
       goToUserHomePage() {
+        this.saveCurrentPage('MyEvents')
         this.showingPhotos(false)
         router.push({name: 'UserHomePage', params: {userId: this.currentPhoto.author_id}})
       },
