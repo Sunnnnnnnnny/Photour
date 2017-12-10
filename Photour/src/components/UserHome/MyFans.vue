@@ -1,7 +1,9 @@
 <template>
 
   <div class="fans-wrapper">
-    <user-icon v-for="item in this.fans" :users="item"></user-icon>
+    <el-row :gutter="25">
+      <user-icon v-for="item in this.fans" :users="item"></user-icon>
+    </el-row>
   </div>
 
 </template>
@@ -10,11 +12,13 @@
   import {mapState, mapActions} from 'vuex'
   import {store} from '../../main'
   import UserIcon from '../../components/Util/UserIcon'
+  import {Row} from 'element-ui'
 
   export default {
     name: 'my-fans',
     components: {
-      UserIcon
+      UserIcon,
+      elRow: Row
     },
     data() {
       return {}

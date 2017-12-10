@@ -11,6 +11,7 @@ const state = {
 const actions = {
   fetchFollows({commit}, userId) {
     followsApi.fetchFollows((data => {
+      console.log(data)
       commit('saveFollows', data)
     }), userId)
   },

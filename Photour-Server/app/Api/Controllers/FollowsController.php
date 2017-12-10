@@ -25,12 +25,20 @@ class FollowsController extends Controller
 //        $followings_array = [];
 //        $followers_array = [];
         foreach ($followings as $following) {
+            $following->id = $following->following_id;
             $following->username = DB::table('Users')->where('id', $following->following_id)->value('username');
             $following->pic_url = DB::table('Users')->where('id', $following->following_id)->value('pic_url');
+            $following->email = DB::table('Users')->where('id', $following->following_id)->value('email');
+            $following->phone = DB::table('Users')->where('id', $following->following_id)->value('phone');
+            $following->tags = DB::table('Users')->where('id', $following->following_id)->value('tags');
         }
         foreach ($followers as $follower) {
+            $follower->id = $follower->follower_id;
             $follower->username = DB::table('Users')->where('id', $follower->follower_id)->value('username');
             $follower->pic_url = DB::table('Users')->where('id', $follower->follower_id)->value('pic_url');
+            $follower->email = DB::table('Users')->where('id', $follower->follower_id)->value('email');
+            $follower->phone = DB::table('Users')->where('id', $follower->follower_id)->value('phone');
+            $follower->tags = DB::table('Users')->where('id', $follower->follower_id)->value('tags');
         }
         return response()->json([
             'fans' => $followers,
