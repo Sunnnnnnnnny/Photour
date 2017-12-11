@@ -113,6 +113,7 @@ class AuthController extends BaseController
                 ]);
             return response()->json([
                 'message' => 'success',
+                'user' => DB::table('Users')->where('id', $userId)->first()
             ]);
         }
     }

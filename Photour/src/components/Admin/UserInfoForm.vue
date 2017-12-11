@@ -18,7 +18,7 @@
       </el-form-item>
       <el-form-item>
         <div class="confirm-button-wrapper">
-          <el-button type="text" @click="handleEditUserInfo('ruleForm')">确认修改</el-button>
+          <el-button type="text" @click="handleEditUser('ruleForm')">确认修改</el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -53,6 +53,7 @@
       };
       return {
         ruleForm: {
+          userId: this.userToEdit.id,
           username: this.userToEdit.username,
           gender: this.userToEdit.gender,
           phone: this.userToEdit.phone === null ? '' : this.userToEdit.phone,
@@ -69,24 +70,29 @@
     computed: {},
     methods: {
       ...mapActions('admin', [
-        'deleteUser'
+        'editUser'
       ]),
       closeBox() {
         this.$modal.hide('edit-user-modal')
       },
       handleEditUser() {
-//        this.deleteUser({
-//          onSuccess: (success) => {
-//            this.$modal.hide('edit-user-modal');
-//            Message({
-//              message: success,
-//              type: 'success'
-//            });
-//          },
-//          onError: (error) => {
-//            Message.error(error)
-//          }
-//        })
+        this.editUser({
+          userInfo: this.ruleForm,
+          onSuccess: (success) => {
+            this.$modal.hide('edit-user-modal');
+            router.go({
+              name: 'UserAdminPage',
+              force: true
+            })
+            Message({
+              message: success,
+              type: 'success'
+            });
+          },
+          onError: (error) => {
+            Message.error(error)
+          }
+        })
       }
     }
   }

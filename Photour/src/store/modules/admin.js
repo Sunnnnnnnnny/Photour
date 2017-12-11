@@ -1,4 +1,6 @@
 import * as adminApi from '../../api/admin'
+import * as authApi from '../../api/auth'
+import auth from "./auth";
 
 const state = {
   allUsers: null,
@@ -26,7 +28,23 @@ const actions = {
         onError(data.message)
       }
     }), userId)
+  },
+
+  editUser({commit}, {userInfo, onSuccess, onError}) {
+    console.log('action', userInfo)
+    authApi.editUserInfo((data => {
+      if (data.message === 'success') {
+        console.log('new', data.user)
+        commit('updateUser', data.user)
+        if (onSuccess) {
+          onSuccess('修改成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), userInfo)
   }
+
 };
 
 const mutations = {
@@ -43,8 +61,14 @@ const mutations = {
   },
 
   'deleteUser'(state, userId) {
-    let user = state.allUsers.filter(user => user.id = userId);
+    let user = state.allUsers.find(user => user.id === userId);
     state.allUsers.splice(state.allUsers.indexOf(user), 1);
+  },
+
+  'updateUser'(state, newUser) {
+    let user = state.allUsers.find(user => user.id === newUser.id);
+    console.log('toUpdate', user)
+    state.allUsers[state.allUsers.indexOf(user)] = newUser;
   }
 
 
