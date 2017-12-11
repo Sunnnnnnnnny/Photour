@@ -1,0 +1,56 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.form-wrapper {
+  margin-top: 80px;
+  width: 100%; }
+  .form-wrapper /deep/ .el-form-item__label {
+    padding-left: 45px;
+    color: #7b7b7b; }
+  .form-wrapper /deep/ .el-input {
+    width: 70%; }
+  .form-wrapper /deep/ .el-form-item__error {
+    padding-top: 2px;
+    padding-left: 150px; }
+  .form-wrapper .confirm-button-wrapper {
+    display: block;
+    padding-right: 7%;
+    float: right;
+    text-align: center; }
+    .form-wrapper .confirm-button-wrapper /deep/ .el-button {
+      padding: 8px 20px;
+      background-color: #E47877;
+      border-radius: 100px;
+      color: #ffffff;
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s; }
+      .form-wrapper .confirm-button-wrapper /deep/ .el-button:hover {
+        -webkit-transition: all, 0.5s;
+        -moz-transition: all, 0.5s;
+        -ms-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s;
+        background-color: #f47f7e; }
+
+/*# sourceMappingURL=UserInfoForm.css.map */

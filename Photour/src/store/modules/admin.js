@@ -3,6 +3,7 @@ import * as adminApi from '../../api/admin'
 const state = {
   allUsers: null,
   toDeleteId: null,
+  userToEdit: null
 };
 
 
@@ -35,6 +36,10 @@ const mutations = {
 
   'saveToDeleteId'(state, userId) {
     state.toDeleteId = userId
+  },
+
+  'saveUserToEdit'(state, user) {
+    state.userToEdit = user
   },
 
   'deleteUser'(state, userId) {

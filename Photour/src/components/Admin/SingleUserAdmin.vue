@@ -14,8 +14,8 @@
         </div>
 
         <div class="edit-wrapper">
-          <img src="../../assets/img/delete-pink.png" width="15" @click="deleteUser"/>
-          <img src="../../assets/img/edit.png" width="15"/>
+          <img src="../../assets/img/delete-pink.png" width="15" title="删除" @click="handleDeleteUser"/>
+          <img src="../../assets/img/edit.png" width="15" title="编辑" @click="handleEditUser"/>
         </div>
 
       </div>
@@ -45,16 +45,21 @@
         'saveCurrentPage'
       ]),
       ...mapMutations('admin', [
-        'saveToDeleteId'
+        'saveToDeleteId',
+        'saveUserToEdit'
       ]),
       goToUserHomepage() {
         console.log(this.users.id)
         this.saveCurrentPage('MyEvents')
         router.push({name: 'UserHomePage', params: {userId: this.users.id}})
       },
-      deleteUser() {
+      handleDeleteUser() {
         this.saveToDeleteId(this.users.id)
         this.$modal.show('delete-user-modal')
+      },
+      handleEditUser() {
+        this.saveUserToEdit(this.users)
+        this.$modal.show('edit-user-modal')
       }
     }
   }

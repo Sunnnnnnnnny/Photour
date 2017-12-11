@@ -1,0 +1,44 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.form-wrapper {
+  margin-top: 80px;
+  width: 100%;
+
+  /deep/ .el-form-item__label {
+    //padding-right: 50px;
+    padding-left: 45px;
+    color: $grey;
+    //width: 150px;
+  }
+
+  /deep/ .el-input {
+    width: 70%;
+  }
+
+  /deep/ .el-form-item__error {
+    padding-top: 2px;
+    padding-left: 150px;
+  }
+
+  .confirm-button-wrapper {
+    display: block;
+    padding-right: 7%;
+    float: right;
+    text-align: center;
+    /deep/ .el-button {
+      padding: 8px 20px;
+      background-color: $main-color;
+      border-radius: 100px;
+      color: $white-color;
+      @include transition(all, 0.5s);
+
+      &:hover {
+        @include transition(all, 0.5s);
+        background-color: $sub-color;
+      }
+    }
+  }
+
+}
