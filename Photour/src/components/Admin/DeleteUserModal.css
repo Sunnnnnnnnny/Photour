@@ -1,0 +1,54 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.delete-user-wrapper {
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  text-align: center; }
+  .delete-user-wrapper p {
+    color: #7b7b7b;
+    font-size: 16px; }
+  .delete-user-wrapper .button-wrapper {
+    display: inline-block;
+    padding-top: 20px; }
+    .delete-user-wrapper .button-wrapper button {
+      padding: 5px 20px;
+      border-radius: 100px;
+      background-color: #E47877;
+      color: #ffffff;
+      font-size: 14px;
+      cursor: pointer;
+      -webkit-transition: all, 0.5s;
+      -moz-transition: all, 0.5s;
+      -ms-transition: all, 0.5s;
+      -o-transition: all, 0.5s;
+      transition: all, 0.5s; }
+      .delete-user-wrapper .button-wrapper button:hover {
+        background-color: #f47f7e;
+        -webkit-transition: all, 0.5s;
+        -moz-transition: all, 0.5s;
+        -ms-transition: all, 0.5s;
+        -o-transition: all, 0.5s;
+        transition: all, 0.5s; }
+
+/*# sourceMappingURL=DeleteUserModal.css.map */

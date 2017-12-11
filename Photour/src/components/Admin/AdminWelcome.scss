@@ -1,0 +1,35 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.admin-welcome-wrapper {
+  display: inline-block;
+  margin-top: 100px;
+  width: 100%;
+  min-height: 600px;
+  background-color: $white-color;
+  text-align: center;
+
+  h1 {
+    padding-top: 200px;
+    color: $main-color;
+  }
+
+  button {
+    margin-top: 40px;
+    padding: 6px 24px;
+    background-color: $white-color;
+    border-radius: 100px;
+    border: 1px solid $main-color;
+    color: $main-color;
+    cursor: pointer;
+    @include transition(all, 0.3s);
+
+    &:hover {
+      @include transition(all, 0.3s);
+      background-color: $sub-color;
+      color: $white-color;
+    }
+  }
+
+}

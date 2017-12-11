@@ -10,6 +10,7 @@ import event from './modules/event'
 import comments from './modules/comments'
 import follows from './modules/follows'
 import search from './modules/search'
+import admin from './modules/admin'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     event,
     comments,
     follows,
-    search
+    search,
+    admin
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

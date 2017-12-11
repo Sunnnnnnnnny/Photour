@@ -41,6 +41,7 @@
     <create-album-modal></create-album-modal>
     <delete-album-modal></delete-album-modal>
     <delete-photo-modal></delete-photo-modal>
+    <delete-user-modal></delete-user-modal>
   </div>
 </template>
 
@@ -54,6 +55,7 @@
   import CreateAlbumModal from '../AlbumWall/CreateAlbumModal'
   import DeleteAlbumModal from '../AlbumWall/DeleteAlbumModal'
   import DeletePhotoModal from '../PhotoDetails/DeletePhotoModal'
+  import DeleteUserModal from '../Admin/DeleteUserModal'
   import {router} from '../../main'
   import {mapMutations, mapState, mapActions} from 'vuex'
 
@@ -72,7 +74,8 @@
       ForwardModal,
       CreateAlbumModal,
       DeleteAlbumModal,
-      DeletePhotoModal
+      DeletePhotoModal,
+      DeleteUserModal
     },
     data() {
       return {

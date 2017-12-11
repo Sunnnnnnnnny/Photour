@@ -167,4 +167,33 @@ class AuthController extends BaseController
             ]);
         }
     }
+
+    public function fetchAllUsers(Request $request)
+    {
+        $users = DB::table('Users')->where('type', 'user')->get();
+        return response()->json($users);
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $userId = (integer)$request->userId;
+        if (DB::table('Users')->where('id', $userId)->get()->isEmpty()) {
+            return response()->json([
+                'message' => '不存在该用户！',
+            ]);
+        } else {
+            DB::table('Users')
+                ->where('id', $userId)
+                ->delete();
+            DB::table('photos')->where('author_id', $userId)->delete();
+            DB::table('albums')->where('author_id', $userId)->delete();
+            DB::table('comments')->where('author_id', $userId)->delete();
+            DB::table('events')->where('author_id', $userId)->delete();
+            DB::table('likes')->where('author_id', $userId)->delete();
+            DB::table('follows')->where('following_id', $userId)->orWhere('follower_id', $userId)->delete();
+            return response()->json([
+                'message' => 'success',
+            ]);
+        }
+    }
 }

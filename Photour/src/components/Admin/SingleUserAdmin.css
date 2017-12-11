@@ -1,0 +1,66 @@
+html, body, h1, h2, h3, h4, h5, h6, hr, li, ul, p, a, img, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  list-style: none; }
+
+html {
+  height: 100%; }
+
+* {
+  position: relative;
+  box-sizing: border-box; }
+
+button {
+  outline: none; }
+
+/*
+ * grid
+ */
+.icon-wrapper {
+  margin-bottom: 30px;
+  padding: 20px;
+  text-align: left;
+  background-color: #ffffff; }
+  .icon-wrapper .avatar-wrapper {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer; }
+    .icon-wrapper .avatar-wrapper .avatar {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      display: inline-block;
+      vertical-align: middle;
+      width: 60px;
+      height: 60px;
+      border-radius: 100px; }
+    .icon-wrapper .avatar-wrapper p {
+      padding-top: 5px;
+      vertical-align: top;
+      color: #7b7b7b;
+      font-size: 15px; }
+  .icon-wrapper .info-wrapper {
+    display: inline-block;
+    padding-left: 20px;
+    width: 300px;
+    vertical-align: top; }
+    .icon-wrapper .info-wrapper p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 30px;
+      color: #7b7b7b;
+      font-size: 14px; }
+  .icon-wrapper .edit-wrapper {
+    display: inline-block;
+    float: right; }
+    .icon-wrapper .edit-wrapper img {
+      margin-left: 10px;
+      cursor: pointer; }
+
+/*# sourceMappingURL=SingleUserAdmin.css.map */

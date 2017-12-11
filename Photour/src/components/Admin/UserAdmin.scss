@@ -1,0 +1,11 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.user-admin-wrapper {
+  display: inline-block;
+  margin-top: 100px;
+  width: 100%;
+  min-height: 500px;
+  //background-color: $white-color;
+}

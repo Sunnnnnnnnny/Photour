@@ -2,26 +2,37 @@
   <div class="body-wrapper">
     <layout>
       <div class="container">
-        <welcome></welcome>
-        <photo-upload></photo-upload>
 
-        <div class="content-wrapper">
-          <el-tabs>
-            <el-tab-pane>
+        <div v-if="this.user && this.user.type === 'admin'">
+          <admin-welcome :admin="this.user"></admin-welcome>
+        </div>
+
+        <div v-else>
+          <welcome></welcome>
+
+          <!--<p v-if="this.user && this.user.type === 'user'">我是用户</p>-->
+          <!--<p v-if="this.user && this.user.type === 'admin'">我是管理员</p>-->
+
+          <photo-upload></photo-upload>
+
+          <div class="content-wrapper">
+            <el-tabs>
+              <el-tab-pane>
               <span slot="label">
                 <img src="../assets/img/album.png" width="20"/>
                 照片广场
               </span>
-              <photo-wall :photos="photos" style="padding-top: 0"></photo-wall>
-            </el-tab-pane>
-            <el-tab-pane>
+                <photo-wall :photos="photos" style="padding-top: 0"></photo-wall>
+              </el-tab-pane>
+              <el-tab-pane>
               <span slot="label">
                 <img src="../assets/img/events.png" width="20"/>
                 关注动态
               </span>
-              <my-events :events="events"></my-events>
-            </el-tab-pane>
-          </el-tabs>
+                <my-events :events="events"></my-events>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
         </div>
       </div>
     </layout>
@@ -34,6 +45,7 @@
   import PhotoUpload from '../components/PhotoUpload/PhotoUpload'
   import PhotoWall from '../components/PhotoWall/PhotoWall'
   import MyEvents from '../components/UserHome/MyEvents'
+  import AdminWelcome from '../components/Admin/AdminWelcome'
   import {mapState, mapActions} from 'vuex'
   import {store} from '../main'
   import {Tabs, TabPane, Message} from 'element-ui'
@@ -46,6 +58,7 @@
       PhotoUpload,
       PhotoWall,
       MyEvents,
+      AdminWelcome,
       Message,
       elTabs: Tabs,
       elTabPane: TabPane
@@ -56,6 +69,9 @@
       }
     },
     computed: {
+      ...mapState('auth', {
+        user: state => state.user
+      }),
       ...mapState('photos', {
         photos: state => state.photos.photos
       }),

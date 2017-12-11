@@ -23,6 +23,8 @@ $api->version('v1', function ($api) {
         $api->post('user/editInfo', 'AuthController@editUserInfo');
         $api->post('user/editPw', 'AuthController@editUserPw');
         $api->post('user/editTags', 'AuthController@editUserTags');
+        $api->get('user/fetch/all', 'AuthController@fetchAllUsers');
+        $api->get('user/delete', 'AuthController@deleteUser');
 
 
         $api->get('photos', 'PhotosController@fetchPhotos');
