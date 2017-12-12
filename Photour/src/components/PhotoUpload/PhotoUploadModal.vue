@@ -73,7 +73,7 @@
   import {Input, Upload, Button, RadioGroup, Radio, Message, Dialog} from 'element-ui'
   import MyTags from '../Util/MyTags'
   import {router} from '../../main'
-  import {mapActions, mapState} from 'vuex'
+  import {mapActions, mapState, mapMutations} from 'vuex'
 
   export default {
     name: 'photo-upload-modal',
@@ -110,6 +110,9 @@
       ...mapActions('event', [
         'createEvent'
       ]),
+      ...mapMutations('auth', [
+        'saveCurrentPage'
+      ]),
       closeBox() {
         this.$modal.hide('photo-upload-modal');
         this.files = []
@@ -132,6 +135,7 @@
               type: 'upload',
             },
             onSuccess: () => {
+              this.saveCurrentPage('MyEvents')
               router.push({name: 'UserHomePage', params: {userId: this.user.id}})
               Message({
                 message: '上传成功！',
