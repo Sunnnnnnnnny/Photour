@@ -2,7 +2,11 @@
   <div v-if="this.user" class="body-wrapper">
     <layout>
       <div class="container">
-        <account-info :user="this.user"></account-info>
+        <div v-if="this.user && this.user.type === 'admin'">
+          <admin-welcome :admin="this.user"></admin-welcome>
+        </div>
+
+        <account-info v-else :user="this.user"></account-info>
       </div>
     </layout>
   </div>
@@ -12,6 +16,7 @@
 <script>
   import Layout from '../components/Layout/Layout'
   import AccountInfo from '../components/Account/AccountInfo.vue'
+  import AdminWelcome from '../components/Admin/AdminWelcome'
   import {Message} from 'element-ui'
   import {router, store} from '../main'
   import {mapMutations, mapState} from 'vuex'
@@ -20,7 +25,8 @@
     name: 'account-page',
     components: {
       Layout,
-      AccountInfo
+      AccountInfo,
+      AdminWelcome
     },
     data() {
       return {}
