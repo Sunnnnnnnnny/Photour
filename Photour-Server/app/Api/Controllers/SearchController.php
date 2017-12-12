@@ -26,8 +26,10 @@ class SearchController extends Controller
             ->orWhere('tags', 'like', '%' . $input . '%')
             ->get();
         $photos = DB::table('photos')
-            ->where('description', 'like', '%' . $input . '%')
-            ->orWhere('tags', 'like', '%' . $input . '%')
+            ->join('Users', 'Users.id', '=', 'photos.author_id')
+            ->where('photos.description', 'like', '%' . $input . '%')
+            ->orWhere('photos.tags', 'like', '%' . $input . '%')
+            ->orWhere('Users.username', 'like', '%' . $input . '%')
             ->orderBy('likes', 'desc')
             ->get();
         foreach ($photos as $photo) {
@@ -50,7 +52,9 @@ class SearchController extends Controller
             }
         }
         $events = DB::table('events')
-            ->where('content', 'like', '%' . $input . '%')
+            ->join('Users', 'Users.id', '=', 'events.author_id')
+            ->where('events.content', 'like', '%' . $input . '%')
+            ->orWhere('Users.username', 'like', '%' . $input . '%')
             ->orderBy('create_at', 'desc')
             ->get();
         foreach ($events as $event) {
