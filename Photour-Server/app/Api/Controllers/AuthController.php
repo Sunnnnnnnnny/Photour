@@ -133,7 +133,7 @@ class AuthController extends BaseController
             return response()->json([
                 'message' => '不存在该用户！',
             ]);
-        } else if (!Hash::check((string)$oldPw, DB::table('Users')->where('id', $userId)->value('password'))) {
+        } else if (!is_null($oldPw) && !Hash::check((string)$oldPw, DB::table('Users')->where('id', $userId)->value('password'))) {
             return response()->json([
                 'message' => '用户密码错误！',
             ]);

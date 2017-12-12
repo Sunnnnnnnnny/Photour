@@ -14,8 +14,15 @@
         </div>
 
         <div class="edit-wrapper">
-          <img src="../../assets/img/delete-pink.png" width="15" title="删除" @click="handleDeleteUser"/>
-          <img src="../../assets/img/edit.png" width="15" title="编辑" @click="handleEditUser"/>
+          <el-tooltip content="删除用户" placement="top" effect="light">
+            <img src="../../assets/img/delete-pink.png" width="15" @click="handleDeleteUser"/>
+          </el-tooltip>
+          <el-tooltip content="编辑信息" placement="top" effect="light">
+            <img src="../../assets/img/edit.png" width="15" @click="handleEditUser"/>
+          </el-tooltip>
+          <el-tooltip content="重置密码" placement="top" effect="light">
+            <img src="../../assets/img/key.png" width="15" @click="handleEditPw"/>
+          </el-tooltip>
         </div>
 
       </div>
@@ -24,18 +31,19 @@
 </template>
 
 <script>
-  import {Col} from 'element-ui'
+  import {Col, Tooltip} from 'element-ui'
   import {router} from '../../main'
   import {mapMutations} from 'vuex'
 
   export default {
     name: 'single-user-admin',
     components: {
-      elCol: Col
+      elCol: Col,
+      elTooltip: Tooltip
     },
     props: ['users'],
     data() {
-      console.log(this.users)
+//      console.log(this.users)
       return {
         avatarUrl: 'https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg',
       }
@@ -60,6 +68,10 @@
       handleEditUser() {
         this.saveUserToEdit(this.users)
         this.$modal.show('edit-user-modal')
+      },
+      handleEditPw() {
+        this.saveUserToEdit(this.users)
+        this.$modal.show('edit-user-pw-modal')
       }
     }
   }

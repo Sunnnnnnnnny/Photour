@@ -1,0 +1,68 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/base";
+@import "../../assets/scss/mixin";
+
+.edit-user-pw-wrapper {
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  background-color: $white-color;
+  text-align: center;
+
+  .el-button {
+    //width: 10px;
+    //height: 10px;
+    top: 0;
+    float: left;
+    background: none;
+
+    /deep/ .el-icon-close {
+      color: $light-grey;
+      font-size: 10px;
+    }
+  }
+
+  .form-wrapper {
+    margin-top: 60px;
+    width: 100%;
+
+    /deep/ .el-form-item__label {
+      //padding-right: 50px;
+      padding-left: 45px;
+      color: $grey;
+      //width: 150px;
+    }
+
+    /deep/ .el-input {
+      margin-right: 50px;
+      width: 330px;
+      float: right;
+    }
+
+    /deep/ .el-form-item__error {
+      padding-top: 2px;
+      padding-left: 150px;
+    }
+
+    .confirm-button-wrapper {
+      display: block;
+      padding-right: 50px;
+      float: right;
+      text-align: center;
+      /deep/ .el-button {
+        padding: 8px 20px;
+        background-color: $main-color;
+        border-radius: 100px;
+        color: $white-color;
+        @include transition(all, 0.5s);
+
+        &:hover {
+          @include transition(all, 0.5s);
+          background-color: $sub-color;
+        }
+      }
+    }
+
+  }
+
+}

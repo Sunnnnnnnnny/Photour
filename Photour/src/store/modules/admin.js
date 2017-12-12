@@ -31,10 +31,10 @@ const actions = {
   },
 
   editUser({commit}, {userInfo, onSuccess, onError}) {
-    console.log('action', userInfo)
+    // console.log('action', userInfo)
     authApi.editUserInfo((data => {
       if (data.message === 'success') {
-        console.log('new', data.user)
+        // console.log('new', data.user)
         commit('updateUser', data.user)
         if (onSuccess) {
           onSuccess('修改成功！')
@@ -43,6 +43,23 @@ const actions = {
         onError(data.message)
       }
     }), userInfo)
+  },
+
+  editUserPw({commit, state}, {pwInfo, onSuccess, onError}) {
+    pwInfo.userId = state.userToEdit.id
+    pwInfo.oldPw = null
+    console.log(pwInfo)
+
+    authApi.editUserPw((data => {
+      if (data.message === 'success') {
+        // console.log('new', data.user)
+        if (onSuccess) {
+          onSuccess('修改成功！')
+        }
+      } else {
+        onError(data.message)
+      }
+    }), pwInfo)
   }
 
 };
@@ -67,7 +84,7 @@ const mutations = {
 
   'updateUser'(state, newUser) {
     let user = state.allUsers.find(user => user.id === newUser.id);
-    console.log('toUpdate', user)
+    // console.log('toUpdate', user)
     state.allUsers[state.allUsers.indexOf(user)] = newUser;
   }
 

@@ -43,6 +43,7 @@
     <delete-photo-modal></delete-photo-modal>
     <delete-user-modal></delete-user-modal>
     <edit-user-modal></edit-user-modal>
+    <edit-user-pw-modal></edit-user-pw-modal>
   </div>
 </template>
 
@@ -58,6 +59,7 @@
   import DeletePhotoModal from '../PhotoDetails/DeletePhotoModal'
   import DeleteUserModal from '../Admin/DeleteUserModal'
   import EditUserModal from '../Admin/EditUserModal'
+  import EditUserPwModal from '../Admin/EditUserPwModal'
   import {router} from '../../main'
   import {mapMutations, mapState, mapActions} from 'vuex'
 
@@ -78,7 +80,8 @@
       DeleteAlbumModal,
       DeletePhotoModal,
       DeleteUserModal,
-      EditUserModal
+      EditUserModal,
+      EditUserPwModal
     },
     data() {
       return {
