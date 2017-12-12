@@ -21,6 +21,9 @@
       Layout,
       UserHome
     },
+    created() {
+//      router.go({name: 'UserHomePage', force: true})
+    },
     data() {
       return {}
     },
@@ -36,6 +39,10 @@
 
         }
       })
+      next(true)
+    },
+    beforeRouteUpdate(to, from, next) {
+
       next(true)
     }
   }

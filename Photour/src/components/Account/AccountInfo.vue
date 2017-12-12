@@ -3,9 +3,9 @@
 
     <div class="avatar-wrapper">
 
-      <el-tooltip class="item" effect="light" content="点击更改头像" placement="top">
-        <div class="avatar" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
-      </el-tooltip>
+      <!--<el-tooltip class="item" effect="light" content="点击更改头像" placement="top">-->
+      <div class="avatar" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
+      <!--</el-tooltip>-->
 
       <p>{{this.user.username}}</p>
 

@@ -5,7 +5,8 @@
     <div class="operation-wrapper">
 
       <div class="left-wrapper" @click="goToUserHomePage">
-        <img src="../../assets/img/user.png" width="25"/>
+        <!--<img src="../../assets/img/user.png" width="25"/>-->
+        <div class="avatar" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
         <span>{{this.currentPhoto.author[0].username}}</span>
       </div>
 
@@ -100,6 +101,7 @@
     data() {
       let photoName = this.$route.params.photoId
       return {
+        avatarUrl: "https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg",
         photoAuthorId: parseInt(this.currentPhoto.author_id),
         liked: this.currentPhoto.liked,
         likes: this.currentPhoto.likes,

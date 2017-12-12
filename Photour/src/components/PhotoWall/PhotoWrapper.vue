@@ -10,7 +10,8 @@
         </div>
 
         <div class="info-wrapper">
-          <img src="../../assets/img/user.png" width="17"/>
+          <!--<img src="../../assets/img/user.png" width="17"/>-->
+          <div class="avatar" :style="{ backgroundImage: 'url(' + avatarUrl + ')' }"></div>
           <span class="author-name">
         {{currentPhoto.author[0].username}}
       </span>
@@ -48,6 +49,7 @@
 //      console.log('name', name)
 //      console.log('photo', this.currentPhoto)
       return {
+        avatarUrl: "https://cdn.dribbble.com/users/548267/screenshots/2657798/wagon_v1_dribbble.jpg",
         liked: this.currentPhoto.liked,
         likes: this.currentPhoto.likes,
         photoUrl: require('/Users/st/code/Photour/Photour-Server/storage/app/uploads/photos/' + name),
