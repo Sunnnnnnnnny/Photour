@@ -21,9 +21,7 @@ button {
  */
 .album-photos-wrapper {
   margin-top: 30px;
-  padding: 20px;
-  min-height: 500px;
-  background-color: #ffffff; }
+  min-height: 500px; }
   .album-photos-wrapper .back-button {
     margin-bottom: 20px;
     background: none;

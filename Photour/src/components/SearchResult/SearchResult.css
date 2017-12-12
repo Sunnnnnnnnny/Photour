@@ -22,7 +22,6 @@ button {
 .search-result-wrapper {
   display: inline-block;
   margin-top: 100px;
-  padding: 30px;
   width: 100%;
   min-height: 500px; }
   .search-result-wrapper /deep/ .el-tabs__header {
