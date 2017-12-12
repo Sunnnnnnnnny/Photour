@@ -28,6 +28,7 @@ class SearchController extends Controller
         $photos = DB::table('photos')
             ->where('description', 'like', '%' . $input . '%')
             ->orWhere('tags', 'like', '%' . $input . '%')
+            ->orderBy('likes', 'desc')
             ->get();
         foreach ($photos as $photo) {
             $author = DB::table('Users')->select('username')->where('id', $photo->author_id)->get();
@@ -50,6 +51,7 @@ class SearchController extends Controller
         }
         $events = DB::table('events')
             ->where('content', 'like', '%' . $input . '%')
+            ->orderBy('create_at', 'desc')
             ->get();
         foreach ($events as $event) {
             $event->author_name = DB::table('Users')->where('id', $event->author_id)->value('username');
